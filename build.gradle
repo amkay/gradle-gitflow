@@ -71,8 +71,7 @@ bintray {
     //Package configuration. The plugin will use the repo and name properties to check if the package already exists. In that case, there's no need to configure the other package properties (like userOrg, desc, etc).
     pkg {
         repo = 'gradle-plugins'
-        name = 'gradle-gitflow'
-        userOrg = 'com.github.amkay' //An optional organization name when the repo belongs to one of the user's orgs
+        name = "${group}:${project.name}"
         desc = 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
         websiteUrl = 'https://github.com/amkay/gradle-gitflow'
         issueTrackerUrl = 'https://github.com/amkay/gradle-gitflow/issues'

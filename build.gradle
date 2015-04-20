@@ -54,8 +54,8 @@ description 'An opinionated plugin that provides Semantic Versioning for Gradle 
 apply plugin: 'com.jfrog.bintray'
 
 bintray {
-    //user = 'bintray_user'
-    //key = 'bintray_api_key'
+    user = bintrayUser
+    key = bintrayKey
 
     //configurations = ['deployables'] //When uploading configuration files
     // - OR -

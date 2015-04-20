@@ -72,7 +72,7 @@ bintray {
     pkg {
         repo = 'gradle-plugins'
         name = "${group}:${project.name}"
-        desc = 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
+        desc = "$description"
         websiteUrl = 'https://github.com/amkay/gradle-gitflow'
         issueTrackerUrl = 'https://github.com/amkay/gradle-gitflow/issues'
         vcsUrl = 'https://github.com/amkay/gradle-gitflow.git'

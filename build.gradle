@@ -59,7 +59,7 @@ bintray {
 
     //configurations = ['deployables'] //When uploading configuration files
     // - OR -
-    publications = ['published', 'archives'] //When uploading Maven-based publication files
+    publications = ['mavenGroovy'] //When uploading Maven-based publication files
     // - AND/OR -
     filesSpec { //When uploading any arbitrary files ('filesSpec' is a standard Gradle CopySpec)
         from 'arbitrary-files'
@@ -104,23 +104,28 @@ bintray {
     }
 }
 
-apply plugin: 'maven'
-
-configurations {
-    published
-}
+apply plugin: 'maven-publish'
 
 task sourceJar(type: Jar) {
     from sourceSets.main.allSource
-    classifier = 'sources'
 }
 
 task groovydocJar(type: Jar, dependsOn: groovydoc) {
     from groovydoc.destinationDir
-    classifier = 'groovydoc'
 }
 
-artifacts {
-    published sourceJar
-    published groovydocJar
+publishing {
+    publications {
+        mavenGroovy(MavenPublication) {
+            from components.java
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+
+            artifact groovydocJar {
+                classifier = 'groovydoc'
+            }
+        }
+    }
 }

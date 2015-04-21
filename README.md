@@ -55,7 +55,7 @@ The following table shows the mapping between a Gitflow branch and the correspon
 Note, that if you use a Gitflow plugin for Git, *gradle-gitflow* uses the branch names of your Gitflow configuration section in `.git/config`.
 
 | Gitflow branch  | pre-release identifier | Notes                                                                      |
-|-----------------+------------------------+----------------------------------------------------------------------------|
+|-----------------|------------------------|----------------------------------------------------------------------------|
 | `master`        | (empty string)         |                                                                            |
 | `develop`       | `dev`                  |                                                                            |
 | `feature/foo`   | `feature.foo`          |                                                                            |

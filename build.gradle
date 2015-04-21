@@ -53,31 +53,18 @@ group 'com.github.amkay'
 description 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
 
 apply plugin: 'com.jfrog.bintray'
+apply from: "$gradleDir/bintray-defaults.gradle"
 
-bintray {
-    user = bintrayUser
-    key = bintrayKey
+bintray.pkg {
+    repo = 'gradle-plugins'
 
-    publications = ['main']
+    websiteUrl = 'https://github.com/amkay/gradle-gitflow'
+    issueTrackerUrl = 'https://github.com/amkay/gradle-gitflow/issues'
+    vcsUrl = 'https://github.com/amkay/gradle-gitflow.git'
 
-    dryRun = false
-    publish = false
+    licenses = ['Apache-2.0']
 
-    pkg {
-        repo = 'gradle-plugins'
-        name = "${group}:${project.name}"
-        desc = "$description"
-
-        websiteUrl = 'https://github.com/amkay/gradle-gitflow'
-        issueTrackerUrl = 'https://github.com/amkay/gradle-gitflow/issues'
-        vcsUrl = 'https://github.com/amkay/gradle-gitflow.git'
-
-        licenses = ['Apache-2.0']
-
-        labels = ['gradle', 'plugin', 'git', 'gitflow', 'semver']
-
-        publicDownloadNumbers = true
-    }
+    labels = ['gradle', 'plugin', 'git', 'gitflow', 'semver']
 }
 
 apply plugin: 'maven-publish'

@@ -49,18 +49,17 @@ idea {
 
 apply plugin: GitflowPlugin
 
-group 'com.github.amkay'
+ext.githubUser = 'amkay'
+
+group "com.github.$githubUser"
 description 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
 
 apply plugin: 'com.jfrog.bintray'
 apply from: "$gradleDir/bintray-defaults.gradle"
+apply from: "$gradleDir/bintray-github-defaults.gradle"
 
 bintray.pkg {
     repo = 'gradle-plugins'
-
-    websiteUrl = 'https://github.com/amkay/gradle-gitflow'
-    issueTrackerUrl = 'https://github.com/amkay/gradle-gitflow/issues'
-    vcsUrl = 'https://github.com/amkay/gradle-gitflow.git'
 
     licenses = ['Apache-2.0']
 

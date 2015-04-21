@@ -77,7 +77,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.github.amkay:gradle-gitflow:0.1.0'
+    classpath 'com.github.amkay:gradle-gitflow:0.1.3'
   }
 }
 

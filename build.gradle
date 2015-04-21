@@ -57,7 +57,7 @@ bintray {
     user = bintrayUser
     key = bintrayKey
 
-    publications = ['mavenGroovy'] //When uploading Maven-based publication files
+    publications = ['main'] //When uploading Maven-based publication files
 
     dryRun = false //Whether to run this as dry-run, without deploying
     publish = false //If version should be auto published after an upload
@@ -101,25 +101,46 @@ bintray {
 
 apply plugin: 'maven-publish'
 
-task sourceJar(type: Jar) {
-    from sourceSets.main.allSource
+if(plugins['java']) {
+    task sourcesJar(type: Jar) {
+        from sourceSets.main.allSource
+        classifier 'sources'
+    }
+
+    task javadocJar(type: Jar) {
+        from javadoc.destinationDir
+        classifier 'javadoc'
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
 }
 
-task groovydocJar(type: Jar, dependsOn: groovydoc) {
-    from groovydoc.destinationDir
+if(plugins['groovy']) {
+    task groovydocJar(type: Jar, dependsOn: groovydoc) {
+        from groovydoc.destinationDir
+        classifier 'groovydoc'
+    }
+
+    artifacts {
+        archives groovydocJar
+    }
 }
 
 publishing {
     publications {
-        mavenGroovy(MavenPublication) {
-            from components.java
+        main(MavenPublication) {
+            if(plugins['java']) {
+                from components.java
 
-            artifact sourceJar {
-                classifier "sources"
+                artifact sourcesJar
+                artifact javadocJar
             }
 
-            artifact groovydocJar {
-                classifier = 'groovydoc'
+            if(plugins['groovy']) {
+                artifact groovydocJar
             }
         }
     }

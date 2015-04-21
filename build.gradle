@@ -142,6 +142,28 @@ publishing {
             if(plugins['groovy']) {
                 artifact groovydocJar
             }
+
+            pom.withXml {
+                def prj = project
+                asNode().with {
+
+                    appendNode('name', prj.name)
+                    appendNode('description', prj.description)
+                    appendNode('url', prj.bintray.pkg.websiteUrl)
+                    appendNode('licenses').with { node ->
+                        prj.bintray.pkg.licenses.each { license ->
+                            node.appendNode('license').with {
+                                appendNode('name', license)
+                            }
+                        }
+                    }
+                    appendNode('scm').with {
+                        appendNode('connection', "scm:git:${prj.bintray.pkg.vcsUrl}")
+                        appendNode('developerConnection', "scm:git:${prj.bintray.pkg.vcsUrl}")
+                        appendNode('url', prj.bintray.pkg.websiteUrl)
+                    }
+                }
+            }
         }
     }
 }

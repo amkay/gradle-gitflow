@@ -5,7 +5,7 @@ bintray {
     publications = ['main']
 
     dryRun = false
-    publish = false
+    publish = true
 
     pkg {
         name = "${group}:${project.name}"

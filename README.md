@@ -81,7 +81,7 @@ buildscript {
   }
 }
 
-apply plugin: 'com.github.amkay.gradle-gitflow'
+apply plugin: 'com.github.amkay.gitflow'
 ```
 
 

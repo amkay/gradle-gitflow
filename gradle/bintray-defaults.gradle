@@ -1,0 +1,17 @@
+bintray {
+    user = bintrayUser
+    key = bintrayKey
+
+    publications = ['main']
+
+    dryRun = false
+    publish = true
+
+    pkg {
+        name = "${group}:${project.name}"
+        desc = "$description"
+
+        publicDownloadNumbers = true
+    }
+}
+

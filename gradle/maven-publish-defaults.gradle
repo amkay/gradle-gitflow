@@ -1,0 +1,70 @@
+if(plugins['java']) {
+    task sourcesJar(type: Jar) {
+        from sourceSets.main.allSource
+        classifier 'sources'
+    }
+
+    task javadocJar(type: Jar) {
+        from javadoc.destinationDir
+        classifier 'javadoc'
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+}
+
+if(plugins['groovy']) {
+    task groovydocJar(type: Jar, dependsOn: groovydoc) {
+        from groovydoc.destinationDir
+        classifier 'groovydoc'
+    }
+
+    artifacts {
+        archives groovydocJar
+    }
+}
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            if(plugins['java']) {
+                from components.java
+
+                artifact sourcesJar
+                artifact javadocJar
+            }
+
+            if(plugins['groovy']) {
+                artifact groovydocJar
+            }
+
+            pom.withXml {
+                def prj = project
+
+                asNode().with {
+                    appendNode('name', prj.name)
+                    appendNode('description', prj.description)
+
+                    if(prj.bintray) {
+                        appendNode('url', prj.bintray.pkg.websiteUrl)
+                        appendNode('licenses').with { node ->
+                            prj.bintray.pkg.licenses.each { license ->
+                                node.appendNode('license').with {
+                                    appendNode('name', license)
+                                }
+                            }
+                        }
+                        appendNode('scm').with {
+                            appendNode('connection', "scm:git:${prj.bintray.pkg.vcsUrl}")
+                            appendNode('developerConnection', "scm:git:${prj.bintray.pkg.vcsUrl}")
+                            appendNode('url', prj.bintray.pkg.websiteUrl)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

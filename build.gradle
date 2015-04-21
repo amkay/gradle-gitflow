@@ -1,0 +1,71 @@
+import com.github.amkay.gradle.gitflow.GitflowPlugin
+
+def vJavaLang = '1.7'
+def gradleDir = "${rootProject.rootDir}/gradle"
+
+wrapper.gradleVersion = '2.3'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
+    }
+}
+
+apply plugin: 'groovy'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+
+    compile 'com.github.zafarkhaja:java-semver:0.9.0'
+    compile 'org.ajoberstar:grgit:1.1.0'
+}
+
+targetCompatibility = vJavaLang
+sourceCompatibility = vJavaLang
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+idea {
+    module.excludeDirs += [
+        file('bin'),        // containing build artifacts from Eclipse (if any)
+        file('.settings'),  // containing Eclipse metadata
+        file("gradle"),
+        file('.gradletasknamecache'),
+        file('gradlew'),
+        file('gradlew.bat')
+    ]
+
+    project.vcs = 'Git'
+}
+
+apply plugin: GitflowPlugin
+
+ext.githubUser = 'amkay'
+
+group "com.github.$githubUser"
+description 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
+
+apply plugin: 'com.jfrog.bintray'
+apply from: "$gradleDir/bintray-defaults.gradle"
+apply from: "$gradleDir/bintray-github-defaults.gradle"
+
+bintray.pkg {
+    repo = 'gradle-plugins'
+
+    licenses = ['Apache-2.0']
+
+    labels = ['gradle', 'plugin', 'git', 'gitflow', 'semver']
+}
+
+apply plugin: 'maven-publish'
+apply from: "$gradleDir/maven-publish-defaults.gradle"
+

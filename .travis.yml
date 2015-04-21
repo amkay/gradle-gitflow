@@ -2,4 +2,4 @@ language: groovy
 jdk:
     - oraclejdk7
     - openjdk7
-install: git checkout $(git branch --contains $(git rev-parse HEAD)|tail -n1|tr -d ' ') && ./gradlew assemble
+before_install: git checkout $(git branch --contains $(git rev-parse HEAD)|tail -n1|tr -d ' ')

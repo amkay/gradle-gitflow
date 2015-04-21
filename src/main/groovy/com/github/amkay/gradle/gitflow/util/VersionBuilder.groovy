@@ -15,8 +15,8 @@
  */
 package com.github.amkay.gradle.gitflow.util
 
-import com.github.zafarkhaja.semver.Version
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
+import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
 
 /**
@@ -29,7 +29,7 @@ class VersionBuilder {
     private NearestVersion nearestVersion
     private String         normal
     private String         branch
-    private Integer        distanceFromRelease
+    private int            distanceFromRelease
     private String         sha
     private String         dirty
 
@@ -123,9 +123,11 @@ class VersionBuilder {
         def preRelease = new StringBuilder()
         def buildMetadata = new StringBuilder()
 
-        append preRelease, branch
-        append preRelease, distanceFromRelease.toString()
-        append buildMetadata, sha
+        if (distanceFromRelease){
+            append preRelease, branch
+            append preRelease, Integer.toString(distanceFromRelease)
+            append buildMetadata, sha
+        }
         append buildMetadata, dirty
 
         new Version.Builder(normal)

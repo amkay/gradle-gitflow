@@ -12,6 +12,10 @@ bintray {
         desc = "$description"
 
         publicDownloadNumbers = true
+
+        version {
+            vcsTag = "${project.version}"
+        }
     }
 }
 

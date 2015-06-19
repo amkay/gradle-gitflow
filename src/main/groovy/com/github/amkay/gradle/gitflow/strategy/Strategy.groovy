@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 package com.github.amkay.gradle.gitflow.strategy
-
-import com.github.zafarkhaja.semver.Version
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
+import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
-
+import org.gradle.api.logging.Logger
+import org.gradle.api.logging.Logging
 /**
  * The base class of all strategies used to infer the version.
  *
  * @author Max Kaeufer
  */
 abstract class Strategy {
+
+    private static final Logger LOGGER = Logging.getLogger(Strategy);
 
     /**
      * All available strategies.
@@ -64,7 +66,7 @@ abstract class Strategy {
     Version infer(final Grgit grgit, final GitflowPluginExtension extension) {
         def version = doInfer(grgit, extension)
 
-        println "Inferred version $version"
+        LOGGER.lifecycle "Inferred version $version"
 
         version
     }

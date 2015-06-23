@@ -17,7 +17,9 @@ Versioning
 The rules applied when inferring the version are that simple:
 
 * If the current commit is tagged this tag is used as a version -- regardless of the current branch
+    * this would usually be the normal version (`major.minor.patch`)
 * Otherwise the version contains
+    * the normal version (`major.minor.patch`) extracted from the next reachable tag in the history
     * a *pre-release identifier* indicating the current branch
     * a *pre-release identifier* indicating the number of commits since the last tag
     * a *build metadata identifier* indicating the SHA of the current commit
@@ -54,14 +56,14 @@ major version
 The following table shows the mapping between a Gitflow branch and the corresponding pre-release identifier that indicates this branch.
 Note, that if you use a Gitflow plugin for Git, *gradle-gitflow* uses the branch names of your Gitflow configuration section in `.git/config`.
 
-| Gitflow branch  | pre-release identifier | Notes                                                                      |
-|-----------------|------------------------|----------------------------------------------------------------------------|
-| `master`        | (empty string)         |                                                                            |
-| `develop`       | `dev`                  |                                                                            |
-| `feature/foo`   | `feature.foo`          |                                                                            |
-| `release/1.2.3` | `pre-release`          | The normal version (`major.minor.patch`) is extracted from the branch name |
-| `hotfix/foo`    | `fix.foo`              |                                                                            |
-| `support/foo`   | `support.foo`          |                                                                            |
+| Gitflow branch    | pre-release identifier   | Notes                                                                        |
+| ----------------- | ------------------------ | ---------------------------------------------------------------------------- |
+| `master`          | (empty string)           |                                                                              |
+| `develop`         | `dev`                    |                                                                              |
+| `feature/foo`     | `feature.foo`            |                                                                              |
+| `release/1.2.3`   | `pre`                    | The normal version (`major.minor.patch`) is extracted from the branch name   |
+| `hotfix/foo`      | `fix.foo`                |                                                                              |
+| `support/foo`     | `support.foo`            |                                                                              |
 
 In case the current head is a *detached head* the *pre-release identifier* is `detached`.
 
@@ -102,7 +104,7 @@ gitflow {
   preReleaseIds {
     master 'foo'       // defaults to ''
     develop 'foo'      // defaults to 'dev'
-    release 'foo'      // defaults to 'pre-release'
+    release 'foo'      // defaults to 'pre'
     detachedHead 'foo' // defaults to 'detached'
 
     // The following ones are used as prefixes

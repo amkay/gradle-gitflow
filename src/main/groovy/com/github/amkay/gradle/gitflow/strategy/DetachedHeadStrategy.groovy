@@ -22,7 +22,7 @@ import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
 
 /**
- * TODO
+ * The strategy to use when the current head is a detached head.
  *
  * @author Max Kaeufer
  */

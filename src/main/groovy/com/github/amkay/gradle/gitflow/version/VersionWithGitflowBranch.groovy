@@ -27,11 +27,11 @@ public class VersionWithGitflowBranch {
     @Delegate
     private Version version
 
-    GitflowBranch gitflowBranch
+    GitflowBranch branch
 
-    VersionWithGitflowBranch(final Version version, final GitflowBranch gitflowBranch) {
+    VersionWithGitflowBranch(final Version version, final GitflowBranch branch) {
         this.version = version
-        this.gitflowBranch = gitflowBranch
+        this.branch = branch
     }
 
 }

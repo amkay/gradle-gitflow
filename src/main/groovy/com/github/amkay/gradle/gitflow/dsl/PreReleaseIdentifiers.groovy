@@ -61,7 +61,7 @@ class PreReleaseIdentifiers {
     /**
      * The static text that is used to indicate that the current commit is a detached head
      */
-    String detachedHead = 'detached-head'
+    String detachedHead = 'detached'
 
     /**
      * Helper method to allow keyword-based configuration of the <code>master</code> property

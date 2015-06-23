@@ -56,14 +56,14 @@ major version
 The following table shows the mapping between a Gitflow branch and the corresponding pre-release identifier that indicates this branch.
 Note, that if you use a Gitflow plugin for Git, *gradle-gitflow* uses the branch names of your Gitflow configuration section in `.git/config`.
 
-| Gitflow branch  | pre-release identifier | Notes                                                                      |
-|-----------------|------------------------|----------------------------------------------------------------------------|
-| `master`        | (empty string)         |                                                                            |
-| `develop`       | `dev`                  |                                                                            |
-| `feature/foo`   | `feature.foo`          |                                                                            |
-| `release/1.2.3` | `pre-release`          | The normal version (`major.minor.patch`) is extracted from the branch name |
-| `hotfix/foo`    | `fix.foo`              |                                                                            |
-| `support/foo`   | `support.foo`          |                                                                            |
+| Gitflow branch    | pre-release identifier   | Notes                                                                        |
+| ----------------- | ------------------------ | ---------------------------------------------------------------------------- |
+| `master`          | (empty string)           |                                                                              |
+| `develop`         | `dev`                    |                                                                              |
+| `feature/foo`     | `feature.foo`            |                                                                              |
+| `release/1.2.3`   | `pre`                    | The normal version (`major.minor.patch`) is extracted from the branch name   |
+| `hotfix/foo`      | `fix.foo`                |                                                                              |
+| `support/foo`     | `support.foo`            |                                                                              |
 
 In case the current head is a *detached head* the *pre-release identifier* is `detached`.
 
@@ -104,7 +104,7 @@ gitflow {
   preReleaseIds {
     master 'foo'       // defaults to ''
     develop 'foo'      // defaults to 'dev'
-    release 'foo'      // defaults to 'pre-release'
+    release 'foo'      // defaults to 'pre'
     detachedHead 'foo' // defaults to 'detached'
 
     // The following ones are used as prefixes

@@ -41,7 +41,7 @@ public class DetachedHeadStrategy extends Strategy {
     }
 
     @Override
-    public boolean canInfer(final Grgit grgit) {
+    boolean canInfer(final Grgit grgit) {
         // grgit.branch.current should be used, but that does never return null (not even when on detached head)
         true
     }

@@ -33,7 +33,7 @@ class DelayedVersion {
 
     private final Project project;
     private Grgit grgit;
-    private Version delegate;
+    private VersionWithGitflowBranch delegate;
 
     /**
      * @param project the project that the plugin was applied on
@@ -192,6 +192,12 @@ class DelayedVersion {
         infer();
 
         return delegate.lessThanOrEqualTo(other)
+    }
+
+    GitflowBranch getBranch(){
+        infer()
+
+        delegate.branch
     }
 
     @Override

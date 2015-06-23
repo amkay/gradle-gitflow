@@ -63,6 +63,8 @@ Note, that if you use a Gitflow plugin for Git, *gradle-gitflow* uses the branch
 | `hotfix/foo`    | `fix.foo`              |                                                                            |
 | `support/foo`   | `support.foo`          |                                                                            |
 
+In case the current head is a *detached head* the *pre-release identifier* is `detached`.
+
 
 
 Usage
@@ -98,9 +100,10 @@ gitflow {
 
   // Pre-release identifiers based on Gitflow branches
   preReleaseIds {
-    master 'foo'  // defaults to ''
-    develop 'foo' // defaults to 'dev'
-    release 'foo' // defaults to 'pre-release'
+    master 'foo'       // defaults to ''
+    develop 'foo'      // defaults to 'dev'
+    release 'foo'      // defaults to 'pre-release'
+    detachedHead 'foo' // defaults to 'detached'
 
     // The following ones are used as prefixes
     feature 'foo' // defaults to 'feature'

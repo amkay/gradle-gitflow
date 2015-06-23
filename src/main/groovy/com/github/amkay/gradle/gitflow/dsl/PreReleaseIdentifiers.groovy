@@ -59,6 +59,11 @@ class PreReleaseIdentifiers {
     String support = 'support'
 
     /**
+     * The static text that is used to indicate that the current commit is a detached head
+     */
+    String detachedHead = 'detached'
+
+    /**
      * Helper method to allow keyword-based configuration of the <code>master</code> property
      * @param master
      */
@@ -104,6 +109,14 @@ class PreReleaseIdentifiers {
      */
     void support(final String support) {
         setSupport(support)
+    }
+
+    /**
+     * Helper method to allow keyword-based configuration of the <code>detachedHead</code> property
+     * @param detachedHead
+     */
+    void detachedHead(final String detachedHead) {
+        setDetachedHead(detachedHead)
     }
 
 }

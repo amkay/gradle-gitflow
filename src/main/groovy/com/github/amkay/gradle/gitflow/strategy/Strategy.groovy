@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 package com.github.amkay.gradle.gitflow.strategy
+
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
 import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
 import org.gradle.api.logging.Logger
 import org.gradle.api.logging.Logging
+
 /**
  * The base class of all strategies used to infer the version.
  *
@@ -37,7 +39,9 @@ abstract class Strategy {
       new BranchReleaseStrategy(),
       new BranchFeatureStrategy(),
       new BranchHotfixStrategy(),
-      new BranchSupportStrategy()
+      new BranchSupportStrategy(),
+      // Must go to last position, see DetachedHeadStrategy.canInfer(Grgit) for that
+      new DetachedHeadStrategy()
     ]
 
     /**

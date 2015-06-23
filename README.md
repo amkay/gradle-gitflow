@@ -17,7 +17,9 @@ Versioning
 The rules applied when inferring the version are that simple:
 
 * If the current commit is tagged this tag is used as a version -- regardless of the current branch
+    * this would usually be the normal version (`major.minor.patch`)
 * Otherwise the version contains
+    * the normal version (`major.minor.patch`) extracted from the next reachable tag in the history
     * a *pre-release identifier* indicating the current branch
     * a *pre-release identifier* indicating the number of commits since the last tag
     * a *build metadata identifier* indicating the SHA of the current commit

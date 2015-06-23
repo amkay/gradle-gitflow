@@ -29,9 +29,42 @@ public class VersionWithGitflowBranch {
 
     final GitflowBranch branch
 
+
     VersionWithGitflowBranch(final Version version, final GitflowBranch branch) {
         this.version = version
         this.branch = branch
+    }
+
+
+    @Override
+    boolean equals(final o) {
+        if (this.is(o)) {
+            return true
+        }
+        if (getClass() != o.class) {
+            return false
+        }
+
+        final VersionWithGitflowBranch that = (VersionWithGitflowBranch) o
+
+        if (branch != that.branch) {
+            return false
+        }
+        if (version != that.version) {
+            return false
+        }
+
+        return true
+    }
+
+    @Override
+    int hashCode() {
+        int result
+
+        result = (version != null ? version.hashCode() : 0)
+        result = 31 * result + (branch != null ? branch.hashCode() : 0)
+
+        return result
     }
 
 }

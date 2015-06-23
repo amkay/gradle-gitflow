@@ -16,7 +16,7 @@
 package com.github.amkay.gradle.gitflow
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
-import com.github.amkay.gradle.gitflow.util.DelayedVersion
+import com.github.amkay.gradle.gitflow.version.DelayedVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

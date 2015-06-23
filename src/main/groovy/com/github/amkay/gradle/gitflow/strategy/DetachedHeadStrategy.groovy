@@ -16,8 +16,8 @@
 package com.github.amkay.gradle.gitflow.strategy
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
-import com.github.amkay.gradle.gitflow.util.NearestVersionLocator
-import com.github.amkay.gradle.gitflow.util.VersionBuilder
+import com.github.amkay.gradle.gitflow.version.NearestVersionLocator
+import com.github.amkay.gradle.gitflow.version.VersionBuilder
 import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
 

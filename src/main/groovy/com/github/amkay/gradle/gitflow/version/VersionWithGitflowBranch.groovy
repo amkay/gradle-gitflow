@@ -67,4 +67,9 @@ public class VersionWithGitflowBranch {
         return result
     }
 
+    @Override
+    String toString() {
+        version.toString()
+    }
+
 }

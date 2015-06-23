@@ -20,7 +20,7 @@ import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
 
 /**
- * A helper class that uses the builder pattern to create a {@link Version}.
+ * A helper class that uses the builder pattern to create a {@link VersionWithGitflowBranch}.
  *
  * @author Max Kaeufer
  */
@@ -32,6 +32,7 @@ class VersionWithGitflowBranchBuilder {
     private int            distanceFromRelease
     private String         sha
     private String         dirty
+    private GitflowBranch  gitflowBranch
 
     /**
      * @param normal the normal part of the version according to semantic versioning
@@ -114,26 +115,34 @@ class VersionWithGitflowBranchBuilder {
         this
     }
 
+    VersionWithGitflowBranchBuilder gitflowBranch(final GitflowBranch gitflowBranch) {
+        this.gitflowBranch = gitflowBranch
+
+        this
+    }
+
     /**
      * Builds the version
      *
      * @return
      */
-    Version build() {
+    VersionWithGitflowBranch build() {
         def preRelease = new StringBuilder()
         def buildMetadata = new StringBuilder()
 
-        if (distanceFromRelease){
+        if (distanceFromRelease) {
             append preRelease, branch
             append preRelease, Integer.toString(distanceFromRelease)
             append buildMetadata, sha
         }
         append buildMetadata, dirty
 
-        new Version.Builder(normal)
+        def version = new Version.Builder(normal)
           .setPreReleaseVersion(preRelease.toString())
           .setBuildMetadata(buildMetadata.toString())
           .build()
+
+        new VersionWithGitflowBranch(version, gitflowBranch)
     }
 
     private void append(final StringBuilder sb, final String s) {

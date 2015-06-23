@@ -16,7 +16,7 @@
 package com.github.amkay.gradle.gitflow
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
-import com.github.amkay.gradle.gitflow.version.DelayedVersion
+import com.github.amkay.gradle.gitflow.version.DelayedVersionWithGitflowBranch
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -25,7 +25,7 @@ import org.gradle.api.Project
  *
  * <p>
  *     When the plugin is applied, it registers a {@link GitflowPluginExtension} and sets the version of the project
- *     to which it is applied to a {@link DelayedVersion}.
+ *     to which it is applied to a {@link DelayedVersionWithGitflowBranch}.
  * </p>
  *
  * @author Max Kaeufer
@@ -41,7 +41,7 @@ class GitflowPlugin implements Plugin<Project> {
     void apply(final Project project) {
         project.extensions.create(EXT_GITFLOW, GitflowPluginExtension)
 
-        project.version = new DelayedVersion(project)
+        project.version = new DelayedVersionWithGitflowBranch(project)
     }
 
 }

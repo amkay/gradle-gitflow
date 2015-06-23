@@ -25,9 +25,9 @@ import com.github.zafarkhaja.semver.Version
 public class VersionWithGitflowBranch {
 
     @Delegate
-    private Version version
+    private final Version version
 
-    GitflowBranch branch
+    final GitflowBranch branch
 
     VersionWithGitflowBranch(final Version version, final GitflowBranch branch) {
         this.version = version

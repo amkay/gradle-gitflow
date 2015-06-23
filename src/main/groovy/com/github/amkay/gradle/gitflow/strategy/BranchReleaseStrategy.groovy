@@ -18,7 +18,7 @@ package com.github.amkay.gradle.gitflow.strategy
 import com.github.zafarkhaja.semver.Version
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
 import com.github.amkay.gradle.gitflow.version.NearestVersionLocator
-import com.github.amkay.gradle.gitflow.version.VersionBuilder
+import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranchBuilder
 import org.ajoberstar.grgit.Grgit
 
 /**
@@ -39,7 +39,7 @@ class BranchReleaseStrategy extends Strategy {
         def matcher = (grgit.branch.current.name =~ $/^${getReleasePrefix(grgit)}(.*)/$)
         String releaseVersion = matcher[ 0 ][ 1 ]
 
-        new VersionBuilder(releaseVersion)
+        new VersionWithGitflowBranchBuilder(releaseVersion)
           .branch(ext.preReleaseIds.release)
           .distanceFromRelease(nearestVersion)
           .sha(grgit, ext)

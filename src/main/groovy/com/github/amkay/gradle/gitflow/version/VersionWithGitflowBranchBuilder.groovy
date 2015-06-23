@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
  *
  * @author Max Kaeufer
  */
-class VersionBuilder {
+class VersionWithGitflowBranchBuilder {
 
     private NearestVersion nearestVersion
     private String         normal
@@ -36,7 +36,7 @@ class VersionBuilder {
     /**
      * @param normal the normal part of the version according to semantic versioning
      */
-    VersionBuilder(final String normal) {
+    VersionWithGitflowBranchBuilder(final String normal) {
         this.normal = normal
     }
 
@@ -46,7 +46,7 @@ class VersionBuilder {
      *
      * @param nearestVersion
      */
-    VersionBuilder(final NearestVersion nearestVersion) {
+    VersionWithGitflowBranchBuilder(final NearestVersion nearestVersion) {
         this.nearestVersion = nearestVersion
         this.normal = nearestVersion.any.toString()
     }
@@ -57,7 +57,7 @@ class VersionBuilder {
      * @param branch
      * @return
      */
-    VersionBuilder branch(final String branch) {
+    VersionWithGitflowBranchBuilder branch(final String branch) {
         this.branch = branch
 
         this
@@ -69,7 +69,7 @@ class VersionBuilder {
      * @param nearestVersion
      * @return
      */
-    VersionBuilder distanceFromRelease(final NearestVersion nearestVersion) {
+    VersionWithGitflowBranchBuilder distanceFromRelease(final NearestVersion nearestVersion) {
         distanceFromRelease = nearestVersion.distanceFromAny
 
         this
@@ -80,7 +80,7 @@ class VersionBuilder {
      *
      * @return
      */
-    VersionBuilder distanceFromRelease() {
+    VersionWithGitflowBranchBuilder distanceFromRelease() {
         distanceFromRelease(nearestVersion)
     }
 
@@ -91,7 +91,7 @@ class VersionBuilder {
      * @param extension
      * @return
      */
-    VersionBuilder sha(final Grgit grgit, final GitflowPluginExtension extension) {
+    VersionWithGitflowBranchBuilder sha(final Grgit grgit, final GitflowPluginExtension extension) {
         def id = grgit.head().abbreviatedId
 
         sha = "${extension.buildMetadataIds.sha}.$id"
@@ -106,7 +106,7 @@ class VersionBuilder {
      * @param extension
      * @return
      */
-    VersionBuilder dirty(final Grgit grgit, final GitflowPluginExtension extension) {
+    VersionWithGitflowBranchBuilder dirty(final Grgit grgit, final GitflowPluginExtension extension) {
         if (!grgit.status().clean) {
             dirty = extension.buildMetadataIds.dirty
         }

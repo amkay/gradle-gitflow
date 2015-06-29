@@ -115,6 +115,12 @@ class VersionWithTypeBuilder {
         this
     }
 
+    /**
+     * Sets the type of the version.
+     *
+     * @param type
+     * @return
+     */
     VersionWithTypeBuilder type(final VersionType type) {
         this.type = type
 

@@ -18,7 +18,8 @@ package com.github.amkay.gradle.gitflow.version
 import com.github.zafarkhaja.semver.Version
 
 /**
- * TODO
+ * Combines a {@link Version} with a {@link VersionType} using the delegate pattern. This is needed because
+ * inheritance cannot be used due to the package-private constructors of {@link Version}.
  *
  * @author Max Kaeufer
  */
@@ -29,7 +30,10 @@ public class VersionWithType {
 
     final VersionType type
 
-
+    /**
+     * @param version the version
+     * @param type the type of the version
+     */
     VersionWithType(final Version version, final VersionType type) {
         this.version = version
         this.type = type

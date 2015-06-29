@@ -15,20 +15,48 @@
  */
 package com.github.amkay.gradle.gitflow.version
 
+import com.github.zafarkhaja.semver.Version
+
 /**
- * TODO
+ * The type of a {@link Version} according to Gitflow's semantics
  *
  * @author Max Kaeufer
  */
 enum VersionType {
 
+    /**
+     * A production release. That is when you are on the production release branch.
+     */
     RELEASE,
-    PRE_RELEASE,
-    DEVELOP,
-    FEATURE,
-    HOTFIX,
-    SUPPORT,
 
-    DETACHED_HEAD
+    /**
+     * A pre-release. That is when you are on a branch that prepares the next production release.
+     */
+    PRE_RELEASE,
+
+    /**
+     * A develop release. That is when you are on the development branch.
+     */
+     DEVELOP,
+
+    /**
+     * A feature release. That is when you are on a feature branch.
+     */
+     FEATURE,
+
+    /**
+     * A hotfix release. That is when you are on a hotfix branch.
+     */
+     HOTFIX,
+
+    /**
+     * A support release. That is when you are on a support branch.
+     */
+     SUPPORT,
+
+    /**
+     * A detached-head release. That is when you are on a detached head.
+     */
+     DETACHED_HEAD
 
 }

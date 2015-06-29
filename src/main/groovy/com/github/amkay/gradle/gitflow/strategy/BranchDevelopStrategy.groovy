@@ -35,7 +35,7 @@ class BranchDevelopStrategy extends Strategy {
 
 
     @Override
-    VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
+    protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate(grgit)
 
         new VersionWithTypeBuilder(nearestVersion)

@@ -29,10 +29,10 @@ class PreReleaseIdentifiers {
     String master = ''
 
     /**
-     * The static text that is used to indicate that the current branch is a release branch according to Gitflow's
+     * The static text that is used to indicate that the current branch is a pre-release branch according to Gitflow's
      * semantics
      */
-    String release = 'pre'
+    String preRelease = 'pre'
 
     /**
      * The static text that is used to indicate that the current branch is the develop branch according to Gitflow's
@@ -72,11 +72,11 @@ class PreReleaseIdentifiers {
     }
 
     /**
-     * Helper method to allow keyword-based configuration of the <code>release</code> property
-     * @param release
+     * Helper method to allow keyword-based configuration of the <code>preRelease</code> property
+     * @param preRelease
      */
-    void release(final String release) {
-        setRelease(release)
+    void preRelease(final String preRelease) {
+        setPreRelease(preRelease)
     }
 
     /**

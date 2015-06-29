@@ -104,7 +104,7 @@ gitflow {
   preReleaseIds {
     master 'foo'       // defaults to ''
     develop 'foo'      // defaults to 'dev'
-    release 'foo'      // defaults to 'pre'
+    preRelease 'foo'   // defaults to 'pre'
     detachedHead 'foo' // defaults to 'detached'
 
     // The following ones are used as prefixes

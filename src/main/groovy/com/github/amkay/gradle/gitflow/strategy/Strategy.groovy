@@ -36,7 +36,7 @@ abstract class Strategy {
     public static final STRATEGIES = [
       new BranchDevelopStrategy(),
       new BranchMasterStrategy(),
-      new BranchReleaseStrategy(),
+      new BranchPreReleaseStrategy(),
       new BranchFeatureStrategy(),
       new BranchHotfixStrategy(),
       new BranchSupportStrategy(),

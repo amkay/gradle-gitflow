@@ -21,17 +21,17 @@ import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranch
 import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranchBuilder
 import org.ajoberstar.grgit.Grgit
 
-import static com.github.amkay.gradle.gitflow.version.GitflowBranch.RELEASE
+import static com.github.amkay.gradle.gitflow.version.GitflowBranch.PRE_RELEASE
 
 /**
- * The strategy to use when one of Gitflow's <code>release</code> branches is the current branch.
+ * The strategy to use when one of Gitflow's <code>pre-release</code> branches is the current branch.
  *
  * @author Max Kaeufer
  */
-class BranchReleaseStrategy extends Strategy {
+class BranchPreReleaseStrategy extends Strategy {
 
-    private static final String CONFIG_PREFIX_RELEASE  = 'release'
-    private static final String DEFAULT_PREFIX_RELEASE = 'release/'
+    private static final String CONFIG_PREFIX_PRE_RELEASE  = 'release'
+    private static final String DEFAULT_PREFIX_PRE_RELEASE = 'release/'
 
 
     @Override
@@ -42,11 +42,11 @@ class BranchReleaseStrategy extends Strategy {
         String releaseVersion = matcher[ 0 ][ 1 ]
 
         new VersionWithGitflowBranchBuilder(releaseVersion)
-          .branch(ext.preReleaseIds.release)
+          .branch(ext.preReleaseIds.preRelease)
           .distanceFromRelease(nearestVersion)
           .sha(grgit, ext)
           .dirty(grgit, ext)
-          .gitflowBranch(RELEASE)
+          .gitflowBranch(PRE_RELEASE)
           .build()
     }
 
@@ -56,7 +56,7 @@ class BranchReleaseStrategy extends Strategy {
     }
 
     private static String getReleasePrefix(final Grgit grgit) {
-        getPrefix(grgit, CONFIG_PREFIX_RELEASE) ?: DEFAULT_PREFIX_RELEASE
+        getPrefix(grgit, CONFIG_PREFIX_PRE_RELEASE) ?: DEFAULT_PREFIX_PRE_RELEASE
     }
 
 }

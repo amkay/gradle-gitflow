@@ -21,17 +21,17 @@ import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranch
 import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranchBuilder
 import org.ajoberstar.grgit.Grgit
 
-import static com.github.amkay.gradle.gitflow.version.GitflowBranch.MASTER
+import static com.github.amkay.gradle.gitflow.version.GitflowBranch.RELEASE
 
 /**
- * The strategy to use when Gitflow's <code>master</code> branch is the current branch.
+ * The strategy to use when Gitflow's <code>release</code> branch is the current branch.
  *
  * @author Max Kaeufer
  */
-class BranchMasterStrategy extends Strategy {
+class BranchReleaseStrategy extends Strategy {
 
-    private static final String CONFIG_BRANCH_MASTER  = 'master'
-    private static final String DEFAULT_BRANCH_MASTER = 'master'
+    private static final String CONFIG_BRANCH_RELEASE  = 'master'
+    private static final String DEFAULT_BRANCH_RELEASE = 'master'
 
 
     @Override
@@ -39,11 +39,11 @@ class BranchMasterStrategy extends Strategy {
         def nearestVersion = new NearestVersionLocator().locate(grgit)
 
         new VersionWithGitflowBranchBuilder(nearestVersion)
-          .branch(ext.preReleaseIds.master)
+          .branch(ext.preReleaseIds.release)
           .distanceFromRelease()
           .sha(grgit, ext)
           .dirty(grgit, ext)
-          .gitflowBranch(MASTER)
+          .gitflowBranch(RELEASE)
           .build()
     }
 
@@ -53,7 +53,7 @@ class BranchMasterStrategy extends Strategy {
     }
 
     private static String getMasterBranchName(final Grgit grgit) {
-        getBranchName(grgit, CONFIG_BRANCH_MASTER) ?: DEFAULT_BRANCH_MASTER
+        getBranchName(grgit, CONFIG_BRANCH_RELEASE) ?: DEFAULT_BRANCH_RELEASE
     }
 
 }

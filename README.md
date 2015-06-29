@@ -102,7 +102,7 @@ gitflow {
 
   // Pre-release identifiers based on Gitflow branches
   preReleaseIds {
-    master 'foo'       // defaults to ''
+    release 'foo'      // defaults to ''
     develop 'foo'      // defaults to 'dev'
     preRelease 'foo'   // defaults to 'pre'
     detachedHead 'foo' // defaults to 'detached'

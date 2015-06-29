@@ -22,7 +22,7 @@ package com.github.amkay.gradle.gitflow.version
  */
 enum GitflowBranch {
 
-    MASTER,
+    RELEASE,
     PRE_RELEASE,
     DEVELOP,
     FEATURE,

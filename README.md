@@ -56,14 +56,14 @@ major version
 The following table shows the mapping between a Gitflow branch and the corresponding pre-release identifier that indicates this branch.
 Note, that if you use a Gitflow plugin for Git, *gradle-gitflow* uses the branch names of your Gitflow configuration section in `.git/config`.
 
-| Gitflow branch    | pre-release identifier   | Notes                                                                        |
-| ----------------- | ------------------------ | ---------------------------------------------------------------------------- |
-| `master`          | (empty string)           |                                                                              |
-| `develop`         | `dev`                    |                                                                              |
-| `feature/foo`     | `feature.foo`            |                                                                              |
-| `release/1.2.3`   | `pre`                    | The normal version (`major.minor.patch`) is extracted from the branch name   |
-| `hotfix/foo`      | `fix.foo`                |                                                                              |
-| `support/foo`     | `support.foo`            |                                                                              |
+| Gitflow branch             | Default name in Gitflow plugins | Pre-release identifier | Notes                                                                      |
+|----------------------------+---------------------------------+------------------------+----------------------------------------------------------------------------|
+| production release         | `master`                        | (empty string)         |                                                                            |
+| development                | `develop`                       | `dev`                  |                                                                            |
+| feature                    | `feature/foo`                   | `feature.foo`          |                                                                            |
+| next release / pre-release | `release/1.2.3`                 | `pre`                  | The normal version (`major.minor.patch`) is extracted from the branch name |
+| hotfix                     | `hotfix/foo`                    | `fix.foo`              |                                                                            |
+| support                    | `support/foo`                   | `support.foo`          |                                                                            |
 
 In case the current head is a *detached head* the *pre-release identifier* is `detached`.
 

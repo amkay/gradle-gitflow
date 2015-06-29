@@ -16,10 +16,12 @@
 package com.github.amkay.gradle.gitflow.strategy
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
-import com.github.amkay.gradle.gitflow.util.NearestVersionLocator
-import com.github.amkay.gradle.gitflow.util.VersionBuilder
-import com.github.zafarkhaja.semver.Version
+import com.github.amkay.gradle.gitflow.version.NearestVersionLocator
+import com.github.amkay.gradle.gitflow.version.VersionWithType
+import com.github.amkay.gradle.gitflow.version.VersionWithTypeBuilder
 import org.ajoberstar.grgit.Grgit
+
+import static com.github.amkay.gradle.gitflow.version.VersionType.DETACHED_HEAD
 
 /**
  * The strategy to use when the current head is a detached head.
@@ -29,14 +31,15 @@ import org.ajoberstar.grgit.Grgit
 public class DetachedHeadStrategy extends Strategy {
 
     @Override
-    protected Version doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
+    protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate(grgit)
 
-        new VersionBuilder(nearestVersion)
+        new VersionWithTypeBuilder(nearestVersion)
           .branch(ext.preReleaseIds.detachedHead)
           .distanceFromRelease()
           .sha(grgit, ext)
           .dirty(grgit, ext)
+          .type(DETACHED_HEAD)
           .build()
     }
 

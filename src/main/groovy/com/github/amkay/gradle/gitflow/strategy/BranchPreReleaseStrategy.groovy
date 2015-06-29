@@ -21,42 +21,42 @@ import com.github.amkay.gradle.gitflow.version.VersionWithType
 import com.github.amkay.gradle.gitflow.version.VersionWithTypeBuilder
 import org.ajoberstar.grgit.Grgit
 
-import static com.github.amkay.gradle.gitflow.version.VersionType.SUPPORT
+import static com.github.amkay.gradle.gitflow.version.VersionType.PRE_RELEASE
 
 /**
- * The strategy to use when one of Gitflow's <code>support</code> branches is the current branch.
+ * The strategy to use when one of Gitflow's <code>pre-release</code> branches is the current branch.
  *
  * @author Max Kaeufer
  */
-class BranchSupportStrategy extends Strategy {
+class BranchPreReleaseStrategy extends Strategy {
 
-    private static final String CONFIG_PREFIX_SUPPORT  = 'support'
-    private static final String DEFAULT_PREFIX_SUPPORT = 'support/'
+    private static final String CONFIG_PREFIX_PRE_RELEASE  = 'release'
+    private static final String DEFAULT_PREFIX_PRE_RELEASE = 'release/'
 
 
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate(grgit)
 
-        def matcher = (grgit.branch.current.name =~ $/^${getSupportPrefix(grgit)}(.*)/$)
-        def support = matcher[ 0 ][ 1 ]
+        def matcher = (grgit.branch.current.name =~ $/^${getReleasePrefix(grgit)}(.*)/$)
+        String releaseVersion = matcher[ 0 ][ 1 ]
 
-        new VersionWithTypeBuilder(nearestVersion)
-          .branch("${ext.preReleaseIds.support}.$support")
-          .distanceFromRelease()
+        new VersionWithTypeBuilder(releaseVersion)
+          .branch(ext.preReleaseIds.preRelease)
+          .distanceFromRelease(nearestVersion)
           .sha(grgit, ext)
           .dirty(grgit, ext)
-          .type(SUPPORT)
+          .type(PRE_RELEASE)
           .build()
     }
 
     @Override
     boolean canInfer(final Grgit grgit) {
-        grgit.branch.current.name.startsWith getSupportPrefix(grgit)
+        grgit.branch.current.name.startsWith getReleasePrefix(grgit)
     }
 
-    private static String getSupportPrefix(final Grgit grgit) {
-        getPrefix(grgit, CONFIG_PREFIX_SUPPORT) ?: DEFAULT_PREFIX_SUPPORT
+    private static String getReleasePrefix(final Grgit grgit) {
+        getPrefix(grgit, CONFIG_PREFIX_PRE_RELEASE) ?: DEFAULT_PREFIX_PRE_RELEASE
     }
 
 }

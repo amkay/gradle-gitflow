@@ -17,11 +17,11 @@ package com.github.amkay.gradle.gitflow.strategy
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
 import com.github.amkay.gradle.gitflow.version.NearestVersionLocator
-import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranch
-import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranchBuilder
+import com.github.amkay.gradle.gitflow.version.VersionWithType
+import com.github.amkay.gradle.gitflow.version.VersionWithTypeBuilder
 import org.ajoberstar.grgit.Grgit
 
-import static com.github.amkay.gradle.gitflow.version.GitflowBranch.SUPPORT
+import static com.github.amkay.gradle.gitflow.version.VersionType.SUPPORT
 
 /**
  * The strategy to use when one of Gitflow's <code>support</code> branches is the current branch.
@@ -35,18 +35,18 @@ class BranchSupportStrategy extends Strategy {
 
 
     @Override
-    protected VersionWithGitflowBranch doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
+    protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate(grgit)
 
         def matcher = (grgit.branch.current.name =~ $/^${getSupportPrefix(grgit)}(.*)/$)
         def support = matcher[ 0 ][ 1 ]
 
-        new VersionWithGitflowBranchBuilder(nearestVersion)
+        new VersionWithTypeBuilder(nearestVersion)
           .branch("${ext.preReleaseIds.support}.$support")
           .distanceFromRelease()
           .sha(grgit, ext)
           .dirty(grgit, ext)
-          .gitflowBranch(SUPPORT)
+          .type(SUPPORT)
           .build()
     }
 

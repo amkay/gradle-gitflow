@@ -20,7 +20,7 @@ package com.github.amkay.gradle.gitflow.version
  *
  * @author Max Kaeufer
  */
-enum GitflowBranch {
+enum VersionType {
 
     RELEASE,
     PRE_RELEASE,

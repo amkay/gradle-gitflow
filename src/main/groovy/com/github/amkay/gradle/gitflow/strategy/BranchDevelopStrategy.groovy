@@ -17,11 +17,11 @@ package com.github.amkay.gradle.gitflow.strategy
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
 import com.github.amkay.gradle.gitflow.version.NearestVersionLocator
-import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranch
-import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranchBuilder
+import com.github.amkay.gradle.gitflow.version.VersionWithType
+import com.github.amkay.gradle.gitflow.version.VersionWithTypeBuilder
 import org.ajoberstar.grgit.Grgit
 
-import static com.github.amkay.gradle.gitflow.version.GitflowBranch.DEVELOP
+import static com.github.amkay.gradle.gitflow.version.VersionType.DEVELOP
 
 /**
  * The strategy to use when Gitflow's <code>develop</code> branch is the current branch.
@@ -35,15 +35,15 @@ class BranchDevelopStrategy extends Strategy {
 
 
     @Override
-    VersionWithGitflowBranch doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
+    VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate(grgit)
 
-        new VersionWithGitflowBranchBuilder(nearestVersion)
+        new VersionWithTypeBuilder(nearestVersion)
           .branch(ext.preReleaseIds.develop)
           .distanceFromRelease()
           .sha(grgit, ext)
           .dirty(grgit, ext)
-          .gitflowBranch(DEVELOP)
+          .type(DEVELOP)
           .build()
     }
 

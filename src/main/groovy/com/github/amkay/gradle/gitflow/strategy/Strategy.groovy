@@ -16,7 +16,7 @@
 package com.github.amkay.gradle.gitflow.strategy
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
-import com.github.amkay.gradle.gitflow.version.VersionWithGitflowBranch
+import com.github.amkay.gradle.gitflow.version.VersionWithType
 import org.ajoberstar.grgit.Grgit
 import org.gradle.api.logging.Logger
 import org.gradle.api.logging.Logging
@@ -67,7 +67,7 @@ abstract class Strategy {
      * @param extension
      * @return
      */
-    VersionWithGitflowBranch infer(final Grgit grgit, final GitflowPluginExtension extension) {
+    VersionWithType infer(final Grgit grgit, final GitflowPluginExtension extension) {
         def version = doInfer(grgit, extension)
 
         LOGGER.lifecycle "Inferred version $version"
@@ -83,7 +83,7 @@ abstract class Strategy {
      * @param extension
      * @return
      */
-    abstract protected VersionWithGitflowBranch doInfer(Grgit grgit, GitflowPluginExtension extension)
+    abstract protected VersionWithType doInfer(Grgit grgit, GitflowPluginExtension extension)
 
     /**
      * Determines if the strategy can infer the version. This is used to match the current branch, for example.

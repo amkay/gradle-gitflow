@@ -22,17 +22,17 @@ import com.github.zafarkhaja.semver.Version
  *
  * @author Max Kaeufer
  */
-public class VersionWithGitflowBranch {
+public class VersionWithType {
 
     @Delegate
     private final Version version
 
-    final GitflowBranch branch
+    final VersionType type
 
 
-    VersionWithGitflowBranch(final Version version, final GitflowBranch branch) {
+    VersionWithType(final Version version, final VersionType type) {
         this.version = version
-        this.branch = branch
+        this.type = type
     }
 
 
@@ -45,9 +45,9 @@ public class VersionWithGitflowBranch {
             return false
         }
 
-        final VersionWithGitflowBranch that = (VersionWithGitflowBranch) o
+        final VersionWithType that = (VersionWithType) o
 
-        if (branch != that.branch) {
+        if (type != that.type) {
             return false
         }
         if (version != that.version) {
@@ -62,7 +62,7 @@ public class VersionWithGitflowBranch {
         int result
 
         result = (version != null ? version.hashCode() : 0)
-        result = 31 * result + (branch != null ? branch.hashCode() : 0)
+        result = 31 * result + (type != null ? type.hashCode() : 0)
 
         return result
     }

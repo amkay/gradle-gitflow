@@ -20,11 +20,11 @@ import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
 
 /**
- * A helper class that uses the builder pattern to create a {@link VersionWithGitflowBranch}.
+ * A helper class that uses the builder pattern to create a {@link VersionWithType}.
  *
  * @author Max Kaeufer
  */
-class VersionWithGitflowBranchBuilder {
+class VersionWithTypeBuilder {
 
     private NearestVersion nearestVersion
     private String         normal
@@ -32,12 +32,12 @@ class VersionWithGitflowBranchBuilder {
     private int            distanceFromRelease
     private String         sha
     private String         dirty
-    private GitflowBranch  gitflowBranch
+    private VersionType    type
 
     /**
      * @param normal the normal part of the version according to semantic versioning
      */
-    VersionWithGitflowBranchBuilder(final String normal) {
+    VersionWithTypeBuilder(final String normal) {
         this.normal = normal
     }
 
@@ -47,7 +47,7 @@ class VersionWithGitflowBranchBuilder {
      *
      * @param nearestVersion
      */
-    VersionWithGitflowBranchBuilder(final NearestVersion nearestVersion) {
+    VersionWithTypeBuilder(final NearestVersion nearestVersion) {
         this.nearestVersion = nearestVersion
         this.normal = nearestVersion.any.toString()
     }
@@ -58,7 +58,7 @@ class VersionWithGitflowBranchBuilder {
      * @param branch
      * @return
      */
-    VersionWithGitflowBranchBuilder branch(final String branch) {
+    VersionWithTypeBuilder branch(final String branch) {
         this.branch = branch
 
         this
@@ -70,7 +70,7 @@ class VersionWithGitflowBranchBuilder {
      * @param nearestVersion
      * @return
      */
-    VersionWithGitflowBranchBuilder distanceFromRelease(final NearestVersion nearestVersion) {
+    VersionWithTypeBuilder distanceFromRelease(final NearestVersion nearestVersion) {
         distanceFromRelease = nearestVersion.distanceFromAny
 
         this
@@ -81,7 +81,7 @@ class VersionWithGitflowBranchBuilder {
      *
      * @return
      */
-    VersionWithGitflowBranchBuilder distanceFromRelease() {
+    VersionWithTypeBuilder distanceFromRelease() {
         distanceFromRelease(nearestVersion)
     }
 
@@ -92,7 +92,7 @@ class VersionWithGitflowBranchBuilder {
      * @param extension
      * @return
      */
-    VersionWithGitflowBranchBuilder sha(final Grgit grgit, final GitflowPluginExtension extension) {
+    VersionWithTypeBuilder sha(final Grgit grgit, final GitflowPluginExtension extension) {
         def id = grgit.head().abbreviatedId
 
         sha = "${extension.buildMetadataIds.sha}.$id"
@@ -107,7 +107,7 @@ class VersionWithGitflowBranchBuilder {
      * @param extension
      * @return
      */
-    VersionWithGitflowBranchBuilder dirty(final Grgit grgit, final GitflowPluginExtension extension) {
+    VersionWithTypeBuilder dirty(final Grgit grgit, final GitflowPluginExtension extension) {
         if (!grgit.status().clean) {
             dirty = extension.buildMetadataIds.dirty
         }
@@ -115,8 +115,8 @@ class VersionWithGitflowBranchBuilder {
         this
     }
 
-    VersionWithGitflowBranchBuilder gitflowBranch(final GitflowBranch gitflowBranch) {
-        this.gitflowBranch = gitflowBranch
+    VersionWithTypeBuilder type(final VersionType type) {
+        this.type = type
 
         this
     }
@@ -126,7 +126,7 @@ class VersionWithGitflowBranchBuilder {
      *
      * @return
      */
-    VersionWithGitflowBranch build() {
+    VersionWithType build() {
         def preRelease = new StringBuilder()
         def buildMetadata = new StringBuilder()
 
@@ -142,7 +142,7 @@ class VersionWithGitflowBranchBuilder {
           .setBuildMetadata(buildMetadata.toString())
           .build()
 
-        new VersionWithGitflowBranch(version, gitflowBranch)
+        new VersionWithType(version, type)
     }
 
     private void append(final StringBuilder sb, final String s) {

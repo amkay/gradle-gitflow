@@ -29,16 +29,16 @@ import static com.github.amkay.gradle.gitflow.strategy.Strategy.STRATEGIES
  *
  * @author Max Kaeufer
  */
-class DelayedVersionWithGitflowBranch {
+class DelayedVersionWithType {
 
     private final Project project;
     private Grgit grgit;
-    private VersionWithGitflowBranch delegate;
+    private VersionWithType delegate;
 
     /**
      * @param project the project that the plugin was applied on
      */
-    DelayedVersionWithGitflowBranch(final Project project) {
+    DelayedVersionWithType(final Project project) {
         this.project = project;
     }
 
@@ -194,10 +194,10 @@ class DelayedVersionWithGitflowBranch {
         return delegate.lessThanOrEqualTo(other)
     }
 
-    GitflowBranch getBranch() {
+    VersionType getType() {
         infer()
 
-        delegate.branch
+        delegate.type
     }
 
     @Override

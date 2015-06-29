@@ -6,6 +6,7 @@ An opinionated plugin that provides [Semantic Versioning](http://semver.org/) fo
 This plugin is heavily inspired by the [gradle-git](/ajoberstar/gradle-git) plugin.
 
 It **intentionally** provides no Gradle tasks and interacts with [Git](http://git-scm.com/) just for inferring the version of the project.
+This inferred version is set as the project version of the [Gradle](https://gradle.org/) project to which it is applied.
 
 
 
@@ -118,5 +119,29 @@ gitflow {
     sha 'foo'   // Defaults to 'sha'
     dirty 'foo' // Defaults to 'dirty'
   }
+}
+```
+
+
+### Additional functionality of the version object
+
+The following additional functionality is provided by the version object that this plugin provides.
+
+
+
+#### Version type
+
+The type of the inferred version is derived from the current branch and corresponds to the branches mentioned in [Mapping between Gitflow branch and pre-release identifier](#mapping-between-gitflow-branch-and-pre-release-identifier).
+This can be used in your buildscripts for distinguishing between development and production builds, e.g. for deploying to staging and production as seen in the following example.
+
+```groovy
+import static com.github.amkay.gradle.gitflow.version.VersionType.*
+
+task deploy << {
+    if (version.type == DEVELOP) {
+        // Deploy to staging...
+    } else if(version.type == RELEASE) {
+        // Deploy to production...
+    }
 }
 ```

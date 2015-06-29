@@ -140,7 +140,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.*
 task deploy << {
     if (version.type == DEVELOP) {
         // Deploy to staging...
-    } else if(version.type == RELEASE) {
+    } else if (version.type == RELEASE) {
         // Deploy to production...
     }
 }

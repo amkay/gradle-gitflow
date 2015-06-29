@@ -38,6 +38,14 @@ class GitflowPluginExtension {
     final BuildMetadataIdentifiers buildMetadataIds = new BuildMetadataIdentifiers();
 
     /**
+     * Helper method to allow keyword-based configuration of the <code>repositoryRoot</code> property
+     * @param repositoryRoot
+     */
+    void repositoryRoot(final String repositoryRoot) {
+        setRepositoryRoot(repositoryRoot)
+    }
+
+    /**
      * Helper method to allow the keyword-based configuration (the DSL) of the pre-release identifiers according to
      * semantic versioning.
      *

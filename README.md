@@ -99,7 +99,7 @@ The following example shows all configuration options:
 ```groovy
 gitflow {
   // Use a different Git repository
-  repositoryRoot 'foo/bar' // defaults to '.'
+  repositoryRoot 'foo/bar' // defaults to project.projectDir
 
   // Pre-release identifiers based on Gitflow branches
   preReleaseIds {

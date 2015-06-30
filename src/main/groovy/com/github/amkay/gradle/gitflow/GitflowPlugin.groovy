@@ -39,7 +39,7 @@ class GitflowPlugin implements Plugin<Project> {
 
     @Override
     void apply(final Project project) {
-        project.extensions.create(EXT_GITFLOW, GitflowPluginExtension)
+        project.extensions.create(EXT_GITFLOW, GitflowPluginExtension, project.projectDir)
 
         project.version = new DelayedVersionWithType(project)
     }

@@ -68,7 +68,7 @@ class PreReleaseIdentifiers {
      * @param release
      */
     void release(final String release) {
-        setRelease(release)
+        setRelease release
     }
 
     /**
@@ -76,7 +76,7 @@ class PreReleaseIdentifiers {
      * @param preRelease
      */
     void preRelease(final String preRelease) {
-        setPreRelease(preRelease)
+        setPreRelease preRelease
     }
 
     /**
@@ -84,7 +84,7 @@ class PreReleaseIdentifiers {
      * @param develop
      */
     void develop(final String develop) {
-        setDevelop(develop)
+        setDevelop develop
     }
 
     /**
@@ -92,7 +92,7 @@ class PreReleaseIdentifiers {
      * @param feature
      */
     void feature(final String feature) {
-        setFeature(feature)
+        setFeature feature
     }
 
     /**
@@ -100,7 +100,7 @@ class PreReleaseIdentifiers {
      * @param hotfix
      */
     void hotfix(final String hotfix) {
-        setHotfix(hotfix)
+        setHotfix hotfix
     }
 
     /**
@@ -108,7 +108,7 @@ class PreReleaseIdentifiers {
      * @param support
      */
     void support(final String support) {
-        setSupport(support)
+        setSupport support
     }
 
     /**
@@ -116,7 +116,7 @@ class PreReleaseIdentifiers {
      * @param detachedHead
      */
     void detachedHead(final String detachedHead) {
-        setDetachedHead(detachedHead)
+        setDetachedHead detachedHead
     }
 
 }

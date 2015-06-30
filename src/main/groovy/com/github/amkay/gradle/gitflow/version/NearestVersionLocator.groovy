@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory
  */
 class NearestVersionLocator {
 
-    private static final Logger logger                   = LoggerFactory.getLogger(NearestVersionLocator)
+    private static final Logger LOGGER                   = LoggerFactory.getLogger NearestVersionLocator
     public static final  String CONFIG_SECTION_GITFLOW   = 'gitflow'
     public static final  String CONFIG_SUBSECTION_PREFIX = 'prefix'
     public static final  String CONFIG_VERSION_TAG       = 'versionTag'
@@ -77,32 +77,41 @@ class NearestVersionLocator {
                                  .getString(CONFIG_SECTION_GITFLOW, CONFIG_SUBSECTION_PREFIX, CONFIG_VERSION_TAG) ?:
                             DEFAULT_PREFIX_VERSION
 
-        logger.debug('Locate beginning on branch: {}', grgit.branch.current.fullName)
+        LOGGER.debug "Locate beginning on branch: ${grgit.branch.current.fullName}"
+
         Commit head = grgit.head()
+
         List versionTags = grgit.tag.list().inject([ ]) { list, tag ->
             Version version = Version.valueOf(tag.name[ 0 ] == versionPrefix ? tag.name[ 1..-1 ] : tag.name)
-            logger.debug('Tag {} ({}) parsed as {} version.', tag.name, tag.commit.abbreviatedId, version)
+            LOGGER.debug "Tag ${tag.name} (${tag.commit.abbreviatedId}) parsed as ${version} version."
+
             if (version) {
                 def data
                 if (tag.commit == head) {
-                    logger.debug('Tag {} is at head. Including as candidate.', tag.fullName)
+                    LOGGER.debug "Tag ${tag.fullName} is at head. Including as candidate."
+
                     data = [ version: version, distance: 0 ]
                 } else {
                     if (grgit.isAncestorOf(tag, head)) {
-                        logger.debug('Tag {} is an ancestor of HEAD. Including as a candidate.', tag.name)
+                        LOGGER.debug "Tag ${tag.name} is an ancestor of HEAD. Including as a candidate."
+
                         def reachableCommitLog = grgit.log {
                             range tag.commit.id, head.id
                         }
-                        logger.debug('Reachable commits after tag {}: {}', tag.fullName,
-                                     reachableCommitLog.collect { it.abbreviatedId })
+
+                        LOGGER.debug "Reachable commits after tag ${tag.fullName}: {}", reachableCommitLog.collect {
+                            it.abbreviatedId
+                        }
+
                         def distance = reachableCommitLog.size()
                         data = [ version: version, distance: distance ]
                     } else {
-                        logger.debug('Tag {} is not an ancestor of HEAD. Excluding as a candidate.', tag.name)
+                        LOGGER.debug "Tag ${tag.name} is not an ancestor of HEAD. Excluding as a candidate."
                     }
                 }
                 if (data) {
-                    logger.debug('Tag data found: {}', data)
+                    LOGGER.debug "Tag data found: ${data}"
+
                     list << data
                 }
             }
@@ -116,7 +125,7 @@ class NearestVersionLocator {
         Version anyVersion = any ? any.version : Version.valueOf('0.0.0')
         int distanceFromAny = any ? any.distance : grgit.log(includes: [ head.id ]).size()
 
-        return new NearestVersion(anyVersion, distanceFromAny)
+        new NearestVersion(anyVersion, distanceFromAny)
     }
 
 }

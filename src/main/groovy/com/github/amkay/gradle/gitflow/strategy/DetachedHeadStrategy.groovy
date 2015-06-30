@@ -32,7 +32,7 @@ public class DetachedHeadStrategy extends AbstractStrategy {
 
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
-        def nearestVersion = new NearestVersionLocator().locate(grgit)
+        def nearestVersion = new NearestVersionLocator().locate grgit
 
         new VersionWithTypeBuilder(nearestVersion)
           .branch(ext.preReleaseIds.detachedHead)

@@ -30,15 +30,15 @@ class GitflowPluginExtension {
     /**
      * Holder that allows to configure the pre-release identifiers according to semantic versioning
      */
-    final PreReleaseIdentifiers preReleaseIds = new PreReleaseIdentifiers();
+    final PreReleaseIdentifiers preReleaseIds = new PreReleaseIdentifiers()
 
     /**
      * Holder that allows to configure the build metadata identifiers according to semantic versioning
      */
-    final BuildMetadataIdentifiers buildMetadataIds = new BuildMetadataIdentifiers();
+    final BuildMetadataIdentifiers buildMetadataIds = new BuildMetadataIdentifiers()
 
     GitflowPluginExtension(final File projectDir) {
-        this.repositoryRoot = projectDir.path
+        setRepositoryRoot projectDir.path
     }
 
     /**
@@ -46,7 +46,7 @@ class GitflowPluginExtension {
      * @param repositoryRoot
      */
     void repositoryRoot(final String repositoryRoot) {
-        setRepositoryRoot(repositoryRoot)
+        setRepositoryRoot repositoryRoot
     }
 
     /**
@@ -57,7 +57,7 @@ class GitflowPluginExtension {
      */
     void preReleaseIds(@DelegatesTo(PreReleaseIdentifiers) final Closure cl) {
         cl.delegate = preReleaseIds;
-        cl.call();
+        cl.call()
     }
 
     /**

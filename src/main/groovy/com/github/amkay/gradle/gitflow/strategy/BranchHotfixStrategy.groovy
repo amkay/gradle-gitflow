@@ -36,9 +36,9 @@ class BranchHotfixStrategy extends AbstractStrategy {
 
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
-        def nearestVersion = new NearestVersionLocator().locate(grgit)
+        def nearestVersion = new NearestVersionLocator().locate grgit
 
-        def matcher = (grgit.branch.current.name =~ $/^${getHotfixPrefix(grgit)}(.*)/$)
+        def matcher = (grgit.branch.current.name =~ $/^${getHotfixPrefix grgit}(.*)/$)
         def hotfix = matcher[ 0 ][ 1 ]
 
         new VersionWithTypeBuilder(nearestVersion)

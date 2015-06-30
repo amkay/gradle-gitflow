@@ -58,7 +58,7 @@ public class VersionWithType {
             return false
         }
 
-        return true
+        true
     }
 
     @Override
@@ -68,7 +68,7 @@ public class VersionWithType {
         result = (version != null ? version.hashCode() : 0)
         result = 31 * result + (type != null ? type.hashCode() : 0)
 
-        return result
+        result
     }
 
     @Override

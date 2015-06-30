@@ -36,9 +36,9 @@ class BranchFeatureStrategy extends AbstractStrategy {
 
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
-        def nearestVersion = new NearestVersionLocator().locate(grgit)
+        def nearestVersion = new NearestVersionLocator().locate grgit
 
-        def matcher = (grgit.branch.current.name =~ $/^${getFeaturePrefix(grgit)}(.*)/$)
+        def matcher = (grgit.branch.current.name =~ $/^${getFeaturePrefix grgit}(.*)/$)
         def feature = matcher[ 0 ][ 1 ]
 
         new VersionWithTypeBuilder(nearestVersion)

@@ -45,12 +45,12 @@ class DelayedVersionWithType {
 
     private void infer() {
         // Double-checked locking
-        if (delegate == null) {
+        if (!delegate) {
             synchronized (this) {
-                if (delegate == null) {
-                    grgit = Grgit.open(dir: project[ EXT_GITFLOW ].repositoryRoot)
+                if (!delegate) {
+                    grgit = Grgit.open dir: project[ EXT_GITFLOW ].repositoryRoot
 
-                    delegate = STRATEGIES.find { it.canInfer(grgit) }.infer(grgit, project[ EXT_GITFLOW ])
+                    delegate = STRATEGIES.find { it.canInfer grgit }.infer grgit, project[ EXT_GITFLOW ]
                 }
             }
         }
@@ -62,9 +62,9 @@ class DelayedVersionWithType {
      * @return
      */
     int compareWithBuildsTo(final Version other) {
-        infer();
+        infer()
 
-        return delegate.compareWithBuildsTo(other)
+        delegate.compareWithBuildsTo other
     }
 
     /**
@@ -73,9 +73,9 @@ class DelayedVersionWithType {
      * @return
      */
     boolean satisfies(final String expr) {
-        infer();
+        infer()
 
-        return delegate.satisfies(expr)
+        delegate.satisfies expr
     }
 
     /**
@@ -84,9 +84,9 @@ class DelayedVersionWithType {
      * @return
      */
     boolean satisfies(final Expression expr) {
-        infer();
+        infer()
 
-        return delegate.satisfies(expr)
+        delegate.satisfies expr
     }
 
     /**
@@ -94,9 +94,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version incrementMajorVersion() {
-        infer();
+        infer()
 
-        return delegate.incrementMajorVersion()
+        delegate.incrementMajorVersion()
     }
 
     /**
@@ -105,9 +105,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version incrementMajorVersion(final String preRelease) {
-        infer();
+        infer()
 
-        return delegate.incrementMajorVersion(preRelease)
+        delegate.incrementMajorVersion preRelease
     }
 
     /**
@@ -115,9 +115,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version incrementMinorVersion() {
-        infer();
+        infer()
 
-        return delegate.incrementMinorVersion()
+        delegate.incrementMinorVersion()
     }
 
     /**
@@ -126,9 +126,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version incrementMinorVersion(final String preRelease) {
-        infer();
+        infer()
 
-        return delegate.incrementMinorVersion(preRelease)
+        delegate.incrementMinorVersion preRelease
     }
 
     /**
@@ -136,9 +136,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version incrementPatchVersion() {
-        infer();
+        infer()
 
-        return delegate.incrementPatchVersion()
+        delegate.incrementPatchVersion()
     }
 
     /**
@@ -147,9 +147,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version incrementPatchVersion(final String preRelease) {
-        infer();
+        infer()
 
-        return delegate.incrementPatchVersion(preRelease)
+        delegate.incrementPatchVersion preRelease
     }
 
     /**
@@ -157,9 +157,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version incrementPreReleaseVersion() {
-        infer();
+        infer()
 
-        return delegate.incrementPreReleaseVersion()
+        delegate.incrementPreReleaseVersion()
     }
 
     /**
@@ -167,9 +167,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version incrementBuildMetadata() {
-        infer();
+        infer()
 
-        return delegate.incrementBuildMetadata()
+        delegate.incrementBuildMetadata()
     }
 
     /**
@@ -178,9 +178,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version setPreReleaseVersion(final String preRelease) {
-        infer();
+        infer()
 
-        return delegate.setPreReleaseVersion(preRelease)
+        delegate.setPreReleaseVersion preRelease
     }
 
     /**
@@ -189,9 +189,9 @@ class DelayedVersionWithType {
      * @return
      */
     Version setBuildMetadata(final String build) {
-        infer();
+        infer()
 
-        return delegate.setBuildMetadata(build)
+        delegate.setBuildMetadata build
     }
 
     /**
@@ -199,9 +199,9 @@ class DelayedVersionWithType {
      * @return
      */
     int getMajorVersion() {
-        infer();
+        infer()
 
-        return delegate.getMajorVersion()
+        delegate.getMajorVersion()
     }
 
     /**
@@ -209,9 +209,9 @@ class DelayedVersionWithType {
      * @return
      */
     int getMinorVersion() {
-        infer();
+        infer()
 
-        return delegate.getMinorVersion()
+        delegate.getMinorVersion()
     }
 
     /**
@@ -219,9 +219,9 @@ class DelayedVersionWithType {
      * @return
      */
     int getPatchVersion() {
-        infer();
+        infer()
 
-        return delegate.getPatchVersion()
+        delegate.getPatchVersion()
     }
 
     /**
@@ -229,9 +229,9 @@ class DelayedVersionWithType {
      * @return
      */
     String getNormalVersion() {
-        infer();
+        infer()
 
-        return delegate.getNormalVersion()
+        delegate.getNormalVersion()
     }
 
     /**
@@ -239,9 +239,9 @@ class DelayedVersionWithType {
      * @return
      */
     String getPreReleaseVersion() {
-        infer();
+        infer()
 
-        return delegate.getPreReleaseVersion()
+        delegate.getPreReleaseVersion()
     }
 
     /**
@@ -249,9 +249,9 @@ class DelayedVersionWithType {
      * @return
      */
     String getBuildMetadata() {
-        infer();
+        infer()
 
-        return delegate.getBuildMetadata()
+        delegate.getBuildMetadata()
     }
 
     /**
@@ -260,9 +260,9 @@ class DelayedVersionWithType {
      * @return
      */
     boolean greaterThan(final Version other) {
-        infer();
+        infer()
 
-        return delegate.greaterThan(other)
+        delegate.greaterThan other
     }
 
     /**
@@ -271,9 +271,9 @@ class DelayedVersionWithType {
      * @return
      */
     boolean greaterThanOrEqualTo(final Version other) {
-        infer();
+        infer()
 
-        return delegate.greaterThanOrEqualTo(other)
+        delegate.greaterThanOrEqualTo other
     }
 
     /**
@@ -282,9 +282,9 @@ class DelayedVersionWithType {
      * @return
      */
     boolean lessThan(final Version other) {
-        infer();
+        infer()
 
-        return delegate.lessThan(other)
+        delegate.lessThan other
     }
 
     /**
@@ -293,9 +293,9 @@ class DelayedVersionWithType {
      * @return
      */
     boolean lessThanOrEqualTo(final Version other) {
-        infer();
+        infer()
 
-        return delegate.lessThanOrEqualTo(other)
+        delegate.lessThanOrEqualTo other
     }
 
     /**
@@ -309,29 +309,29 @@ class DelayedVersionWithType {
 
     @Override
     boolean equals(final Object other) {
-        infer();
+        infer()
 
-        return delegate.equals(other)
+        delegate.equals other
     }
 
     @Override
     int hashCode() {
-        infer();
+        infer()
 
-        return delegate.hashCode()
+        delegate.hashCode()
     }
 
     @Override
     String toString() {
-        infer();
+        infer()
 
-        return delegate.toString()
+        delegate.toString()
     }
 
     int compareTo(final Version other) {
-        infer();
+        infer()
 
-        return delegate.compareTo(other)
+        delegate.compareTo other
     }
 
 }

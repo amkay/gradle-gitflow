@@ -36,9 +36,9 @@ class BranchPreReleaseStrategy extends AbstractStrategy {
 
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
-        def nearestVersion = new NearestVersionLocator().locate(grgit)
+        def nearestVersion = new NearestVersionLocator().locate grgit
 
-        def matcher = (grgit.branch.current.name =~ $/^${getReleasePrefix(grgit)}(.*)/$)
+        def matcher = (grgit.branch.current.name =~ $/^${getReleasePrefix grgit}(.*)/$)
         String releaseVersion = matcher[ 0 ][ 1 ]
 
         new VersionWithTypeBuilder(releaseVersion)

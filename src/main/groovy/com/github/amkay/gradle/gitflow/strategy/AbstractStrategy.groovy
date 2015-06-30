@@ -29,7 +29,7 @@ import org.gradle.api.logging.Logging
  */
 abstract class AbstractStrategy implements Strategy {
 
-    private static final Logger LOGGER = Logging.getLogger(AbstractStrategy);
+    private static final Logger LOGGER = Logging.getLogger(AbstractStrategy)
 
     /**
      * The section of Gitflow's configuration in .git/config
@@ -54,7 +54,7 @@ abstract class AbstractStrategy implements Strategy {
      */
     @Override
     VersionWithType infer(final Grgit grgit, final GitflowPluginExtension extension) {
-        def version = doInfer(grgit, extension)
+        def version = doInfer grgit, extension
 
         LOGGER.lifecycle "Inferred version $version"
 
@@ -69,7 +69,7 @@ abstract class AbstractStrategy implements Strategy {
      * @param extension
      * @return
      */
-    abstract protected VersionWithType doInfer(Grgit grgit, GitflowPluginExtension extension)
+    abstract protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension extension)
 
     /**
      * Helper method to retrieve a Gitflow branch prefix from .git/config
@@ -79,7 +79,7 @@ abstract class AbstractStrategy implements Strategy {
      * @return
      */
     protected static String getPrefix(final Grgit grgit, final String name) {
-        grgit.repository.jgit.repository.config.getString(SECTION_GITFLOW, SUBSECTION_PREFIX, name)
+        grgit.repository.jgit.repository.config.getString SECTION_GITFLOW, SUBSECTION_PREFIX, name
     }
 
     /**
@@ -90,7 +90,7 @@ abstract class AbstractStrategy implements Strategy {
      * @return
      */
     protected static String getBranchName(final Grgit grgit, final String name) {
-        grgit.repository.jgit.repository.config.getString(SECTION_GITFLOW, SUBSECTION_BRANCH, name)
+        grgit.repository.jgit.repository.config.getString SECTION_GITFLOW, SUBSECTION_BRANCH, name
     }
 
 }

@@ -82,7 +82,7 @@ class VersionWithTypeBuilder {
      * @return
      */
     VersionWithTypeBuilder distanceFromRelease() {
-        distanceFromRelease(nearestVersion)
+        distanceFromRelease nearestVersion
     }
 
     /**

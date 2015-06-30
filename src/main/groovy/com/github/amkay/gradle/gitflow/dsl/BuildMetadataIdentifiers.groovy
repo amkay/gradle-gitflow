@@ -37,7 +37,7 @@ class BuildMetadataIdentifiers {
      * @param sha
      */
     void sha(final String sha) {
-        setSha(sha)
+        setSha sha
     }
 
     /**
@@ -45,7 +45,7 @@ class BuildMetadataIdentifiers {
      * @param dirty
      */
     void dirty(final String dirty) {
-        setDirty(dirty)
+        setDirty dirty
     }
 
 }

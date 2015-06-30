@@ -28,7 +28,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.SUPPORT
  *
  * @author Max Kaeufer
  */
-class BranchSupportStrategy extends Strategy {
+class BranchSupportStrategy extends AbstractStrategy {
 
     private static final String CONFIG_PREFIX_SUPPORT  = 'support'
     private static final String DEFAULT_PREFIX_SUPPORT = 'support/'

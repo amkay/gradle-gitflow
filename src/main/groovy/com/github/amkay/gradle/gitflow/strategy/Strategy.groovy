@@ -17,23 +17,19 @@ package com.github.amkay.gradle.gitflow.strategy
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
 import com.github.amkay.gradle.gitflow.version.VersionWithType
-import org.ajoberstar.grgit.Grgit
-import org.gradle.api.logging.Logger
-import org.gradle.api.logging.Logging
+import org.ajoberstar.grgit.Grgit;
 
 /**
- * The base class of all strategies used to infer the version.
+ * The interface for all strategies used to infer the version.
  *
  * @author Max Kaeufer
  */
-abstract class Strategy {
-
-    private static final Logger LOGGER = Logging.getLogger(Strategy);
+public interface Strategy {
 
     /**
      * All available strategies.
      */
-    public static final STRATEGIES = [
+    static final STRATEGIES = [
       new BranchDevelopStrategy(),
       new BranchReleaseStrategy(),
       new BranchPreReleaseStrategy(),
@@ -45,45 +41,13 @@ abstract class Strategy {
     ]
 
     /**
-     * The section of Gitflow's configuration in .git/config
-     */
-    public static final String SECTION_GITFLOW = 'gitflow'
-
-    /**
-     * The subsection containing Gitflow's branch prefixes in .git/config
-     */
-    public static final String SUBSECTION_PREFIX = 'prefix'
-
-    /**
-     * The subsection containing Gitflow's branch names in .git/config
-     */
-    public static final String SUBSECTION_BRANCH = 'branch'
-
-    /**
-     * Infers the current version. This method is called by {@link com.github.amkay.gradle.gitflow.GitflowPlugin}
-     * and applies the template method plugin to log the inferred version.
+     * Infers the current version. This method is called by {@link com.github.amkay.gradle.gitflow.GitflowPlugin}.
      *
      * @param grgit
      * @param extension
      * @return
      */
-    VersionWithType infer(final Grgit grgit, final GitflowPluginExtension extension) {
-        def version = doInfer(grgit, extension)
-
-        LOGGER.lifecycle "Inferred version $version"
-
-        version
-    }
-
-    /**
-     * Infers the current version. This is the main method of this plugin and is implemented by the various
-     * strategies available.
-     *
-     * @param grgit
-     * @param extension
-     * @return
-     */
-    abstract protected VersionWithType doInfer(Grgit grgit, GitflowPluginExtension extension)
+    VersionWithType infer(final Grgit grgit, final GitflowPluginExtension extension)
 
     /**
      * Determines if the strategy can infer the version. This is used to match the current branch, for example.
@@ -91,28 +55,6 @@ abstract class Strategy {
      * @param grgit
      * @return
      */
-    abstract boolean canInfer(Grgit grgit)
-
-    /**
-     * Helper method to retrieve a Gitflow branch prefix from .git/config
-     *
-     * @param grgit
-     * @param name
-     * @return
-     */
-    protected static String getPrefix(final Grgit grgit, final String name) {
-        grgit.repository.jgit.repository.config.getString(SECTION_GITFLOW, SUBSECTION_PREFIX, name)
-    }
-
-    /**
-     * Helper method to retrieve a Gitflow branch name from .git/config
-     *
-     * @param grgit
-     * @param name
-     * @return
-     */
-    protected static String getBranchName(final Grgit grgit, final String name) {
-        grgit.repository.jgit.repository.config.getString(SECTION_GITFLOW, SUBSECTION_BRANCH, name)
-    }
+    boolean canInfer(final Grgit grgit)
 
 }

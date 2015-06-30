@@ -22,27 +22,14 @@ import org.gradle.api.logging.Logger
 import org.gradle.api.logging.Logging
 
 /**
- * The base class of all strategies used to infer the version.
+ * The base class of all strategies used to infer the version. This is a helper class that holds common functionality
+ * of all strategies like logging and retrieving branch names and prefixes from the config of Git.
  *
  * @author Max Kaeufer
  */
-abstract class AbstractStrategy {
+abstract class AbstractStrategy implements Strategy {
 
     private static final Logger LOGGER = Logging.getLogger(AbstractStrategy);
-
-    /**
-     * All available strategies.
-     */
-    public static final STRATEGIES = [
-      new BranchDevelopStrategy(),
-      new BranchReleaseStrategy(),
-      new BranchPreReleaseStrategy(),
-      new BranchFeatureStrategy(),
-      new BranchHotfixStrategy(),
-      new BranchSupportStrategy(),
-      // Must go to last position, see DetachedHeadStrategy.canInfer(Grgit) for that
-      new DetachedHeadStrategy()
-    ]
 
     /**
      * The section of Gitflow's configuration in .git/config
@@ -60,13 +47,12 @@ abstract class AbstractStrategy {
     public static final String SUBSECTION_BRANCH = 'branch'
 
     /**
-     * Infers the current version. This method is called by {@link com.github.amkay.gradle.gitflow.GitflowPlugin}
-     * and applies the template method plugin to log the inferred version.
-     *
+     * This method applies the template method pattern to log the inferred version.
      * @param grgit
      * @param extension
      * @return
      */
+    @Override
     VersionWithType infer(final Grgit grgit, final GitflowPluginExtension extension) {
         def version = doInfer(grgit, extension)
 
@@ -84,14 +70,6 @@ abstract class AbstractStrategy {
      * @return
      */
     abstract protected VersionWithType doInfer(Grgit grgit, GitflowPluginExtension extension)
-
-    /**
-     * Determines if the strategy can infer the version. This is used to match the current branch, for example.
-     *
-     * @param grgit
-     * @return
-     */
-    abstract boolean canInfer(Grgit grgit)
 
     /**
      * Helper method to retrieve a Gitflow branch prefix from .git/config

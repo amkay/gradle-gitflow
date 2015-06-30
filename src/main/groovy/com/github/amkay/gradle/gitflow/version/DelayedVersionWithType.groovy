@@ -21,7 +21,7 @@ import org.ajoberstar.grgit.Grgit
 import org.gradle.api.Project
 
 import static com.github.amkay.gradle.gitflow.GitflowPlugin.EXT_GITFLOW
-import static com.github.amkay.gradle.gitflow.strategy.AbstractStrategy.STRATEGIES
+import static com.github.amkay.gradle.gitflow.strategy.Strategy.STRATEGIES
 
 /**
  * A helper class with the API of {@link Version} that uses the available strategies to infer the current version

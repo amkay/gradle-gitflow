@@ -25,7 +25,7 @@ class GitflowPluginExtension {
     /**
      * The root directory of the repository to use
      */
-    String repositoryRoot = '.'
+    String repositoryRoot
 
     /**
      * Holder that allows to configure the pre-release identifiers according to semantic versioning
@@ -36,6 +36,10 @@ class GitflowPluginExtension {
      * Holder that allows to configure the build metadata identifiers according to semantic versioning
      */
     final BuildMetadataIdentifiers buildMetadataIds = new BuildMetadataIdentifiers();
+
+    GitflowPluginExtension(final File projectDir) {
+        this.repositoryRoot = projectDir.path
+    }
 
     /**
      * Helper method to allow keyword-based configuration of the <code>repositoryRoot</code> property

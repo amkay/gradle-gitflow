@@ -28,7 +28,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.DETACHED_HEAD
  *
  * @author Max Kaeufer
  */
-public class DetachedHeadStrategy extends Strategy {
+public class DetachedHeadStrategy extends AbstractStrategy {
 
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {

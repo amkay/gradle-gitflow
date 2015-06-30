@@ -26,9 +26,9 @@ import org.gradle.api.logging.Logging
  *
  * @author Max Kaeufer
  */
-abstract class Strategy {
+abstract class AbstractStrategy {
 
-    private static final Logger LOGGER = Logging.getLogger(Strategy);
+    private static final Logger LOGGER = Logging.getLogger(AbstractStrategy);
 
     /**
      * All available strategies.

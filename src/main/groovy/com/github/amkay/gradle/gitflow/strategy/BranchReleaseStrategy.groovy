@@ -28,7 +28,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.RELEASE
  *
  * @author Max Kaeufer
  */
-class BranchReleaseStrategy extends Strategy {
+class BranchReleaseStrategy extends AbstractStrategy {
 
     private static final String CONFIG_BRANCH_RELEASE  = 'master'
     private static final String DEFAULT_BRANCH_RELEASE = 'master'

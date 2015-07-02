@@ -69,3 +69,4 @@ bintray.pkg {
 apply plugin: 'maven-publish'
 apply from: "$gradleDir/maven-publish-defaults.gradle"
 
+apply from: "$gradleDir/checks-defaults.gradle"

@@ -111,8 +111,20 @@ if (hasProperty('cpd')) {
 if (hasProperty('codenarc')) {
     codenarc {
         toolVersion vCodeNarc
-        reportFormat 'console'
+        reportFormat 'text'
 
         configFile file("$gradleDir/codenarc/codenarc.groovy")
     }
+
+    task logCodenarcReport {
+        description 'Prints the report produced by CodeNarc to the log.'
+
+        doLast {
+            def logger = Logging.getLogger getClass()
+
+            codenarcMain.reports.text.destination.eachLine { logger.error it }
+        }
+    }
+
+    codenarcMain.finalizedBy logCodenarcReport
 }

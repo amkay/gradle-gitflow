@@ -21,7 +21,7 @@ buildscript {
 }
 
 
-if (checkstyle) {
+if (hasProperty('checkstyle')) {
     checkstyle {
         toolVersion vCheckstyle
 
@@ -30,7 +30,7 @@ if (checkstyle) {
     }
 }
 
-if (findbugs) {
+if (hasProperty('findbugs')) {
     tasks.withType(FindBugs) {
         reports {
             xml.enabled false
@@ -75,7 +75,7 @@ if (findbugs) {
     findbugsMain.finalizedBy logFindbugsReport
 }
 
-if (pmd) {
+if (hasProperty('pmd')) {
     pmd {
         toolVersion vPmd
         consoleOutput true
@@ -84,7 +84,7 @@ if (pmd) {
     }
 }
 
-if (cpd) {
+if (hasProperty('cpd')) {
     cpd.toolVersion vPmd
 
     cpdCheck {

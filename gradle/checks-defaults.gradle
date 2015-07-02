@@ -1,5 +1,6 @@
 def vCheckstyle = '6.7'
 def vPmd        = '5.3.2'
+def vCodeNarc   = '0.23'
 
 def findbugsShortDescriptionCssPrefix   = 'tablerow'
 def findbugsLongDescriptionCssPrefix    = 'detailrow'
@@ -105,4 +106,10 @@ if (hasProperty('cpd')) {
     }
 
     cpdCheck.finalizedBy logCpdReport
+}
+
+if (hasProperty('codenarc')) {
+    codenarc {
+        toolVersion vCodeNarc
+    }
 }

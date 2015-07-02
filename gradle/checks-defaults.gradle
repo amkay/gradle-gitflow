@@ -111,6 +111,8 @@ if (hasProperty('cpd')) {
 if (hasProperty('codenarc')) {
     codenarc {
         toolVersion vCodeNarc
+        reportFormat 'console'
+
         configFile file("$gradleDir/codenarc/codenarc.groovy")
     }
 }

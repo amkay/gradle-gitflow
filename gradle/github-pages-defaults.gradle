@@ -1,19 +1,14 @@
-def notMasterReleaseDestination = 'develop/doc'
-def masterReleaseDestination    = "release/$version/doc"
+import static com.github.amkay.gradle.gitflow.version.VersionType.*
+
+def releaseDestination = "release/$version/doc"
+def developDestination = 'develop/doc'
 def destination
 
-def preReleaseIds          = gitflow.preReleaseIds
-def notMasterPreReleaseIds = [preReleaseIds.develop,
-                              preReleaseIds.release,
-                              preReleaseIds.feature,
-                              preReleaseIds.hotfix,
-                              preReleaseIds.support]
 
-
-if (notMasterPreReleaseIds.any { rootProject.version.toString().contains it }) {
-    destination = notMasterReleaseDestination
+if (version.type == RELEASE) {
+    destination = releaseDestination
 } else {
-    destination = masterReleaseDestination
+    destination = developDestination
 }
 
 

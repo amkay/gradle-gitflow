@@ -1,5 +1,5 @@
-def notMasterReleaseDestination = 'develop/doc/javadoc'
-def masterReleaseDestination    = "release/$version/doc/javadoc"
+def notMasterReleaseDestination = 'develop/doc'
+def masterReleaseDestination    = "release/$version/doc"
 def destination
 
 def preReleaseIds          = gitflow.preReleaseIds
@@ -22,8 +22,19 @@ githubPages {
     deleteExistingFiles false
 
     pages {
-        from javadoc
         into destination
+
+        with copySpec {
+            from javadoc
+            into 'javadoc'
+        }
+
+        if (project.hasProperty('groovydoc')) {
+            with copySpec {
+                from groovydoc
+                into 'groovydoc'
+            }
+        }
     }
 
     repoUri "https://github.com/${rootProject.githubUser}/${rootProject.name}.git"

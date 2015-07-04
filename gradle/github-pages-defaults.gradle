@@ -1,7 +1,7 @@
 import static com.github.amkay.gradle.gitflow.version.VersionType.*
 
-def releaseDestination = "release/$version/doc"
-def developDestination = 'develop/doc'
+def releaseDestination = "release/$version"
+def developDestination = 'develop'
 def destination
 
 
@@ -20,14 +20,18 @@ githubPages {
         into destination
 
         with copySpec {
-            from javadoc
-            into 'javadoc'
-        }
+            into 'doc'
 
-        if (project.hasProperty('groovydoc')) {
             with copySpec {
-                from groovydoc
-                into 'groovydoc'
+                from javadoc
+                into 'javadoc'
+            }
+
+            if (project.hasProperty('groovydoc')) {
+                with copySpec {
+                    from groovydoc
+                    into 'groovydoc'
+                }
             }
         }
     }

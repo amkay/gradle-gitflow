@@ -34,6 +34,12 @@ githubPages {
                 }
             }
         }
+
+        if (version.type != RELEASE) {
+            with copySpec {
+                from jar
+            }
+        }
     }
 
     repoUri "https://github.com/${rootProject.githubUser}/${rootProject.name}.git"

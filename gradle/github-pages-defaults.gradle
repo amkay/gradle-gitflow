@@ -1,0 +1,36 @@
+def notMasterReleaseDestination = 'develop/doc/javadoc'
+def masterReleaseDestination    = "release/$version/doc/javadoc"
+def destination
+
+def preReleaseIds          = gitflow.preReleaseIds
+def notMasterPreReleaseIds = [preReleaseIds.develop,
+                              preReleaseIds.release,
+                              preReleaseIds.feature,
+                              preReleaseIds.hotfix,
+                              preReleaseIds.support]
+
+
+if (notMasterPreReleaseIds.any { rootProject.version.toString().contains it }) {
+    destination = notMasterReleaseDestination
+} else {
+    destination = masterReleaseDestination
+}
+
+
+githubPages {
+    commitMessage "Publish of Github pages from Gradle for ${version}."
+    deleteExistingFiles false
+
+    pages {
+        from javadoc
+        into destination
+    }
+
+    repoUri "https://github.com/${rootProject.githubUser}/${rootProject.name}.git"
+
+    credentials {
+        username = githubApiKey
+        password = ''
+    }
+}
+

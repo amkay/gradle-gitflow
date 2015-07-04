@@ -1,0 +1,130 @@
+def vCheckstyle = '6.7'
+def vPmd        = '5.3.2'
+def vCodeNarc   = '0.23'
+
+def findbugsShortDescriptionCssPrefix   = 'tablerow'
+def findbugsLongDescriptionCssPrefix    = 'detailrow'
+def findbugsLongDescriptionClearPhrases = ['\\(click for details\\)']
+def findbugsLongDescriptionSplitWords   = ['In', 'At', 'Called']
+
+def gradleDir     = "${rootProject.rootDir}/gradle"
+def checkstyleDir = "${gradleDir}/checkstyle"
+
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'net.sourceforge.nekohtml:nekohtml:1.9.21'
+    }
+}
+
+
+if (hasProperty('checkstyle')) {
+    checkstyle {
+        toolVersion vCheckstyle
+
+        configFile file("$checkstyleDir/checkstyle.xml")
+        configProperties 'checkstyleDir': checkstyleDir
+    }
+}
+
+if (hasProperty('findbugs')) {
+    tasks.withType(FindBugs) {
+        reports {
+            xml.enabled false
+            html.enabled true
+        }
+
+        effort 'max'
+    }
+
+    task logFindbugsReport {
+        description 'Prints the report produced by FindBugs to the log.'
+
+        doLast {
+            def clearPhrasesRegex     = /(${findbugsLongDescriptionClearPhrases.join('|')})/
+            def splitWordsRegex       = /(${findbugsLongDescriptionSplitWords.join('|')})/
+
+            def htmlReport = findbugsMain.reports.html.destination
+            def parser     = new org.cyberneko.html.parsers.SAXParser()
+            def document   = new XmlSlurper(parser).parse htmlReport
+
+            def tableChildren = document.BODY.TABLE[2].TBODY.'*'
+
+            def shortDescriptions = tableChildren.findAll { it.@class.toString().startsWith findbugsShortDescriptionCssPrefix }.collect {
+                it.TD[1].text()
+            }
+            def longDescriptions  = tableChildren.findAll { it.@class.toString().startsWith findbugsLongDescriptionCssPrefix }.collect {
+                '\t' + it.TD[1].text()
+                    .replaceAll(clearPhrasesRegex, '')
+                    .replaceAll(splitWordsRegex) { fullMatch, word -> "\n\t$word" }
+            }
+
+            def logger = Logging.getLogger getClass()
+
+            [shortDescriptions, longDescriptions].transpose().each {
+                logger.error it[0]
+                logger.error it[1]
+                logger.error ''
+            }
+        }
+    }
+
+    findbugsMain.finalizedBy logFindbugsReport
+}
+
+if (hasProperty('pmd')) {
+    pmd {
+        toolVersion vPmd
+        consoleOutput true
+
+        ruleSetFiles = files("$gradleDir/pmd/pmd.xml")
+    }
+}
+
+if (hasProperty('cpd')) {
+    cpd.toolVersion vPmd
+
+    cpdCheck {
+        reports {
+            text.enabled true
+            xml.enabled false
+        }
+    }
+
+    task logCpdReport {
+        description 'Prints the report produced by CPD to the log.'
+
+        doLast {
+            def logger = Logging.getLogger getClass()
+
+            cpdCheck.reports.text.destination.eachLine { logger.error it }
+        }
+    }
+
+    cpdCheck.finalizedBy logCpdReport
+}
+
+if (hasProperty('codenarc')) {
+    codenarc {
+        toolVersion vCodeNarc
+        reportFormat 'text'
+
+        configFile file("$gradleDir/codenarc/codenarc.groovy")
+    }
+
+    task logCodenarcReport {
+        description 'Prints the report produced by CodeNarc to the log.'
+
+        doLast {
+            def logger = Logging.getLogger getClass()
+
+            codenarcMain.reports.text.destination.eachLine { logger.error it }
+        }
+    }
+
+    codenarcMain.finalizedBy logCodenarcReport
+}

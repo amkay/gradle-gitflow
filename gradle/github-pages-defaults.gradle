@@ -1,0 +1,42 @@
+import static com.github.amkay.gradle.gitflow.version.VersionType.*
+
+def releaseDestination = "release/$version/doc"
+def developDestination = 'develop/doc'
+def destination
+
+
+if (version.type == RELEASE) {
+    destination = releaseDestination
+} else {
+    destination = developDestination
+}
+
+
+githubPages {
+    commitMessage "Publish of Github pages from Gradle for ${version}."
+    deleteExistingFiles false
+
+    pages {
+        into destination
+
+        with copySpec {
+            from javadoc
+            into 'javadoc'
+        }
+
+        if (project.hasProperty('groovydoc')) {
+            with copySpec {
+                from groovydoc
+                into 'groovydoc'
+            }
+        }
+    }
+
+    repoUri "https://github.com/${rootProject.githubUser}/${rootProject.name}.git"
+
+    credentials {
+        username = githubApiKey
+        password = ''
+    }
+}
+

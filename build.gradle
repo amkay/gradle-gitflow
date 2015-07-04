@@ -10,6 +10,7 @@ buildscript {
         jcenter()
     }
     dependencies {
+        classpath 'org.ajoberstar:gradle-git:1.2.0'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
     }
 }
@@ -71,3 +72,6 @@ apply from: "$gradleDir/maven-publish-defaults.gradle"
 
 apply plugin: 'codenarc'
 apply from: "$gradleDir/checks-defaults.gradle"
+
+apply plugin: 'org.ajoberstar.github-pages'
+apply from: "$gradleDir/github-pages-defaults.gradle"

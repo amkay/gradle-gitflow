@@ -161,7 +161,6 @@ ruleset {
     BracesForTryCatchFinally 
     ClassJavadoc 
     ClosureStatementOnOpeningLineOfMultipleLineClosure 
-    ConsecutiveBlankLines 
     FileEndsWithoutNewline 
     LineLength 
     MissingBlankLineAfterImports 

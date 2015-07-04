@@ -71,3 +71,5 @@ apply from: "$gradleDir/maven-publish-defaults.gradle"
 
 apply plugin: 'codenarc'
 apply from: "$gradleDir/checks-defaults.gradle"
+
+apply plugin: 'org.ajoberstar.github-pages'

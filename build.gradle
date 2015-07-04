@@ -55,6 +55,9 @@ ext.githubUser = 'amkay'
 group "com.github.$githubUser"
 description 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
 
+apply plugin: 'maven-publish'
+apply from: "$gradleDir/maven-publish-defaults.gradle"
+
 apply plugin: 'com.jfrog.bintray'
 apply from: "$gradleDir/bintray-defaults.gradle"
 apply from: "$gradleDir/bintray-github-defaults.gradle"
@@ -66,9 +69,6 @@ bintray.pkg {
 
     labels = ['gradle', 'plugin', 'git', 'gitflow', 'semver']
 }
-
-apply plugin: 'maven-publish'
-apply from: "$gradleDir/maven-publish-defaults.gradle"
 
 apply plugin: 'codenarc'
 apply from: "$gradleDir/checks-defaults.gradle"

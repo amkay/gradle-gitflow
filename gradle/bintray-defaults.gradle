@@ -1,3 +1,6 @@
+import static com.github.amkay.gradle.gitflow.version.VersionType.*
+
+
 bintray {
     user = bintrayUser
     key = bintrayKey
@@ -19,3 +22,7 @@ bintray {
     }
 }
 
+
+if (version.type == RELEASE) {
+    publish.dependsOn bintrayUpload
+}

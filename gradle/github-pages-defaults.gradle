@@ -58,3 +58,5 @@ githubPages {
     }
 }
 
+
+publish.dependsOn publishGhPages

@@ -38,11 +38,13 @@ githubPages {
         if (version.type != RELEASE) {
             with copySpec {
                 from jar, javadocJar, sourcesJar
+                rename { it.replace version.toString(), "${project.gitflow.preReleaseIds.develop}" }
             }
 
             if (project.hasProperty('groovydocJar')) {
                 with copySpec {
                     from groovydocJar
+                    rename { it.replace version.toString(), "${project.gitflow.preReleaseIds.develop}" }
                 }
             }
         }

@@ -37,7 +37,13 @@ githubPages {
 
         if (version.type != RELEASE) {
             with copySpec {
-                from jar
+                from jar, javadocJar, sourcesJar
+            }
+
+            if (project.hasProperty('groovydocJar')) {
+                with copySpec {
+                    from groovydocJar
+                }
             }
         }
     }

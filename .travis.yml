@@ -3,7 +3,9 @@ jdk:
     - oraclejdk7
     - openjdk7
 before_install: git checkout $(git branch --contains $(git rev-parse HEAD)|tail -n1|tr -d ' ')
-after_success: ./gradlew bintrayUpload
+script: ./gradlew check --continue
+after_success: ./gradlew publish
 branches:
     only:
         - master
+        - develop

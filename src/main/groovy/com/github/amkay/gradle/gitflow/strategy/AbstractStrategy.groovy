@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import org.gradle.api.logging.Logging
  * The base class of all strategies used to infer the version. This is a helper class that holds common functionality
  * of all strategies like logging and retrieving branch names and prefixes from the config of Git.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 abstract class AbstractStrategy implements Strategy {
 

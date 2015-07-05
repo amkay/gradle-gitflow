@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.DEVELOP
 /**
  * The strategy to use when Gitflow's <code>develop</code> branch is the current branch.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 class BranchDevelopStrategy extends AbstractStrategy {
 

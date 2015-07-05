@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package com.github.amkay.gradle.gitflow.dsl
 /**
  * The holder for metadata identifiers according to semantic versioning.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 class BuildMetadataIdentifiers {
 

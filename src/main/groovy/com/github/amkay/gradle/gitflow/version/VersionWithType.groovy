@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import com.github.zafarkhaja.semver.Version
  * Combines a {@link Version} with a {@link VersionType} using the delegate pattern. This is needed because
  * inheritance cannot be used due to the package-private constructors of {@link Version}.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 public class VersionWithType {
 

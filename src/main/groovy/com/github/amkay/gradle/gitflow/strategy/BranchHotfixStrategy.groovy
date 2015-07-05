@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.HOTFIX
 /**
  * The strategy to use when one of Gitflow's <code>hotfix</code> branches is the current branch.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 class BranchHotfixStrategy extends AbstractStrategy {
 

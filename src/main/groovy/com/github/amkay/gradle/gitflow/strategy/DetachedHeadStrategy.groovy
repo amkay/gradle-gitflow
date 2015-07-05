@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.DETACHED_HEAD
 /**
  * The strategy to use when the current head is a detached head.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 public class DetachedHeadStrategy extends AbstractStrategy {
 

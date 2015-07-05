@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import com.github.zafarkhaja.semver.Version
 /**
  * The type of a {@link Version} according to Gitflow's semantics
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 enum VersionType {
 

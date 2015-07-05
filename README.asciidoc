@@ -10,7 +10,7 @@ Max Käufer;
 
 
 image:https://api.bintray.com/packages/amkay/gradle-plugins/com.github.amkay%3Agradle-gitflow/images/download.svg["Download", link="https://bintray.com/amkay/gradle-plugins/com.github.amkay%3Agradle-gitflow/_latestVersion"]
-image:https://stillmaintained.com/amkay/gradle-gitflow.png["Project Status", link="https://stillmaintained.com/amkay/gradle-gitflow"]
+image:https://stillmaintained.com/amkay/gradle-gitflow.svg["Project Status", link="https://stillmaintained.com/amkay/gradle-gitflow"]
 image:https://travis-ci.org/amkay/gradle-gitflow.svg?branch=develop["Build Status", link="https://travis-ci.org/amkay/gradle-gitflow"]
 
 An opinionated plugin that provides http://semver.org/[Semantic Versioning] for https://gradle.org/[Gradle] projects that use http://nvie.com/posts/a-successful-git-branching-model/[Gitflow].

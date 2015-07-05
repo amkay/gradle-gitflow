@@ -186,4 +186,4 @@ task deploy << {
 }
 ----
 
-For additional version types see the {doc-path}/groovydoc[Groovydoc] documentation.
+For additional version types see the `enum` {doc-path}/groovydoc/com/github/amkay/gradle/gitflow/version/VersionType.html[VersionType] in the Groovydoc documentation.

@@ -8,3 +8,4 @@ after_success: ./gradlew publish
 branches:
     only:
         - master
+        - develop

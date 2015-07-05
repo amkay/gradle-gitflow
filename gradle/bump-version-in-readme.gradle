@@ -35,3 +35,8 @@ task bumpVersionInReadme {
         newReadme.renameTo readmePath
     }
 }
+
+
+if (project.hasProperty('bumpVersion')) {
+    bumpVersion.dependsOn bumpVersionInReadme
+}

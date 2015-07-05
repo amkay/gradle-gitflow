@@ -165,6 +165,7 @@ gitflow {
 === Additional functionality of the version object
 
 The following additional functionality is provided by the version object that this plugin provides.
+You can have a look at the {doc-path}/groovydoc[Groovydoc] documentation for further information.
 
 
 [[version-type]]

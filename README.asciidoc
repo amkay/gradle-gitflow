@@ -9,7 +9,7 @@ Max Käufer;
 :icons: font
 
 
-image:https://travis-ci.org/amkay/gradle-gitflow.svg?branch=master["Build Status", link="https://travis-ci.org/amkay/gradle-gitflow"]
+image:https://travis-ci.org/amkay/gradle-gitflow.svg?branch=develop["Build Status", link="https://travis-ci.org/amkay/gradle-gitflow"]
 
 An opinionated plugin that provides http://semver.org/[Semantic Versioning] for https://gradle.org/[Gradle] projects that use http://nvie.com/posts/a-successful-git-branching-model/[Gitflow].
 

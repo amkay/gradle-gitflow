@@ -2,7 +2,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.*
 
 def readmePath     = "${project.projectDir}/README.asciidoc"
 def githubPagesUrl = "https://${githubUser}.github.io/${project.name}"
-def releaseDocPath = 'release/:version:/doc'
+def releaseDocPath = 'release/{version}/doc'
 def developDocPath = 'develop/doc'
 def docPath
 

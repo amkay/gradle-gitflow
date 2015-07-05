@@ -6,6 +6,7 @@ Max Käufer;
 :sectanchors:
 :sectlinks:
 :source-highlighter: highlightjs
+:icons:
 
 
 An opinionated plugin that provides http://semver.org/[Semantic Versioning] for https://gradle.org/[Gradle] projects that use http://nvie.com/posts/a-successful-git-branching-model/[Gitflow].

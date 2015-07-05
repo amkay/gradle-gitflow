@@ -75,3 +75,6 @@ apply from: "$gradleDir/checks-defaults.gradle"
 
 apply plugin: 'org.ajoberstar.github-pages'
 apply from: "$gradleDir/github-pages-defaults.gradle"
+
+apply from: "$gradleDir/bump-version.gradle"
+apply from: "$gradleDir/bump-version-in-readme.gradle"

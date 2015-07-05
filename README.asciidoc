@@ -185,3 +185,5 @@ task deploy << {
     }
 }
 ----
+
+For additional version types see the {doc-path}/groovydoc[Groovydoc] documentation.

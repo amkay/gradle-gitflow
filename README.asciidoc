@@ -9,7 +9,7 @@ Max Käufer;
 
 An opinionated plugin that provides http://semver.org/[Semantic Versioning] for https://gradle.org/[Gradle] projects that use http://nvie.com/posts/a-successful-git-branching-model/[Gitflow].
 
-This plugin is heavily inspired by the /ajoberstar/gradle-git[gradle-git] plugin.
+This plugin is heavily inspired by the https://github.com/ajoberstar/gradle-git[gradle-git] plugin.
 
 It *intentionally* provides no https://gradle.org/[Gradle] tasks and interacts with http://git-scm.com/[Git] just for inferring the version of the project.
 This inferred version is set as the project version of the https://gradle.org/[Gradle] project to which it is applied.

@@ -1,3 +1,17 @@
+import static com.github.amkay.gradle.gitflow.version.VersionType.*
+
+def releaseDestination = 'release/:version:'
+def developDestination = 'develop'
+def destination
+
+
+if (version.type == RELEASE) {
+    destination = releaseDestination
+} else {
+    destination = developDestination
+}
+
+
 task bumpVersionInReadme {
     description 'Bumps the version in the README.asciidoc file and sets the path to the documentation.'
 
@@ -9,7 +23,7 @@ task bumpVersionInReadme {
                 if (line.startsWith(':version:')) {
                     line = ":version: ${version}"
                 } else if (line.startsWith(':doc-path:')) {
-                    line = ":doc-path: https://${githubUser}.github.io/${project.name}/develop/doc"
+                    line = ":doc-path: https://${githubUser}.github.io/${project.name}/$destination/doc"
                 }
 
                 writer.writeLine line

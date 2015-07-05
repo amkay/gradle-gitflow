@@ -12,7 +12,8 @@ An opinionated plugin that provides http://semver.org/[Semantic Versioning] for 
 
 This plugin is heavily inspired by the https://github.com/ajoberstar/gradle-git[gradle-git] plugin.
 
-It *intentionally* provides no https://gradle.org/[Gradle] tasks and interacts with http://git-scm.com/[Git] just for inferring the version of the project.
+IMPORTANT: It *intentionally* provides no https://gradle.org/[Gradle] tasks and interacts with http://git-scm.com/[Git] just for inferring the version of the project.
+
 This inferred version is set as the project version of the https://gradle.org/[Gradle] project to which it is applied.
 
 
@@ -65,7 +66,7 @@ major version
 === Mapping between Gitflow branch and pre-release identifier
 
 The following table show the mapping between a Gitflow branch and the corresponding pre-release identifier that indicates this branch.
-Note, that if you use a Gitflow plugin for Git, _gradle-gitflow_ uses the branch names of your Gitflow configuration section in `.git/config`.
+NOTE: If you use a Gitflow plugin for Git, _gradle-gitflow_ uses the branch names of your Gitflow configuration section in `.git/config`.
 
 |===
 | Gitflow branch | Default name in Gitflow plugins | Pre-release identifier | Notes
@@ -101,7 +102,7 @@ Note, that if you use a Gitflow plugin for Git, _gradle-gitflow_ uses the branch
 |
 |===
 
-In case the current head is a _detached head_ the _pre-release identifier_ is `detached`.
+NOTE: In case the current head is a _detached head_ the _pre-release identifier_ is `detached`.
 
 
 

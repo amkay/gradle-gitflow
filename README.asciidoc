@@ -17,10 +17,10 @@ This inferred version is set as the project version of the https://gradle.org/[G
 
 
 [[versioning]]
-= Versioning
+== Versioning
 
 [[version-rules]]
-== Version rules
+=== Version rules
 
 The rules applied when inferring the version are that simple:
 
@@ -35,7 +35,7 @@ The rules applied when inferring the version are that simple:
 
 
 [[version-structure]]
-== Version structure
+=== Version structure
 
 The inferred versions consist of the following components:
 
@@ -61,7 +61,7 @@ major version
 
 
 [[branch-identifier-mapping]]
-== Mapping between Gitflow branch and pre-release identifier
+=== Mapping between Gitflow branch and pre-release identifier
 
 The following table show the mapping between a Gitflow branch and the corresponding pre-release identifier that indicates this branch.
 Note, that if you use a Gitflow plugin for Git, _gradle-gitflow_ uses the branch names of your Gitflow configuration section in `.git/config`.
@@ -105,7 +105,7 @@ In case the current head is a _detached head_ the _pre-release identifier_ is `d
 
 
 [[usage]]
-= Usage
+== Usage
 
 Include the following in the project on which you want to apply the plugin:
 
@@ -126,7 +126,7 @@ apply plugin: 'com.github.amkay.gitflow'
 
 
 [[configuration]]
-== Configuration
+=== Configuration
 
 The plugin registers an extension object named `gitflow` that is the entry point to the configuration.
 It also provides a DSL for keyword-based configuration, but configuration via properties is also possible.
@@ -161,13 +161,13 @@ gitflow {
 
 
 [[additional-functionality]]
-== Additional functionality of the version object
+=== Additional functionality of the version object
 
 The following additional functionality is provided by the version object that this plugin provides.
 
 
 [[version-type]]
-=== Version type
+==== Version type
 
 The type of the inferred version is derived from the current branch and corresponds to the branches mentioned in <<branch-identifier-mapping>>.
 This can be used in your buildscripts for distinguishing between development and production builds, e.g. for deploying to staging and production as seen in the following example.

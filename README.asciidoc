@@ -117,7 +117,7 @@ NOTE: In case the current head is a _detached head_ the _pre-release identifier_
 
 Include the following in the project on which you want to apply the plugin:
 
-[source,groovy]
+[source,groovy,subs="attributes"]
 ----
 buildscript {
   repositories {

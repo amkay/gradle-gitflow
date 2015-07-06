@@ -132,6 +132,8 @@ buildscript {
 apply plugin: 'com.github.amkay.gitflow'
 ----
 
+NOTE: Builds of the current development version can always be obtained from https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop[here].
+
 
 [[configuration]]
 === Configuration

@@ -1,6 +1,6 @@
 = gradle-gitflow
 Max Käufer;
-:version: dev
+:version: 0.1.5
 :doc-path: https://amkay.github.io/gradle-gitflow/develop/doc
 :doctype: book
 :sectanchors:

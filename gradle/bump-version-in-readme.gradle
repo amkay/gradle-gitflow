@@ -23,7 +23,7 @@ task bumpVersionInReadme {
         newReadme.withWriter('utf-8') { writer ->
             new File(readmePath).eachLine { line ->
                 if (line.startsWith(':version:')) {
-                    line = ":version: ${version}"
+                    line = ":version: ${version.normalVersion}"
                 } else if (line.startsWith(':doc-path:')) {
                     line = ":doc-path: $githubPagesUrl/$docPath"
                 }

@@ -1,6 +1,6 @@
 = gradle-gitflow
 Max Käufer;
-:version: dev
+:version: 0.1.5
 :doc-path: https://amkay.github.io/gradle-gitflow/develop/doc
 :doctype: book
 :sectanchors:
@@ -117,7 +117,7 @@ NOTE: In case the current head is a _detached head_ the _pre-release identifier_
 
 Include the following in the project on which you want to apply the plugin:
 
-[source,groovy]
+[source,groovy,subs="attributes"]
 ----
 buildscript {
   repositories {
@@ -125,7 +125,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.github.amkay:gradle-gitflow:0.1.5'
+    classpath 'com.github.amkay:gradle-gitflow:{version}'
   }
 }
 

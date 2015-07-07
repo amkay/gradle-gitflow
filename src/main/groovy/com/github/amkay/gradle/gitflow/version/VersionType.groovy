@@ -22,6 +22,7 @@ import com.github.zafarkhaja.semver.Version
  *
  * @author Max Käufer
  */
+@SuppressWarnings('SerializableClassMustDefineSerialVersionUID')
 enum VersionType {
 
     /**

@@ -1,0 +1,4 @@
+com.github.amkay.gradle.gitflow
+com.github.amkay.gradle.gitflow.dsl
+com.github.amkay.gradle.gitflow.strategy
+com.github.amkay.gradle.gitflow.version

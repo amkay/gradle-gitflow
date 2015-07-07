@@ -29,24 +29,25 @@ import static com.github.amkay.gradle.gitflow.strategy.Strategy.STRATEGIES
  *
  * @author Max Käufer
  */
-class DelayedVersionWithType {
+class DelayedVersionWithType implements Comparable<Version> {
 
-    private final Project project;
-    private Grgit grgit;
-    private VersionWithType delegate;
+    private final Project         project
+    private       Grgit           grgit
+    private       VersionWithType delegate
+    private final Object          lock = new Object()
 
     /**
      * @param project the project that the plugin was applied on
      */
     DelayedVersionWithType(final Project project) {
-        this.project = project;
+        this.project = project
     }
 
 
     private void infer() {
         // Double-checked locking
         if (!delegate) {
-            synchronized (this) {
+            synchronized (lock) {
                 if (!delegate) {
                     grgit = Grgit.open dir: project[ EXT_GITFLOW ].repositoryRoot
 
@@ -201,7 +202,7 @@ class DelayedVersionWithType {
     int getMajorVersion() {
         infer()
 
-        delegate.getMajorVersion()
+        delegate.majorVersion
     }
 
     /**
@@ -211,7 +212,7 @@ class DelayedVersionWithType {
     int getMinorVersion() {
         infer()
 
-        delegate.getMinorVersion()
+        delegate.minorVersion
     }
 
     /**
@@ -221,7 +222,7 @@ class DelayedVersionWithType {
     int getPatchVersion() {
         infer()
 
-        delegate.getPatchVersion()
+        delegate.patchVersion
     }
 
     /**
@@ -231,7 +232,7 @@ class DelayedVersionWithType {
     String getNormalVersion() {
         infer()
 
-        delegate.getNormalVersion()
+        delegate.normalVersion
     }
 
     /**
@@ -241,7 +242,7 @@ class DelayedVersionWithType {
     String getPreReleaseVersion() {
         infer()
 
-        delegate.getPreReleaseVersion()
+        delegate.preReleaseVersion
     }
 
     /**
@@ -251,7 +252,7 @@ class DelayedVersionWithType {
     String getBuildMetadata() {
         infer()
 
-        delegate.getBuildMetadata()
+        delegate.buildMetadata
     }
 
     /**
@@ -311,7 +312,7 @@ class DelayedVersionWithType {
     boolean equals(final Object other) {
         infer()
 
-        delegate.equals other
+        delegate == other
     }
 
     @Override
@@ -328,10 +329,11 @@ class DelayedVersionWithType {
         delegate.toString()
     }
 
+    @Override
     int compareTo(final Version other) {
         infer()
 
-        delegate.compareTo other
+        delegate <=> other
     }
 
 }

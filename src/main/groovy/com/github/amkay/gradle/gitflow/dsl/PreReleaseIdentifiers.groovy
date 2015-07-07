@@ -67,6 +67,7 @@ class PreReleaseIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>release</code> property
      * @param release
      */
+    @SuppressWarnings('ConfusingMethodName')
     void release(final String release) {
         setRelease release
     }
@@ -75,6 +76,7 @@ class PreReleaseIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>preRelease</code> property
      * @param preRelease
      */
+    @SuppressWarnings('ConfusingMethodName')
     void preRelease(final String preRelease) {
         setPreRelease preRelease
     }
@@ -83,6 +85,7 @@ class PreReleaseIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>develop</code> property
      * @param develop
      */
+    @SuppressWarnings('ConfusingMethodName')
     void develop(final String develop) {
         setDevelop develop
     }
@@ -91,6 +94,7 @@ class PreReleaseIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>feature</code> property
      * @param feature
      */
+    @SuppressWarnings('ConfusingMethodName')
     void feature(final String feature) {
         setFeature feature
     }
@@ -99,6 +103,7 @@ class PreReleaseIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>hotfix</code> property
      * @param hotfix
      */
+    @SuppressWarnings('ConfusingMethodName')
     void hotfix(final String hotfix) {
         setHotfix hotfix
     }
@@ -107,6 +112,7 @@ class PreReleaseIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>support</code> property
      * @param support
      */
+    @SuppressWarnings('ConfusingMethodName')
     void support(final String support) {
         setSupport support
     }
@@ -115,6 +121,7 @@ class PreReleaseIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>detachedHead</code> property
      * @param detachedHead
      */
+    @SuppressWarnings('ConfusingMethodName')
     void detachedHead(final String detachedHead) {
         setDetachedHead detachedHead
     }

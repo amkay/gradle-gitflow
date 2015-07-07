@@ -17,14 +17,14 @@ package com.github.amkay.gradle.gitflow.strategy
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
 import com.github.amkay.gradle.gitflow.version.VersionWithType
-import org.ajoberstar.grgit.Grgit;
+import org.ajoberstar.grgit.Grgit
 
 /**
  * The interface for all strategies used to infer the version.
  *
  * @author Max Käufer
  */
-public interface Strategy {
+interface Strategy {
 
     /**
      * All available strategies.

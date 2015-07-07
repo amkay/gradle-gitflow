@@ -36,6 +36,7 @@ class BuildMetadataIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>sha</code> property
      * @param sha
      */
+    @SuppressWarnings('ConfusingMethodName')
     void sha(final String sha) {
         setSha sha
     }
@@ -44,6 +45,7 @@ class BuildMetadataIdentifiers {
      * Helper method to allow keyword-based configuration of the <code>dirty</code> property
      * @param dirty
      */
+    @SuppressWarnings('ConfusingMethodName')
     void dirty(final String dirty) {
         setDirty dirty
     }

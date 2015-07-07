@@ -59,6 +59,4 @@ enum VersionType {
      */
      DETACHED_HEAD
 
-    static final long serialVersionUID = 42L
-
 }

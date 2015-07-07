@@ -76,8 +76,9 @@ class NearestVersionLocator {
     @SuppressWarnings('AbcMetric')
     NearestVersion locate(Grgit grgit) {
         def versionPrefix = grgit.repository.jgit.repository.config
-                                 .getString(CONFIG_SECTION_GITFLOW, CONFIG_SUBSECTION_PREFIX, CONFIG_VERSION_TAG) ?:
-                            DEFAULT_PREFIX_VERSION
+                                 .getString(CONFIG_SECTION_GITFLOW,
+                                            CONFIG_SUBSECTION_PREFIX,
+                                            CONFIG_VERSION_TAG) ?: DEFAULT_PREFIX_VERSION
 
         LOGGER.debug "Locate beginning on branch: ${grgit.branch.current.fullName}"
 

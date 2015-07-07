@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
  *
  * @author Max Käufer
  */
-public interface Strategy {
+interface Strategy {
 
     /**
      * All available strategies.

@@ -26,13 +26,13 @@ import org.ajoberstar.grgit.Grgit
  */
 class VersionWithTypeBuilder {
 
-    private NearestVersion nearestVersion
-    private String         normal
-    private String         branch
-    private int            distanceFromRelease
-    private String         sha
-    private String         dirty
-    private VersionType    type
+    private final NearestVersion nearestVersion
+    private final String         normal
+    private       String         branch
+    private       int            distanceFromRelease
+    private       String         sha
+    private       String         dirty
+    private       VersionType    type
 
     /**
      * @param normal the normal part of the version according to semantic versioning

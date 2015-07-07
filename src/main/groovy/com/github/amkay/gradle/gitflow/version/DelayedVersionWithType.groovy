@@ -34,6 +34,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     private final Project project;
     private Grgit grgit;
     private VersionWithType delegate;
+    private final Object lock = new Object()
 
     /**
      * @param project the project that the plugin was applied on
@@ -46,7 +47,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     private void infer() {
         // Double-checked locking
         if (!delegate) {
-            synchronized (this) {
+            synchronized (lock) {
                 if (!delegate) {
                     grgit = Grgit.open dir: project[ EXT_GITFLOW ].repositoryRoot
 

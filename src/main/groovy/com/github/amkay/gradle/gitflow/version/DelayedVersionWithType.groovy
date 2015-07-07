@@ -333,7 +333,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     int compareTo(final Version other) {
         infer()
 
-        delegate.compareTo other
+        delegate <=> other
     }
 
 }

@@ -32,6 +32,7 @@ import org.slf4j.LoggerFactory
  *   version.
  * </p>
  */
+@SuppressWarnings('AbcMetric')
 class NearestVersionLocator {
 
     private static final Logger LOGGER                   = LoggerFactory.getLogger NearestVersionLocator
@@ -72,6 +73,7 @@ class NearestVersionLocator {
      * Defaults to {@code HEAD}.
      * @return the version corresponding to the nearest tag
      */
+    @SuppressWarnings('AbcMetric')
     NearestVersion locate(Grgit grgit) {
         def versionPrefix = grgit.repository.jgit.repository.config
                                  .getString(CONFIG_SECTION_GITFLOW, CONFIG_SUBSECTION_PREFIX, CONFIG_VERSION_TAG) ?:

@@ -31,16 +31,16 @@ import static com.github.amkay.gradle.gitflow.strategy.Strategy.STRATEGIES
  */
 class DelayedVersionWithType implements Comparable<Version> {
 
-    private final Project project;
-    private Grgit grgit;
-    private VersionWithType delegate;
-    private final Object lock = new Object()
+    private final Project         project
+    private       Grgit           grgit
+    private       VersionWithType delegate
+    private final Object          lock = new Object()
 
     /**
      * @param project the project that the plugin was applied on
      */
     DelayedVersionWithType(final Project project) {
-        this.project = project;
+        this.project = project
     }
 
 

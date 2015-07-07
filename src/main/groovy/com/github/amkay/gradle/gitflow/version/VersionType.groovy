@@ -22,6 +22,7 @@ import com.github.zafarkhaja.semver.Version
  *
  * @author Max Käufer
  */
+@SuppressWarnings('SerializableClassMustDefineSerialVersionUID')
 enum VersionType {
 
     /**
@@ -58,7 +59,5 @@ enum VersionType {
      * A detached-head release. That is when you are on a detached head.
      */
      DETACHED_HEAD
-
-    static final long serialVersionUID = 42L
 
 }

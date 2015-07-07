@@ -45,6 +45,7 @@ class GitflowPluginExtension {
      * Helper method to allow keyword-based configuration of the <code>repositoryRoot</code> property
      * @param repositoryRoot
      */
+    @SuppressWarnings('ConfusingMethodName')
     void repositoryRoot(final String repositoryRoot) {
         setRepositoryRoot repositoryRoot
     }
@@ -55,6 +56,7 @@ class GitflowPluginExtension {
      *
      * @param cl
      */
+    @SuppressWarnings('ConfusingMethodName')
     void preReleaseIds(@DelegatesTo(PreReleaseIdentifiers) final Closure cl) {
         cl.delegate = preReleaseIds;
         cl.call()
@@ -66,6 +68,7 @@ class GitflowPluginExtension {
      *
      * @param cl
      */
+    @SuppressWarnings('ConfusingMethodName')
     void buildMetadataIds(@DelegatesTo(BuildMetadataIdentifiers) final Closure cl) {
         cl.delegate = buildMetadataIds
         cl.call()

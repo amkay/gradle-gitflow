@@ -29,7 +29,7 @@ import static com.github.amkay.gradle.gitflow.strategy.Strategy.STRATEGIES
  *
  * @author Max Käufer
  */
-class DelayedVersionWithType {
+class DelayedVersionWithType implements Comparable<Version> {
 
     private final Project project;
     private Grgit grgit;
@@ -328,6 +328,7 @@ class DelayedVersionWithType {
         delegate.toString()
     }
 
+    @Override
     int compareTo(final Version other) {
         infer()
 

@@ -23,7 +23,7 @@ import com.github.zafarkhaja.semver.Version
  *
  * @author Max Käufer
  */
-public class VersionWithType implements Comparable<Version> {
+class VersionWithType implements Comparable<Version> {
 
     @Delegate
     private final Version version

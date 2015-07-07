@@ -102,9 +102,8 @@ class NearestVersionLocator {
                             range tag.commit.id, head.id
                         }
 
-                        LOGGER.debug "Reachable commits after tag ${tag.fullName}: {}", reachableCommitLog.collect {
-                            it.abbreviatedId
-                        }
+                        LOGGER.debug "Reachable commits after tag ${tag.fullName}: {}",
+                                     reachableCommitLog*.abbreviatedId
 
                         def distance = reachableCommitLog.size()
                         data = [ version: version, distance: distance ]

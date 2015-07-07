@@ -68,7 +68,7 @@ class GitflowPluginExtension {
      *
      * @param cl
      */
-    @SuppressWarnings([ 'ConfusingMethodName', 'BuilderMethodWithSideEffects' ])
+    @SuppressWarnings([ 'ConfusingMethodName', 'BuilderMethodWithSideEffects', 'FactoryMethodName' ])
     void buildMetadataIds(@DelegatesTo(BuildMetadataIdentifiers) final Closure cl) {
         cl.delegate = buildMetadataIds
         cl.call()

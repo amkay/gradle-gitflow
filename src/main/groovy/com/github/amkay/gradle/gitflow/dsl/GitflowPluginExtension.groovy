@@ -58,7 +58,7 @@ class GitflowPluginExtension {
      */
     @SuppressWarnings('ConfusingMethodName')
     void preReleaseIds(@DelegatesTo(PreReleaseIdentifiers) final Closure cl) {
-        cl.delegate = preReleaseIds;
+        cl.delegate = preReleaseIds
         cl.call()
     }
 

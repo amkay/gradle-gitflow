@@ -78,3 +78,4 @@ apply from: "$gradleDir/github-pages-defaults.gradle"
 
 apply from: "$gradleDir/bump-version.gradle"
 apply from: "$gradleDir/bump-version-in-readme.gradle"
+apply from: "$gradleDir/bump-doc-version-in-readme.gradle"

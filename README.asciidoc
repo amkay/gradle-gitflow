@@ -14,6 +14,7 @@ image:http://stillmaintained.com/amkay/gradle-gitflow.svg["Project Status", link
 image:https://img.shields.io/github/license/amkay/gradle-gitflow.svg["License", link="https://github.com/amkay/gradle-gitflow/blob/master/LICENSE.md"]
 image:https://travis-ci.org/amkay/gradle-gitflow.svg?branch=develop["Build Status", link="https://travis-ci.org/amkay/gradle-gitflow"]
 image:https://www.versioneye.com/user/projects/559c3d97616634001b000e87/badge.svg?style=flat["Dependency Status", link="https://www.versioneye.com/user/projects/559c3d97616634001b000e87"]
+image:https://img.shields.io/SemVer/2.0.0.png["Semver", link="http://semver.org/spec/v2.0.0.html"]
 
 An opinionated plugin that provides http://semver.org/[Semantic Versioning] for https://gradle.org/[Gradle] projects that use http://nvie.com/posts/a-successful-git-branching-model/[Gitflow].
 

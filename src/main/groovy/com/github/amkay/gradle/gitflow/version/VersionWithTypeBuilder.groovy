@@ -58,6 +58,7 @@ class VersionWithTypeBuilder {
      * @param branch
      * @return
      */
+    @SuppressWarnings('ConfusingMethodName')
     VersionWithTypeBuilder branch(final String branch) {
         this.branch = branch
 
@@ -70,6 +71,7 @@ class VersionWithTypeBuilder {
      * @param nearestVersion
      * @return
      */
+    @SuppressWarnings('ConfusingMethodName')
     VersionWithTypeBuilder distanceFromRelease(final NearestVersion nearestVersion) {
         distanceFromRelease = nearestVersion.distanceFromAny
 
@@ -81,6 +83,7 @@ class VersionWithTypeBuilder {
      *
      * @return
      */
+    @SuppressWarnings('ConfusingMethodName')
     VersionWithTypeBuilder distanceFromRelease() {
         distanceFromRelease nearestVersion
     }
@@ -92,6 +95,7 @@ class VersionWithTypeBuilder {
      * @param extension
      * @return
      */
+    @SuppressWarnings('ConfusingMethodName')
     VersionWithTypeBuilder sha(final Grgit grgit, final GitflowPluginExtension extension) {
         def id = grgit.head().abbreviatedId
 
@@ -107,6 +111,7 @@ class VersionWithTypeBuilder {
      * @param extension
      * @return
      */
+    @SuppressWarnings('ConfusingMethodName')
     VersionWithTypeBuilder dirty(final Grgit grgit, final GitflowPluginExtension extension) {
         if (!grgit.status().clean) {
             dirty = extension.buildMetadataIds.dirty
@@ -121,6 +126,7 @@ class VersionWithTypeBuilder {
      * @param type
      * @return
      */
+    @SuppressWarnings('ConfusingMethodName')
     VersionWithTypeBuilder type(final VersionType type) {
         this.type = type
 

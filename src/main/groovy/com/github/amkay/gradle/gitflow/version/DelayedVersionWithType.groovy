@@ -202,7 +202,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     int getMajorVersion() {
         infer()
 
-        delegate.getMajorVersion()
+        delegate.majorVersion
     }
 
     /**
@@ -212,7 +212,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     int getMinorVersion() {
         infer()
 
-        delegate.getMinorVersion()
+        delegate.minorVersion
     }
 
     /**
@@ -222,7 +222,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     int getPatchVersion() {
         infer()
 
-        delegate.getPatchVersion()
+        delegate.patchVersion
     }
 
     /**
@@ -232,7 +232,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     String getNormalVersion() {
         infer()
 
-        delegate.getNormalVersion()
+        delegate.normalVersion
     }
 
     /**
@@ -242,7 +242,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     String getPreReleaseVersion() {
         infer()
 
-        delegate.getPreReleaseVersion()
+        delegate.preReleaseVersion
     }
 
     /**
@@ -252,7 +252,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     String getBuildMetadata() {
         infer()
 
-        delegate.getBuildMetadata()
+        delegate.buildMetadata
     }
 
     /**

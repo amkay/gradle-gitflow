@@ -312,7 +312,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     boolean equals(final Object other) {
         infer()
 
-        delegate.equals other
+        delegate == other
     }
 
     @Override

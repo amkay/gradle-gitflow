@@ -33,7 +33,12 @@ class BranchReleaseStrategy extends AbstractStrategy implements Strategy {
     private static final String CONFIG_BRANCH_RELEASE  = 'master'
     private static final String DEFAULT_BRANCH_RELEASE = 'master'
 
-
+    /**
+     * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
+     * @param grgit
+     * @param ext
+     * @return
+     */
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit

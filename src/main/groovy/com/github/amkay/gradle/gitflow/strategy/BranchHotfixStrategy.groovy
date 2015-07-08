@@ -33,7 +33,12 @@ class BranchHotfixStrategy extends AbstractStrategy implements Strategy {
     private static final String CONFIG_PREFIX_HOTFIX  = 'hotfix'
     private static final String DEFAULT_PREFIX_HOTFIX = 'hotfix/'
 
-
+    /**
+     * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
+     * @param grgit
+     * @param ext
+     * @return
+     */
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit

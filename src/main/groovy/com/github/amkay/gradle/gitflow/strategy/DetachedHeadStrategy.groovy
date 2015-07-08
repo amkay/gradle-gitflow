@@ -30,6 +30,12 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.DETACHED_HEAD
  */
 class DetachedHeadStrategy extends AbstractStrategy implements Strategy {
 
+    /**
+     * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
+     * @param grgit
+     * @param ext
+     * @return
+     */
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit

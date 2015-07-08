@@ -33,7 +33,12 @@ class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
     private static final String CONFIG_BRANCH_DEVELOP  = 'develop'
     private static final String DEFAULT_BRANCH_DEVELOP = 'develop'
 
-
+    /**
+     * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
+     * @param grgit
+     * @param ext
+     * @return
+     */
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit

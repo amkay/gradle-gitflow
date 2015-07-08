@@ -197,11 +197,11 @@ This can be used in your buildscripts for distinguishing between development and
 import static com.github.amkay.gradle.gitflow.version.VersionType.*
 
 task deploy << {
-    if (version.type == DEVELOP) {
-        // Deploy to staging...
-    } else if (version.type == RELEASE) {
-        // Deploy to production...
-    }
+  if (version.type == DEVELOP) {
+    // Deploy to staging...
+  } else if (version.type == RELEASE) {
+    // Deploy to production...
+  }
 }
 ----
 

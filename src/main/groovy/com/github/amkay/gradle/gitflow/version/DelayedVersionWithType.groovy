@@ -308,6 +308,11 @@ class DelayedVersionWithType implements Comparable<Version> {
         delegate.type
     }
 
+    /**
+     * See {@link Object#equals(Object)}.
+     * @param other
+     * @return
+     */
     @Override
     boolean equals(final Object other) {
         infer()
@@ -315,6 +320,10 @@ class DelayedVersionWithType implements Comparable<Version> {
         delegate == other
     }
 
+    /**
+     * See {@link Object#hashCode()}.
+     * @return
+     */
     @Override
     int hashCode() {
         infer()
@@ -322,6 +331,10 @@ class DelayedVersionWithType implements Comparable<Version> {
         delegate.hashCode()
     }
 
+    /**
+     * See {@link Object#toString()}.
+     * @return
+     */
     @Override
     String toString() {
         infer()
@@ -329,6 +342,11 @@ class DelayedVersionWithType implements Comparable<Version> {
         delegate.toString()
     }
 
+    /**
+     * See {@link Comparable#compareTo(Object)}
+     * @param other
+     * @return
+     */
     @Override
     int compareTo(final Version other) {
         infer()

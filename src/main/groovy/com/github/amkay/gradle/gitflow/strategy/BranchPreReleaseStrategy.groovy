@@ -28,7 +28,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.PRE_RELEASE
  *
  * @author Max Käufer
  */
-class BranchPreReleaseStrategy extends AbstractStrategy {
+class BranchPreReleaseStrategy extends AbstractStrategy implements Strategy {
 
     private static final String CONFIG_PREFIX_PRE_RELEASE  = 'release'
     private static final String DEFAULT_PREFIX_PRE_RELEASE = 'release/'

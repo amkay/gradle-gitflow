@@ -28,7 +28,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.DEVELOP
  *
  * @author Max Käufer
  */
-class BranchDevelopStrategy extends AbstractStrategy {
+class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
 
     private static final String CONFIG_BRANCH_DEVELOP  = 'develop'
     private static final String DEFAULT_BRANCH_DEVELOP = 'develop'

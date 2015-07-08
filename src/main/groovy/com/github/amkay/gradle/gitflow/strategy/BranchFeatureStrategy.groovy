@@ -28,7 +28,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.FEATURE
  *
  * @author Max Käufer
  */
-class BranchFeatureStrategy extends AbstractStrategy {
+class BranchFeatureStrategy extends AbstractStrategy implements Strategy {
 
     private static final String CONFIG_PREFIX_FEATURE  = 'feature'
     private static final String DEFAULT_PREFIX_FEATURE = 'feature/'

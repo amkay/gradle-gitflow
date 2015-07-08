@@ -28,7 +28,7 @@ import static com.github.amkay.gradle.gitflow.version.VersionType.HOTFIX
  *
  * @author Max Käufer
  */
-class BranchHotfixStrategy extends AbstractStrategy {
+class BranchHotfixStrategy extends AbstractStrategy implements Strategy {
 
     private static final String CONFIG_PREFIX_HOTFIX  = 'hotfix'
     private static final String DEFAULT_PREFIX_HOTFIX = 'hotfix/'

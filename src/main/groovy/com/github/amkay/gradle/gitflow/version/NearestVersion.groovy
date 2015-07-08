@@ -15,23 +15,23 @@
  */
 package com.github.amkay.gradle.gitflow.version
 
+import com.github.zafarkhaja.semver.Version
 import groovy.transform.Immutable
 
-import com.github.zafarkhaja.semver.Version
-
 /**
- * Nearest version tags reachable from the current HEAD. The version 0.0.0
- * will be returned for any
+ * Nearest version tags reachable from the <strong>current HEAD</strong>.
+ * The version <code>0.0.0</code> will be returned for <code>any</code>.
  */
 @Immutable(knownImmutableClasses = [ Version ])
 class NearestVersion {
+
     /**
      * The nearest version that is tagged.
      */
     Version any
 
     /**
-     * The number of commits since {@code any} reachable from HEAD.
+     * The number of commits since {@code any} reachable from <em>HEAD</em>.
      */
     int distanceFromAny
 

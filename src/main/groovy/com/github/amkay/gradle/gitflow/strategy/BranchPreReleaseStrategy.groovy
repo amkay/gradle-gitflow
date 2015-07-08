@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.PRE_RELEASE
 
 /**
- * The strategy to use when one of Gitflow's <strong>pre-release</strong> branches is the current branch.
+ * The strategy to use when one of Gitflow's <strong>pre-release / next release</strong> branches is the current branch.
  *
  * @author Max Käufer
  */

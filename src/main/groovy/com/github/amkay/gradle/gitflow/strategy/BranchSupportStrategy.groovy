@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.SUPPORT
 
 /**
- * The strategy to use when one of Gitflow's <code>support</code> branches is the current branch.
+ * The strategy to use when one of Gitflow's <strong>support</strong> branches is the current branch.
  *
  * @author Max Käufer
  */

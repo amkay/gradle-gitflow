@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.DETACHED_HEAD
 
 /**
- * The strategy to use when the current head is a detached head.
+ * The strategy to use when the current head is a <strong>detached head</strong>.
  *
  * @author Max Käufer
  */

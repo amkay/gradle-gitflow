@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.RELEASE
 
 /**
- * The strategy to use when Gitflow's <code>release</code> branch is the current branch.
+ * The strategy to use when Gitflow's <strong>release</strong> branch is the current branch.
  *
  * @author Max Käufer
  */

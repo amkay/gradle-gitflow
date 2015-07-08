@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.HOTFIX
 
 /**
- * The strategy to use when one of Gitflow's <code>hotfix</code> branches is the current branch.
+ * The strategy to use when one of Gitflow's <strong>hotfix</strong> branches is the current branch.
  *
  * @author Max Käufer
  */

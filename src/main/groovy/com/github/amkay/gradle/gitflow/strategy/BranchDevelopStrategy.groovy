@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.DEVELOP
 
 /**
- * The strategy to use when Gitflow's <code>develop</code> branch is the current branch.
+ * The strategy to use when Gitflow's <strong>develop</strong> branch is the current branch.
  *
  * @author Max Käufer
  */

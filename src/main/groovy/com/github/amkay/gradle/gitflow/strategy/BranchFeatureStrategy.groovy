@@ -24,7 +24,7 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.FEATURE
 
 /**
- * The strategy to use when one of Gitflow's <code>feature</code> branches is the current branch.
+ * The strategy to use when one of Gitflow's <strong>feature</strong> branches is the current branch.
  *
  * @author Max Käufer
  */

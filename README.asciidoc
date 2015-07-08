@@ -79,7 +79,7 @@ major version
 [[branch-identifier-mapping]]
 === Mapping between Gitflow branches and pre-release identifiers
 
-The following table show the mapping between a Gitflow branch and the corresponding pre-release identifier that indicates this branch.
+The following table shows the mapping between Gitflow branches and the corresponding pre-release identifiers that indicate these branches.
 
 NOTE: If you use a Gitflow plugin for Git, _gradle-gitflow_ uses the branch names of your Gitflow configuration section in `.git/config`.
 

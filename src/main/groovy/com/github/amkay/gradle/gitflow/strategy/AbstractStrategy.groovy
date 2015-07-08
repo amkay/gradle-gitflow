@@ -47,7 +47,8 @@ abstract class AbstractStrategy implements Strategy {
     public static final String SUBSECTION_BRANCH = 'branch'
 
     /**
-     * This method applies the template method pattern to log the inferred version.
+     * See {@link Strategy#infer(Grgit, GitflowPluginExtension)}. This method applies the template method pattern to
+     * log the inferred version.
      * @param grgit
      * @param extension
      * @return

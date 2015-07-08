@@ -3,6 +3,8 @@ Max Käufer;
 :version: 0.1.5
 :doc-version: dev
 :doc-path: https://amkay.github.io/gradle-gitflow/develop/doc
+:download-version: dev
+:download-path: https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop
 :doctype: book
 :sectanchors:
 :sectlinks:

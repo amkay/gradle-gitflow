@@ -26,6 +26,7 @@ import static com.github.amkay.gradle.gitflow.strategy.Strategy.STRATEGIES
 /**
  * A helper class with the API of {@link Version} that uses the available strategies to infer the current version
  * <strong>lazily</strong>.
+ * This class delegates to {@link VersionWithType}.
  *
  * @author Max Käufer
  */

@@ -58,7 +58,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#compareWithBuildsTo(Version)}.
      * @param other
      * @return
      */
@@ -69,7 +69,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#satisfies(String)}.
      * @param expr
      * @return
      */
@@ -80,7 +80,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#satisfies(Expression)}.
      * @param expr
      * @return
      */
@@ -91,7 +91,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#incrementMajorVersion()}.
      * @return
      */
     Version incrementMajorVersion() {
@@ -101,7 +101,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#incrementMajorVersion(String)}.
      * @param preRelease
      * @return
      */
@@ -112,7 +112,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#incrementMinorVersion()}.
      * @return
      */
     Version incrementMinorVersion() {
@@ -122,7 +122,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#incrementMinorVersion(String)}.
      * @param preRelease
      * @return
      */
@@ -133,7 +133,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#incrementPatchVersion()}.
      * @return
      */
     Version incrementPatchVersion() {
@@ -143,7 +143,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#incrementPatchVersion(String)}.
      * @param preRelease
      * @return
      */
@@ -154,7 +154,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#incrementPreReleaseVersion()}.
      * @return
      */
     Version incrementPreReleaseVersion() {
@@ -164,7 +164,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#incrementBuildMetadata()}.
      * @return
      */
     Version incrementBuildMetadata() {
@@ -174,7 +174,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#setPreReleaseVersion(String)}.
      * @param preRelease
      * @return
      */
@@ -185,7 +185,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#setBuildMetadata(String)}.
      * @param build
      * @return
      */
@@ -196,7 +196,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#getMajorVersion()}.
      * @return
      */
     int getMajorVersion() {
@@ -206,7 +206,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#getMinorVersion()}.
      * @return
      */
     int getMinorVersion() {
@@ -216,7 +216,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#getPatchVersion()}.
      * @return
      */
     int getPatchVersion() {
@@ -226,7 +226,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#getNormalVersion()}.
      * @return
      */
     String getNormalVersion() {
@@ -236,7 +236,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#getPreReleaseVersion()}.
      * @return
      */
     String getPreReleaseVersion() {
@@ -246,7 +246,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#getBuildMetadata()}.
      * @return
      */
     String getBuildMetadata() {
@@ -256,7 +256,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#greaterThan(Version)}.
      * @param other
      * @return
      */
@@ -267,7 +267,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#greaterThanOrEqualTo(Version)}.
      * @param other
      * @return
      */
@@ -278,7 +278,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#lessThan(Version)}.
      * @param other
      * @return
      */
@@ -289,7 +289,7 @@ class DelayedVersionWithType implements Comparable<Version> {
     }
 
     /**
-     * See {@link Version}
+     * See {@link VersionWithType#lessThanOrEqualTo(Version)}.
      * @param other
      * @return
      */

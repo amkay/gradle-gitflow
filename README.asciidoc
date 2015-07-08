@@ -77,7 +77,7 @@ major version
 
 
 [[branch-identifier-mapping]]
-=== Mapping between Gitflow branch and pre-release identifier
+=== Mapping between Gitflow branches and pre-release identifiers
 
 The following table show the mapping between a Gitflow branch and the corresponding pre-release identifier that indicates this branch.
 

@@ -16,14 +16,14 @@
 package com.github.amkay.gradle.gitflow.dsl
 
 /**
- * The holder for metadata identifiers according to semantic versioning.
+ * The holder for <em>build metadata identifiers</em> according to <em>semantic versioning</em>.
  *
  * @author Max Käufer
  */
 class BuildMetadataIdentifiers {
 
     /**
-     * The static text that is used before the actual SHA of the current commit
+     * The static text that is used before the actual <em>SHA</em> of the current commit
      */
     String sha = 'sha'
 
@@ -33,7 +33,7 @@ class BuildMetadataIdentifiers {
     String dirty = 'dirty'
 
     /**
-     * Helper method to allow keyword-based configuration of the <code>sha</code> property
+     * Helper method to allow <em>keyword-based configuration</em> of the <code>sha</code> property
      * @param sha
      */
     @SuppressWarnings('ConfusingMethodName')
@@ -42,7 +42,7 @@ class BuildMetadataIdentifiers {
     }
 
     /**
-     * Helper method to allow keyword-based configuration of the <code>dirty</code> property
+     * Helper method to allow <em>keyword-based configuration</em> of the <code>dirty</code> property
      * @param dirty
      */
     @SuppressWarnings('ConfusingMethodName')

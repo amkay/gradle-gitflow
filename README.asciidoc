@@ -43,7 +43,7 @@ The rules applied when inferring the version are that simple:
 ** this would usually be the normal version (`major.minor.patch`)
 * Otherwise the version contains
 ** the normal version (`major.minor.patch`) extracted from the next reachable tag in the history
-*** if the current commit is on a pre-release branch, the normal version is extracted from the name of this branch
+*** if the current commit is on a <<branch-identifier-mapping, pre-release>> branch, the normal version is extracted from the name of this branch
 ** a _pre-release identifier_ indicating the current branch
 ** a _pre-release identifier_ indicating the number of commits since the last tag
 ** a _build metadata identifier_ indicating the SHA of the current commit

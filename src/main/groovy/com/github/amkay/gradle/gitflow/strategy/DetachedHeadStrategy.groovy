@@ -43,6 +43,11 @@ class DetachedHeadStrategy extends AbstractStrategy {
           .build()
     }
 
+    /**
+     * See {@link Strategy#canInfer(Grgit)}.
+     * @param grgit
+     * @return
+     */
     @Override
     boolean canInfer(final Grgit grgit) {
         // grgit.branch.current should be used, but that does never return null (not even when on detached head)

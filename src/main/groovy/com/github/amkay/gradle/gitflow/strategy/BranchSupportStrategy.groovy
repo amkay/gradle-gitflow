@@ -50,6 +50,11 @@ class BranchSupportStrategy extends AbstractStrategy {
           .build()
     }
 
+    /**
+     * See {@link Strategy#canInfer(Grgit)}.
+     * @param grgit
+     * @return
+     */
     @Override
     boolean canInfer(final Grgit grgit) {
         grgit.branch.current.name.startsWith getSupportPrefix(grgit)

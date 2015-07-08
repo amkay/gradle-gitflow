@@ -16,7 +16,7 @@
 package com.github.amkay.gradle.gitflow.dsl
 
 /**
- * The Gradle plugin extension. This is the entry point of the DSL to configure the plugin.
+ * The Gradle plugin extension. This is the entry point of the <em>DSL</em> to configure the plugin.
  *
  * @author Max Käufer
  */
@@ -28,12 +28,12 @@ class GitflowPluginExtension {
     String repositoryRoot
 
     /**
-     * Holder that allows to configure the pre-release identifiers according to semantic versioning
+     * Holder that allows to configure the <em>pre-release identifiers</em> according to <em>semantic versioning</em>
      */
     final PreReleaseIdentifiers preReleaseIds = new PreReleaseIdentifiers()
 
     /**
-     * Holder that allows to configure the build metadata identifiers according to semantic versioning
+     * Holder that allows to configure the <em>build metadata identifiers</em> according to <em>semantic versioning</em>
      */
     final BuildMetadataIdentifiers buildMetadataIds = new BuildMetadataIdentifiers()
 
@@ -51,8 +51,8 @@ class GitflowPluginExtension {
     }
 
     /**
-     * Helper method to allow the keyword-based configuration (the DSL) of the pre-release identifiers according to
-     * semantic versioning.
+     * Helper method to allow the <em>keyword-based configuration (the DSL)</em> of the <em>pre-release
+     * identifiers</em> (<code>preReleaseIds</code>) according to <em>semantic versioning</em>.
      *
      * @param cl
      */
@@ -63,8 +63,8 @@ class GitflowPluginExtension {
     }
 
     /**
-     * Helper method to allow the keyword-based configuration (the DSL) of the build metadata identifiers according
-     * to semantic versioning.
+     * Helper method to allow the <em>keyword-based configuration (the DSL)</em> of the <em>build metadata identifiers
+     * </em> (<code>buildMetadataIds</code>) according to <em>semantic versioning</em>.
      *
      * @param cl
      */

@@ -3,6 +3,8 @@ Max Käufer;
 :version: 0.1.5
 :doc-version: dev
 :doc-path: https://amkay.github.io/gradle-gitflow/develop/doc
+:download-version: dev
+:download-path: https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop
 :doctype: book
 :sectanchors:
 :sectlinks:
@@ -10,7 +12,7 @@ Max Käufer;
 :icons: font
 
 
-image:https://api.bintray.com/packages/amkay/gradle-plugins/com.github.amkay%3Agradle-gitflow/images/download.svg["Download", link="https://bintray.com/amkay/gradle-plugins/com.github.amkay%3Agradle-gitflow/_latestVersion"]
+image:https://img.shields.io/badge/download-{download-version}-blue.svg["Download", link="{download-path}"]
 image:https://img.shields.io/badge/docs-{doc-version}-blue.svg["Documentation", link="{doc-path}/groovydoc"]
 image:http://stillmaintained.com/amkay/gradle-gitflow.svg["Project Status", link="https://stillmaintained.com/amkay/gradle-gitflow"]
 image:https://img.shields.io/github/license/amkay/gradle-gitflow.svg["License", link="https://github.com/amkay/gradle-gitflow/blob/master/LICENSE.md"]

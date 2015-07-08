@@ -1,0 +1,46 @@
+import static com.github.amkay.gradle.gitflow.version.VersionType.*
+
+def readmePath        = "${project.projectDir}/README.asciidoc"
+def releaseDownloadVersion = version.normalVersion
+def developDownloadVersion = 'dev'
+def releaseDownloadPath    = "https://bintray.com/${bintray.user}/${bintray.pkg.repo}/${group}%3A${project.name}/{download-version}"
+def developDownloadPath    = "https://github.com/${githubUser}/${project.name}/tree/gh-pages/develop"
+def downloadVersion
+def downloadPath
+
+
+if (version.type == RELEASE) {
+    downloadVersion = releaseDownloadVersion
+    downloadPath    = releaseDownloadPath
+} else {
+    downloadVersion = developDownloadVersion
+    downloadPath    = developDownloadPath
+}
+
+
+task bumpDownloadVersionInReadme {
+    description 'Bumps the version of the download and sets its path in the README.asciidoc file.'
+
+    doLast {
+        def newReadme = new File("${readmePath}.new")
+
+        newReadme.withWriter('utf-8') { writer ->
+            new File(readmePath).eachLine { line ->
+                if (line.startsWith(':download-version:')) {
+                    line = ":download-version: $downloadVersion"
+                } else if (line.startsWith(':download-path:')) {
+                    line = ":download-path: $downloadPath"
+                }
+
+                writer.writeLine line
+            }
+        }
+
+        newReadme.renameTo readmePath
+    }
+}
+
+
+if (project.hasProperty('bumpVersion')) {
+    bumpVersion.dependsOn bumpDownloadVersionInReadme
+}

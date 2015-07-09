@@ -182,10 +182,30 @@ gitflow {
 [[gitflow-plugins]]
 === Gitflow plugins for Git
 
-This plugin supports the following http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] plugins:
+This plugin supports the following http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] plugins for http://git-scm.com/[Git]:
 
 * https://github.com/nvie/gitflow[git-flow]
 * https://github.com/petervanderdoes/gitflow[git-flow (AVH Edition)]
+
+If you do not use one of the mentioned plugins *and* differ from the default names mentioned in <<branch-identifier-mapping>>, you will have to manually set the branch names and prefixes of the http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] branches and prefixes in `.git/config` like these plugins would do.
+This is the only way for _gradle-gitflow_ to pick up this configuration.
+
+The following example shows the default configuration of the above plugins:
+
+----
+[gitflow "branch"]
+	master  = master
+	develop = develop
+[gitflow "prefix"]
+	feature    = feature/
+	release    = release/
+	hotfix     = hotfix/
+	support    = support/
+	versiontag =
+----
+
+WARNING: Keep in mind that most *CI* servers simply clone your repository after being called by a commit hook when you push your code.
+Therefore `.git/config` on these servers does not contain the http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] configuration that _gradle-gitflow_ needs.
 
 
 [[additional-functionality]]

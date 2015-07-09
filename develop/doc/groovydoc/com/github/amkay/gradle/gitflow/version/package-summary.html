@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>com.github.amkay.gradle.gitflow.version (gradle-gitflow 0.1.5-dev.180+sha.ed3d252 API)</title>
+<title>com.github.amkay.gradle.gitflow.version (gradle-gitflow 0.1.5-dev.185+sha.0ee3d21 API)</title>
 <meta name="keywords" content="com.github.amkay.gradle.gitflow.version package">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel ="stylesheet" TYPE="text/css" HREF="../../../../../../stylesheet.css" title="Style">
@@ -11,7 +11,7 @@
 <script type="text/javascript">
 function windowTitle()
 {
-    parent.document.title="com.github.amkay.gradle.gitflow.version (gradle-gitflow 0.1.5-dev.180+sha.ed3d252 API)";
+    parent.document.title="com.github.amkay.gradle.gitflow.version (gradle-gitflow 0.1.5-dev.185+sha.0ee3d21 API)";
 }
 </script>
 <noscript>
@@ -52,7 +52,49 @@ function windowTitle()
 </div>
 
 <div class="header">
-    <h2 title="" class="title"></h2>
+    <h2 title=" Contains the object that is set as <code>version</code> property on the project to which this plugin is applied.
+
+ The most important aspects of this <code>version</code> object are:
+
+ <ul>
+     <li>
+         The version is <strong>lazily</strong> inferred. That means the plugin only interacts with Your
+         <em>Git</em> repository if a method on this <code>version</code> object is called, e.g. <code>toString()
+         </code>. This functionality is realized by <a href='../../../../../../com/github/amkay/gradle/gitflow/version/DelayedVersionWithType.html' title='DelayedVersionWithType'>DelayedVersionWithType</a>, which is the actual type of the
+         set <code>version</code> object.
+     </li>
+     <li>
+         This <a href='../../../../../../com/github/amkay/gradle/gitflow/version/DelayedVersionWithType.html' title='DelayedVersionWithType'>DelayedVersionWithType</a> delegates to <a href='../../../../../../com/github/amkay/gradle/gitflow/version/VersionWithType.html' title='VersionWithType'>VersionWithType</a>, which provides the real
+         functionality of the <code>version</code> object.
+     </li>
+     <li>
+         The class <a href='../../../../../../com/github/amkay/gradle/gitflow/version/VersionWithType.html' title='VersionWithType'>VersionWithType</a> actually delegates to Version and provides additional
+         functionality to determine the <a href='../../../../../../com/github/amkay/gradle/gitflow/version/VersionType.html' title='type'>type</a> of the inferred version.
+     </li>
+ <ul>
+ 
+" class="title"> Contains the object that is set as <code>version</code> property on the project to which this plugin is applied.
+
+ The most important aspects of this <code>version</code> object are:
+
+ <ul>
+     <li>
+         The version is <strong>lazily</strong> inferred. That means the plugin only interacts with Your
+         <em>Git</em> repository if a method on this <code>version</code> object is called, e.g. <code>toString()
+         </code>. This functionality is realized by <a href='../../../../../../com/github/amkay/gradle/gitflow/version/DelayedVersionWithType.html' title='DelayedVersionWithType'>DelayedVersionWithType</a>, which is the actual type of the
+         set <code>version</code> object.
+     </li>
+     <li>
+         This <a href='../../../../../../com/github/amkay/gradle/gitflow/version/DelayedVersionWithType.html' title='DelayedVersionWithType'>DelayedVersionWithType</a> delegates to <a href='../../../../../../com/github/amkay/gradle/gitflow/version/VersionWithType.html' title='VersionWithType'>VersionWithType</a>, which provides the real
+         functionality of the <code>version</code> object.
+     </li>
+     <li>
+         The class <a href='../../../../../../com/github/amkay/gradle/gitflow/version/VersionWithType.html' title='VersionWithType'>VersionWithType</a> actually delegates to Version and provides additional
+         functionality to determine the <a href='../../../../../../com/github/amkay/gradle/gitflow/version/VersionType.html' title='type'>type</a> of the inferred version.
+     </li>
+ <ul>
+ 
+</h2>
 </div>
 
 <div class="contentContainer">

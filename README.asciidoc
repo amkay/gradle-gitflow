@@ -179,6 +179,15 @@ gitflow {
 ----
 
 
+[[gitflow-plugins]]
+=== Gitflow plugins for Git
+
+This plugin supports the following http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] plugins:
+
+* https://github.com/nvie/gitflow[git-flow]
+* https://github.com/petervanderdoes/gitflow[git-flow (AVH Edition)]
+
+
 [[additional-functionality]]
 === Additional functionality of the version object
 

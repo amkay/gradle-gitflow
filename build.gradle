@@ -29,6 +29,10 @@ dependencies {
     compile 'org.ajoberstar:grgit:1.1.0'
 }
 
+groovydoc {
+    link "https://docs.gradle.org/${wrapper.gradleVersion}/groovydoc/", 'org.gradle'
+}
+
 targetCompatibility = vJavaLang
 sourceCompatibility = vJavaLang
 

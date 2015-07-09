@@ -105,7 +105,7 @@ If you do not use such a plugin, you will either have to stick to the default na
 | next release / pre-release
 | `release/1.2.3`
 | `pre`
-| The normal version (`major.minor.patch`) is extracted from the branch name
+| The _normal version_ (`major.minor.patch`) is extracted from the branch name
 
 | hotfix
 | `hotfix/foo`

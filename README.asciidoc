@@ -81,7 +81,7 @@ major version
 
 The following table shows the mapping between Gitflow branches and the corresponding pre-release identifiers that indicate these branches.
 
-NOTE: If you use a <<gitflow-plugins, Gitflow plugin for Git>>, _gradle-gitflow_ uses the branch names of your Gitflow configuration section in `.git/config`.
+NOTE: If you use a <<gitflow-plugins, Gitflow plugin for Git>>, _gradle-gitflow_ uses the branch names and prefixes of your Gitflow configuration section in `.git/config`.
 
 |===
 | Gitflow branch | Default name in Gitflow plugins | Pre-release identifier | Notes

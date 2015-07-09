@@ -52,9 +52,11 @@ githubPages {
 
     repoUri "https://github.com/${rootProject.githubUser}/${rootProject.name}.git"
 
-    credentials {
-        username = githubApiKey
-        password = ''
+    if (project.hasProperty('githubApiKey')) {
+        credentials {
+            username = githubApiKey
+            password = ''
+        }
     }
 }
 

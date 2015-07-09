@@ -20,7 +20,7 @@ import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
 
 /**
- * A helper class that uses the builder pattern to create a {@link VersionWithType}.
+ * A helper class that uses the <em>Builder Pattern</em> to create a {@link VersionWithType}.
  *
  * @author Max Käufer
  */

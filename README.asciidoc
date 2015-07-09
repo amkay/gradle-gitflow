@@ -40,10 +40,10 @@ This inferred version is set as the project version of the https://gradle.org/[G
 The rules applied when inferring the version are that simple:
 
 * If the current commit is tagged this tag is used as a version -- regardless of the current branch
-** this would usually be the normal version (`major.minor.patch`)
+** this would usually be the _normal version_ (`major.minor.patch`)
 * Otherwise the version contains
-** the normal version (`major.minor.patch`) extracted from the next reachable tag in the history
-*** if the current commit is on a <<branch-identifier-mapping, pre-release>> branch, the normal version is extracted from the name of this branch
+** the _normal version_ (`major.minor.patch`) extracted from the next reachable tag in the history
+*** if the current commit is on a <<branch-identifier-mapping, pre-release>> branch, the _normal version_ is extracted from the name of this branch
 ** a _pre-release identifier_ indicating the current branch
 ** a _pre-release identifier_ indicating the number of commits since the last tag
 ** a _build metadata identifier_ indicating the SHA of the current commit
@@ -79,9 +79,9 @@ major version
 [[branch-identifier-mapping]]
 === Mapping between Gitflow branches and pre-release identifiers
 
-The following table shows the mapping between Gitflow branches and the corresponding pre-release identifiers that indicate these branches.
+The following table shows the mapping between http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] branches and the corresponding _pre-release identifiers_ that indicate these branches.
 
-NOTE: If you use a <<gitflow-plugins, Gitflow plugin for Git>>, _gradle-gitflow_ uses the branch names and prefixes of your Gitflow configuration section in `.git/config`.
+NOTE: If you use a <<gitflow-plugins, Gitflow plugin for Git>>, _gradle-gitflow_ uses the branch names and prefixes of your http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] configuration section in `.git/config`.
 If you do not use such a plugin, you will either have to stick to the default names in the table below or add http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] configuration sections to `.git/config` as described in <<gitflow-plugins>>.
 
 |===

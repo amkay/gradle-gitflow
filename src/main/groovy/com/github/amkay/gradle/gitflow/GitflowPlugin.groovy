@@ -37,6 +37,10 @@ class GitflowPlugin implements Plugin<Project> {
      */
     public static final String EXT_GITFLOW = 'gitflow'
 
+    /**
+     * See {@link Plugin#apply(Object)}.
+     * @param project
+     */
     @Override
     void apply(final Project project) {
         project.extensions.create(EXT_GITFLOW, GitflowPluginExtension, project.projectDir)

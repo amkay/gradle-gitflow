@@ -24,16 +24,21 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.RELEASE
 
 /**
- * The strategy to use when Gitflow's <code>release</code> branch is the current branch.
+ * The strategy to use when Gitflow's <strong>production release</strong> branch is the current branch.
  *
  * @author Max Käufer
  */
-class BranchReleaseStrategy extends AbstractStrategy {
+class BranchReleaseStrategy extends AbstractStrategy implements Strategy {
 
     private static final String CONFIG_BRANCH_RELEASE  = 'master'
     private static final String DEFAULT_BRANCH_RELEASE = 'master'
 
-
+    /**
+     * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
+     * @param grgit
+     * @param ext
+     * @return
+     */
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit
@@ -47,6 +52,11 @@ class BranchReleaseStrategy extends AbstractStrategy {
           .build()
     }
 
+    /**
+     * See {@link Strategy#canInfer(Grgit)}.
+     * @param grgit
+     * @return
+     */
     @Override
     boolean canInfer(final Grgit grgit) {
         grgit.branch.current.name == getMasterBranchName(grgit)

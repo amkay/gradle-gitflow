@@ -18,7 +18,7 @@ package com.github.amkay.gradle.gitflow.version
 import com.github.zafarkhaja.semver.Version
 
 /**
- * The type of a {@link Version} according to Gitflow's semantics
+ * The type of a {@link Version} according to <em>Gitflow's semantics</em>
  *
  * @author Max Käufer
  */
@@ -26,37 +26,37 @@ import com.github.zafarkhaja.semver.Version
 enum VersionType {
 
     /**
-     * A production release. That is when you are on the production release branch.
+     * A production release. That is when you are on the <strong>production release</strong> branch.
      */
     RELEASE,
 
     /**
-     * A pre-release. That is when you are on a branch that prepares the next production release.
+     * A pre-release. That is when you are on a branch that <strong>prepares the next production release</strong>.
      */
     PRE_RELEASE,
 
     /**
-     * A develop release. That is when you are on the development branch.
+     * A develop release. That is when you are on the <strong>development</strong> branch.
      */
      DEVELOP,
 
     /**
-     * A feature release. That is when you are on a feature branch.
+     * A feature release. That is when you are on a <strong>feature</strong> branch.
      */
      FEATURE,
 
     /**
-     * A hotfix release. That is when you are on a hotfix branch.
+     * A hotfix release. That is when you are on a <strong>hotfix</strong> branch.
      */
      HOTFIX,
 
     /**
-     * A support release. That is when you are on a support branch.
+     * A support release. That is when you are on a <strong>support</strong> branch.
      */
      SUPPORT,
 
     /**
-     * A detached-head release. That is when you are on a detached head.
+     * A detached-head release. That is when you are on a <strong>detached head</strong>.
      */
      DETACHED_HEAD
 

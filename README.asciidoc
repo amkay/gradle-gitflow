@@ -43,6 +43,7 @@ The rules applied when inferring the version are that simple:
 ** this would usually be the normal version (`major.minor.patch`)
 * Otherwise the version contains
 ** the normal version (`major.minor.patch`) extracted from the next reachable tag in the history
+*** if the current commit is on a <<branch-identifier-mapping, pre-release>> branch, the normal version is extracted from the name of this branch
 ** a _pre-release identifier_ indicating the current branch
 ** a _pre-release identifier_ indicating the number of commits since the last tag
 ** a _build metadata identifier_ indicating the SHA of the current commit
@@ -76,9 +77,9 @@ major version
 
 
 [[branch-identifier-mapping]]
-=== Mapping between Gitflow branch and pre-release identifier
+=== Mapping between Gitflow branches and pre-release identifiers
 
-The following table show the mapping between a Gitflow branch and the corresponding pre-release identifier that indicates this branch.
+The following table shows the mapping between Gitflow branches and the corresponding pre-release identifiers that indicate these branches.
 
 NOTE: If you use a Gitflow plugin for Git, _gradle-gitflow_ uses the branch names of your Gitflow configuration section in `.git/config`.
 
@@ -140,7 +141,7 @@ buildscript {
 apply plugin: 'com.github.amkay.gitflow'
 ----
 
-NOTE: Builds of the current development version can always be obtained from https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop[here].
+NOTE: The latest build of the current development version can always be obtained from https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop[here].
 
 
 [[configuration]]
@@ -196,12 +197,12 @@ This can be used in your buildscripts for distinguishing between development and
 import static com.github.amkay.gradle.gitflow.version.VersionType.*
 
 task deploy << {
-    if (version.type == DEVELOP) {
-        // Deploy to staging...
-    } else if (version.type == RELEASE) {
-        // Deploy to production...
-    }
+  if (version.type == DEVELOP) {
+    // Deploy to staging...
+  } else if (version.type == RELEASE) {
+    // Deploy to production...
+  }
 }
 ----
 
-TIP: For additional version types see the `enum` {doc-path}/groovydoc/com/github/amkay/gradle/gitflow/version/VersionType.html[VersionType] in the Groovydoc documentation.
+TIP: For additional version types see the `enum` {doc-path}/groovydoc/com/github/amkay/gradle/gitflow/version/VersionType.html[VersionType] in the {doc-path}/groovydoc[Groovydoc] documentation.

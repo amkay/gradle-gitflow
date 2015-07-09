@@ -24,16 +24,21 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.DEVELOP
 
 /**
- * The strategy to use when Gitflow's <code>develop</code> branch is the current branch.
+ * The strategy to use when Gitflow's <strong>develop</strong> branch is the current branch.
  *
  * @author Max Käufer
  */
-class BranchDevelopStrategy extends AbstractStrategy {
+class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
 
     private static final String CONFIG_BRANCH_DEVELOP  = 'develop'
     private static final String DEFAULT_BRANCH_DEVELOP = 'develop'
 
-
+    /**
+     * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
+     * @param grgit
+     * @param ext
+     * @return
+     */
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit
@@ -47,6 +52,11 @@ class BranchDevelopStrategy extends AbstractStrategy {
           .build()
     }
 
+    /**
+     * See {@link Strategy#canInfer(Grgit)}.
+     * @param grgit
+     * @return
+     */
     @Override
     boolean canInfer(final Grgit grgit) {
         grgit.branch.current.name == getDevelopBranchName(grgit)

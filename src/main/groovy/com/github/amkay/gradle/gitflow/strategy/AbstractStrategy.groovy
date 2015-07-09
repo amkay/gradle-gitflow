@@ -32,22 +32,23 @@ abstract class AbstractStrategy implements Strategy {
     private static final Logger LOGGER = Logging.getLogger(AbstractStrategy)
 
     /**
-     * The section of Gitflow's configuration in .git/config
+     * The section of Gitflow's configuration in <code>.git/config</code>
      */
     public static final String SECTION_GITFLOW = 'gitflow'
 
     /**
-     * The subsection containing Gitflow's branch prefixes in .git/config
+     * The subsection containing Gitflow's branch prefixes in <code>.git/config</code>
      */
     public static final String SUBSECTION_PREFIX = 'prefix'
 
     /**
-     * The subsection containing Gitflow's branch names in .git/config
+     * The subsection containing Gitflow's branch names in <code>.git/config</code>
      */
     public static final String SUBSECTION_BRANCH = 'branch'
 
     /**
-     * This method applies the template method pattern to log the inferred version.
+     * See {@link Strategy#infer(Grgit, GitflowPluginExtension)}. This method applies the template method pattern to
+     * log the inferred version.
      * @param grgit
      * @param extension
      * @return

@@ -24,12 +24,18 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.DETACHED_HEAD
 
 /**
- * The strategy to use when the current head is a detached head.
+ * The strategy to use when the current head is a <strong>detached head</strong>.
  *
  * @author Max Käufer
  */
-class DetachedHeadStrategy extends AbstractStrategy {
+class DetachedHeadStrategy extends AbstractStrategy implements Strategy {
 
+    /**
+     * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
+     * @param grgit
+     * @param ext
+     * @return
+     */
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit
@@ -43,6 +49,11 @@ class DetachedHeadStrategy extends AbstractStrategy {
           .build()
     }
 
+    /**
+     * See {@link Strategy#canInfer(Grgit)}.
+     * @param grgit
+     * @return
+     */
     @Override
     boolean canInfer(final Grgit grgit) {
         // grgit.branch.current should be used, but that does never return null (not even when on detached head)

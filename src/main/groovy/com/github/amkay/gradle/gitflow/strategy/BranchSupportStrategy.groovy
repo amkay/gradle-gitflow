@@ -24,16 +24,21 @@ import org.ajoberstar.grgit.Grgit
 import static com.github.amkay.gradle.gitflow.version.VersionType.SUPPORT
 
 /**
- * The strategy to use when one of Gitflow's <code>support</code> branches is the current branch.
+ * The strategy to use when one of Gitflow's <strong>support</strong> branches is the current branch.
  *
  * @author Max Käufer
  */
-class BranchSupportStrategy extends AbstractStrategy {
+class BranchSupportStrategy extends AbstractStrategy implements Strategy {
 
     private static final String CONFIG_PREFIX_SUPPORT  = 'support'
     private static final String DEFAULT_PREFIX_SUPPORT = 'support/'
 
-
+    /**
+     * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
+     * @param grgit
+     * @param ext
+     * @return
+     */
     @Override
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit
@@ -50,6 +55,11 @@ class BranchSupportStrategy extends AbstractStrategy {
           .build()
     }
 
+    /**
+     * See {@link Strategy#canInfer(Grgit)}.
+     * @param grgit
+     * @return
+     */
     @Override
     boolean canInfer(final Grgit grgit) {
         grgit.branch.current.name.startsWith getSupportPrefix(grgit)

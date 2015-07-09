@@ -18,54 +18,67 @@ package com.github.amkay.gradle.gitflow.version
 import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Commit
 import org.ajoberstar.grgit.Grgit
+import org.ajoberstar.grgit.Tag
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 /**
- * Locates the nearest {@link org.ajoberstar.grgit.Tag tag}s whose names can be
- * parsed as a {@link com.github.zafarkhaja.semver.Version version}. Both the
- * absolute nearest version tag and the nearest "normal version" tag are
- * included.
+ * Locates the nearest {@link Tag}s whose names can be parsed as {@link Version}s.
+ * Both the absolute nearest version tag and the nearest "normal version" tag are included.
  *
  * <p>
- *   Primarily used as part of version inference to determine the previous
- *   version.
+ *   Primarily used as part of version inference to determine the previous version.
  * </p>
  */
 @SuppressWarnings('AbcMetric')
 class NearestVersionLocator {
 
-    private static final Logger LOGGER                   = LoggerFactory.getLogger NearestVersionLocator
-    public static final  String CONFIG_SECTION_GITFLOW   = 'gitflow'
-    public static final  String CONFIG_SUBSECTION_PREFIX = 'prefix'
-    public static final  String CONFIG_VERSION_TAG       = 'versionTag'
-    public static final  String DEFAULT_PREFIX_VERSION   = 'v'
+    private static final Logger LOGGER = LoggerFactory.getLogger NearestVersionLocator
 
     /**
-     * Locate the nearest version in the given repository
-     * starting from the current HEAD.
+     * The name of the config section of <em>Gitflow</em> plugins in <code>.git/config</code>
+     */
+    static final String CONFIG_SECTION_GITFLOW = 'gitflow'
+
+    /**
+     * The name of the config sub-section for prefixes of <em>Gitflow</em> plugins in <code>.git/config</code>
+     */
+    static final String CONFIG_SUBSECTION_PREFIX = 'prefix'
+
+    /**
+     * The name of the config key for the prefix of version tags of <em>Gitflow</em> plugins in <code>.git/config</code>
+     */
+    static final String CONFIG_VERSION_TAG = 'versionTag'
+
+    /**
+     * The default value of the config value of <code>CONFIG_VERSION_TAG</code>.
+     * This is used if the respective sections are missing in <code>.git/config</code>, e.g. if You are not using a
+     * <em>Gitflow</em> plugin for <em>Git</em>.
+     */
+    static final String DEFAULT_PREFIX_VERSION = 'v'
+
+    /**
+     * Locate the nearest version in the given repository starting from the <strong>current HEAD</strong>.
      *
      * <p>
-     * All tag names are parsed to determine if they are valid
-     * version strings. Tag names can begin with "v" (which will
-     * be stripped off).
+     * All <em>tag</em> names are parsed to determine if they are valid version strings.
+     * Tag names can begin with <code>DEFAULT_PREFIX_VERSION</code> (which will be stripped off).
      * </p>
      *
      * <p>
-     * The nearest tag is determined by getting a commit log between
-     * the tag and {@code HEAD}. The version tag with the smallest
-     * log from a pure count of commits will have its version returned. If two
-     * version tags have a log of the same size, the versions will be compared
-     * to find the one with the highest precedence according to semver rules.
+     * The nearest tag is determined by getting a commit log between the tag and {@code HEAD}.
+     * The version tag with the smallest log from a pure count of commits will have its version returned.
+     * <strong>If two version tags have a log of the same size, the versions will be compared to find the one with the
+     * highest precedence according to semver rules</strong>.
      * For example, {@code 1.0.0} has higher precedence than {@code 1.0.0-rc.2}.
-     * For tags with logs of the same size and versions of the same precedence
-     * it is undefined which will be returned.
+     * For tags with logs of the same size and versions of the same precedence it is undefined which will be returned.
      * </p>
      *
      * <p>
-     * Two versions will be returned: the "any" version and the "normal" version.
-     * "Any" is the absolute nearest tagged version. "Normal" is the nearest
-     * tagged version that does not include a pre-release segment.
+     * Two versions will be returned: the <em>"any"</em> version and the <em>"normal"</em> version.
+     * <em>"Any"</em> is the absolute nearest tagged version.
+     * <em>"Normal"</em> is the nearest tagged version that <strong>does not</strong> include a <em>pre-release</em>
+     * segment.
      * </p>
      *
      * @param grgit the repository to locate the tag in

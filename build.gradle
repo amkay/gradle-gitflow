@@ -29,6 +29,11 @@ dependencies {
     compile 'org.ajoberstar:grgit:1.1.0'
 }
 
+groovydoc {
+    link "https://docs.gradle.org/${wrapper.gradleVersion}/groovydoc/", 'org.gradle'
+    link 'http://ajoberstar.org/grgit/docs/groovydoc', 'org.ajoberstar.grgit'
+}
+
 targetCompatibility = vJavaLang
 sourceCompatibility = vJavaLang
 
@@ -54,6 +59,8 @@ ext.githubUser = 'amkay'
 
 group "com.github.$githubUser"
 description 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
+
+apply from: "$gradleDir/groovydoc-defaults.gradle"
 
 apply plugin: 'maven-publish'
 apply from: "$gradleDir/maven-publish-defaults.gradle"

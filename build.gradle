@@ -55,6 +55,8 @@ ext.githubUser = 'amkay'
 group "com.github.$githubUser"
 description 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
 
+apply from: "$gradleDir/groovydoc-defaults.gradle"
+
 apply plugin: 'maven-publish'
 apply from: "$gradleDir/maven-publish-defaults.gradle"
 

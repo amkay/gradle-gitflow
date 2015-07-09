@@ -206,7 +206,7 @@ The following example shows the default configuration of the above plugins:
 ----
 
 WARNING: Keep in mind that most *CI* servers simply clone your repository after being called by a commit hook when you push your code.
-Therefore you will have to take care in your CI configuration that `.git/config` contains the http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] configuration sections that _gradle-gitflow_ needs if you do not use the default names mentioned in <<branch-identifer-mapping>>.
+Therefore you will have to take care in your CI configuration that `.git/config` contains the http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] configuration sections that _gradle-gitflow_ needs if you do not use the default names mentioned in <<branch-identifier-mapping>>.
 
 
 [[additional-functionality]]

@@ -18,8 +18,9 @@ package com.github.amkay.gradle.gitflow.version
 import com.github.zafarkhaja.semver.Version
 
 /**
- * Combines a {@link Version} with a {@link VersionType} using the delegate pattern. This is needed because
- * inheritance cannot be used due to the package-private constructors of {@link Version}.
+ * Combines a {@link Version} with a {@link VersionType} using the <em>Delegation Pattern</em>.
+ * This is needed because inheritance cannot be used due to the package-private constructors of {@link Version}.
+ * This class therefore delegates to {@link Version}.
  *
  * @author Max Käufer
  */
@@ -28,6 +29,9 @@ class VersionWithType implements Comparable<Version> {
     @Delegate
     private final Version version
 
+    /**
+     * The type of the version
+     */
     final VersionType type
 
     /**
@@ -40,6 +44,11 @@ class VersionWithType implements Comparable<Version> {
     }
 
 
+    /**
+     * See {@link Object#equals(Object)}.
+     * @param o
+     * @return
+     */
     @Override
     boolean equals(final o) {
         if (this.is(o)) {
@@ -61,6 +70,10 @@ class VersionWithType implements Comparable<Version> {
         true
     }
 
+    /**
+     * See {@link Object#hashCode()}.
+     * @return
+     */
     @Override
     int hashCode() {
         int result
@@ -71,6 +84,10 @@ class VersionWithType implements Comparable<Version> {
         result
     }
 
+    /**
+     * See {@link Object#toString()}.
+     * @return
+     */
     @Override
     String toString() {
         version.toString()

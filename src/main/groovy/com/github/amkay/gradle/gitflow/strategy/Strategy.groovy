@@ -15,12 +15,18 @@
  */
 package com.github.amkay.gradle.gitflow.strategy
 
+import com.github.amkay.gradle.gitflow.GitflowPlugin
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
 import com.github.amkay.gradle.gitflow.version.VersionWithType
 import org.ajoberstar.grgit.Grgit
 
 /**
  * The interface for all strategies used to infer the version.
+ * See the package
+ * <a href="{@docRoot}/com/github/amkay/gradle/gitflow/strategy/package-summary.html#package-description">
+ *     strategy
+ * </a>
+ * to see all classes implementing this interface.
  *
  * @author Max Käufer
  */
@@ -28,6 +34,11 @@ interface Strategy {
 
     /**
      * All available strategies.
+     * See the package
+     * <a href="{@docRoot}/com/github/amkay/gradle/gitflow/strategy/package-summary.html#package-description">
+     *     strategy
+     * </a>
+     * to see all classes implementing this interface.
      */
     static final STRATEGIES = [
       new BranchDevelopStrategy(),
@@ -41,7 +52,7 @@ interface Strategy {
     ]
 
     /**
-     * Infers the current version. This method is called by {@link com.github.amkay.gradle.gitflow.GitflowPlugin}.
+     * Infers the current version. This method is called by {@link GitflowPlugin}.
      *
      * @param grgit
      * @param extension

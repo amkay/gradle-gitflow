@@ -10,7 +10,7 @@ def docVersion
 def docPath
 
 
-if (version.type == RELEASE) {
+if (version.type in [RELEASE, PRE_RELEASE]) {
     docVersion = releaseDocVersion
     docPath    = releaseDocPath
 } else {

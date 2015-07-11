@@ -9,7 +9,7 @@ def downloadVersion
 def downloadPath
 
 
-if (version.type == RELEASE) {
+if (version.type in [RELEASE, PRE_RELEASE]) {
     downloadVersion = releaseDownloadVersion
     downloadPath    = releaseDownloadPath
 } else {

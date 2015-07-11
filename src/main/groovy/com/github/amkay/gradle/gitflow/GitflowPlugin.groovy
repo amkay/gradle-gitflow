@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package com.github.amkay.gradle.gitflow
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
-import com.github.amkay.gradle.gitflow.util.DelayedVersion
+import com.github.amkay.gradle.gitflow.version.DelayedVersionWithType
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -25,10 +25,10 @@ import org.gradle.api.Project
  *
  * <p>
  *     When the plugin is applied, it registers a {@link GitflowPluginExtension} and sets the version of the project
- *     to which it is applied to a {@link DelayedVersion}.
+ *     to which it is applied to a {@link DelayedVersionWithType}.
  * </p>
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 class GitflowPlugin implements Plugin<Project> {
 
@@ -37,11 +37,15 @@ class GitflowPlugin implements Plugin<Project> {
      */
     public static final String EXT_GITFLOW = 'gitflow'
 
+    /**
+     * See {@link Plugin#apply(Object)}.
+     * @param project
+     */
     @Override
     void apply(final Project project) {
-        project.extensions.create(EXT_GITFLOW, GitflowPluginExtension)
+        project.extensions.create(EXT_GITFLOW, GitflowPluginExtension, project.projectDir)
 
-        project.version = new DelayedVersion(project)
+        project.version = new DelayedVersionWithType(project)
     }
 
 }

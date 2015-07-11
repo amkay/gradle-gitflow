@@ -1,0 +1,47 @@
+import static com.github.amkay.gradle.gitflow.version.VersionType.*
+
+def readmePath        = "${project.projectDir}/README.asciidoc"
+def releaseDocVersion = version.normalVersion
+def developDocVersion = 'dev'
+def githubPagesUrl    = "https://${githubUser}.github.io/${project.name}"
+def releaseDocPath    = 'release/{doc-version}/doc'
+def developDocPath    = 'develop/doc'
+def docVersion
+def docPath
+
+
+if (version.type in [RELEASE, PRE_RELEASE]) {
+    docVersion = releaseDocVersion
+    docPath    = releaseDocPath
+} else {
+    docVersion = developDocVersion
+    docPath    = developDocPath
+}
+
+
+task bumpDocVersionInReadme {
+    description 'Bumps the version of the documentation and sets its path in the README.asciidoc file.'
+
+    doLast {
+        def newReadme = new File("${readmePath}.new")
+
+        newReadme.withWriter('utf-8') { writer ->
+            new File(readmePath).eachLine { line ->
+                if (line.startsWith(':doc-version:')) {
+                    line = ":doc-version: $docVersion"
+                } else if (line.startsWith(':doc-path:')) {
+                    line = ":doc-path: $githubPagesUrl/$docPath"
+                }
+
+                writer.writeLine line
+            }
+        }
+
+        newReadme.renameTo readmePath
+    }
+}
+
+
+if (project.hasProperty('bumpVersion')) {
+    bumpVersion.dependsOn bumpDocVersionInReadme
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,30 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.amkay.gradle.gitflow.util
+package com.github.amkay.gradle.gitflow.version
 
 import com.github.amkay.gradle.gitflow.dsl.GitflowPluginExtension
 import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Grgit
 
 /**
- * A helper class that uses the builder pattern to create a {@link Version}.
+ * A helper class that uses the <em>Builder Pattern</em> to create a {@link VersionWithType}.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
-class VersionBuilder {
+class VersionWithTypeBuilder {
 
-    private NearestVersion nearestVersion
-    private String         normal
-    private String         branch
-    private int            distanceFromRelease
-    private String         sha
-    private String         dirty
+    private final NearestVersion nearestVersion
+    private final String         normal
+    private       String         branch
+    private       int            distanceFromRelease
+    private       String         sha
+    private       String         dirty
+    private       VersionType    type
 
     /**
      * @param normal the normal part of the version according to semantic versioning
      */
-    VersionBuilder(final String normal) {
+    VersionWithTypeBuilder(final String normal) {
         this.normal = normal
     }
 
@@ -46,7 +47,7 @@ class VersionBuilder {
      *
      * @param nearestVersion
      */
-    VersionBuilder(final NearestVersion nearestVersion) {
+    VersionWithTypeBuilder(final NearestVersion nearestVersion) {
         this.nearestVersion = nearestVersion
         this.normal = nearestVersion.any.toString()
     }
@@ -57,7 +58,8 @@ class VersionBuilder {
      * @param branch
      * @return
      */
-    VersionBuilder branch(final String branch) {
+    @SuppressWarnings('ConfusingMethodName')
+    VersionWithTypeBuilder branch(final String branch) {
         this.branch = branch
 
         this
@@ -69,7 +71,8 @@ class VersionBuilder {
      * @param nearestVersion
      * @return
      */
-    VersionBuilder distanceFromRelease(final NearestVersion nearestVersion) {
+    @SuppressWarnings('ConfusingMethodName')
+    VersionWithTypeBuilder distanceFromRelease(final NearestVersion nearestVersion) {
         distanceFromRelease = nearestVersion.distanceFromAny
 
         this
@@ -80,8 +83,9 @@ class VersionBuilder {
      *
      * @return
      */
-    VersionBuilder distanceFromRelease() {
-        distanceFromRelease(nearestVersion)
+    @SuppressWarnings('ConfusingMethodName')
+    VersionWithTypeBuilder distanceFromRelease() {
+        distanceFromRelease nearestVersion
     }
 
     /**
@@ -91,7 +95,8 @@ class VersionBuilder {
      * @param extension
      * @return
      */
-    VersionBuilder sha(final Grgit grgit, final GitflowPluginExtension extension) {
+    @SuppressWarnings('ConfusingMethodName')
+    VersionWithTypeBuilder sha(final Grgit grgit, final GitflowPluginExtension extension) {
         def id = grgit.head().abbreviatedId
 
         sha = "${extension.buildMetadataIds.sha}.$id"
@@ -106,10 +111,24 @@ class VersionBuilder {
      * @param extension
      * @return
      */
-    VersionBuilder dirty(final Grgit grgit, final GitflowPluginExtension extension) {
+    @SuppressWarnings('ConfusingMethodName')
+    VersionWithTypeBuilder dirty(final Grgit grgit, final GitflowPluginExtension extension) {
         if (!grgit.status().clean) {
             dirty = extension.buildMetadataIds.dirty
         }
+
+        this
+    }
+
+    /**
+     * Sets the type of the version.
+     *
+     * @param type
+     * @return
+     */
+    @SuppressWarnings('ConfusingMethodName')
+    VersionWithTypeBuilder type(final VersionType type) {
+        this.type = type
 
         this
     }
@@ -119,21 +138,23 @@ class VersionBuilder {
      *
      * @return
      */
-    Version build() {
+    VersionWithType build() {
         def preRelease = new StringBuilder()
         def buildMetadata = new StringBuilder()
 
-        if (distanceFromRelease){
+        if (distanceFromRelease) {
             append preRelease, branch
             append preRelease, Integer.toString(distanceFromRelease)
             append buildMetadata, sha
         }
         append buildMetadata, dirty
 
-        new Version.Builder(normal)
+        def version = new Version.Builder(normal)
           .setPreReleaseVersion(preRelease.toString())
           .setBuildMetadata(buildMetadata.toString())
           .build()
+
+        new VersionWithType(version, type)
     }
 
     private void append(final StringBuilder sb, final String s) {

@@ -21,17 +21,17 @@ import com.github.amkay.gradle.gitflow.version.VersionWithType
 import com.github.amkay.gradle.gitflow.version.VersionWithTypeBuilder
 import org.ajoberstar.grgit.Grgit
 
-import static com.github.amkay.gradle.gitflow.version.VersionType.DEVELOP
+import static com.github.amkay.gradle.gitflow.version.VersionType.PRE_RELEASE
 
 /**
- * The strategy to use when Gitflow's <strong>develop</strong> branch is the current branch.
+ * The strategy to use when one of Gitflow's <strong>pre-release / next release</strong> branches is the current branch.
  *
  * @author Max Käufer
  */
-class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
+class BranchPreReleaseStrategy extends AbstractStrategy implements Strategy {
 
-    private static final String CONFIG_BRANCH_DEVELOP  = 'develop'
-    private static final String DEFAULT_BRANCH_DEVELOP = 'develop'
+    private static final String CONFIG_PREFIX_PRE_RELEASE  = 'release'
+    private static final String DEFAULT_PREFIX_PRE_RELEASE = 'release/'
 
     /**
      * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
@@ -43,12 +43,15 @@ class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
     protected VersionWithType doInfer(final Grgit grgit, final GitflowPluginExtension ext) {
         def nearestVersion = new NearestVersionLocator().locate grgit
 
-        new VersionWithTypeBuilder(nearestVersion)
-          .branch(ext.preReleaseIds.develop)
-          .distanceFromRelease()
+        def matcher = (grgit.branch.current.name =~ $/^${getReleasePrefix grgit}(.*)/$)
+        String releaseVersion = matcher[ 0 ][ 1 ]
+
+        new VersionWithTypeBuilder(releaseVersion)
+          .branch(ext.preReleaseIds.preRelease)
+          .distanceFromRelease(nearestVersion)
           .sha(grgit, ext)
           .dirty(grgit, ext)
-          .type(DEVELOP)
+          .type(PRE_RELEASE)
           .build()
     }
 
@@ -59,11 +62,11 @@ class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
      */
     @Override
     boolean canInfer(final Grgit grgit) {
-        grgit.branch.current.name == getDevelopBranchName(grgit)
+        grgit.branch.current.name.startsWith getReleasePrefix(grgit)
     }
 
-    private static String getDevelopBranchName(final Grgit grgit) {
-        getBranchName(grgit, CONFIG_BRANCH_DEVELOP) ?: DEFAULT_BRANCH_DEVELOP
+    private static String getReleasePrefix(final Grgit grgit) {
+        getPrefix(grgit, CONFIG_PREFIX_PRE_RELEASE) ?: DEFAULT_PREFIX_PRE_RELEASE
     }
 
 }

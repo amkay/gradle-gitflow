@@ -1,0 +1,7 @@
+def vGroovy = '2.3.10'
+
+
+groovydoc {
+    link 'https://docs.oracle.com/javase/7/docs/api/', 'java.', 'javax.', 'org.xml.'
+    link "http://docs.groovy-lang.org/docs/groovy-${vGroovy}/html/gapi/", 'groovy.', 'org.codehaus.groovy.'
+}

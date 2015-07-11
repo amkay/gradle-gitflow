@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,44 +16,59 @@
 package com.github.amkay.gradle.gitflow.dsl
 
 /**
- * The Gradle plugin extension. This is the entry point of the DSL to configure the plugin.
+ * The Gradle plugin extension. This is the entry point of the <em>DSL</em> to configure the plugin.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 class GitflowPluginExtension {
 
     /**
      * The root directory of the repository to use
      */
-    String repositoryRoot = '.'
+    String repositoryRoot
 
     /**
-     * Holder that allows to configure the pre-release identifiers according to semantic versioning
+     * Holder that allows to configure the <em>pre-release identifiers</em> according to <em>semantic versioning</em>
      */
-    final PreReleaseIdentifiers preReleaseIds = new PreReleaseIdentifiers();
+    final PreReleaseIdentifiers preReleaseIds = new PreReleaseIdentifiers()
 
     /**
-     * Holder that allows to configure the build metadata identifiers according to semantic versioning
+     * Holder that allows to configure the <em>build metadata identifiers</em> according to <em>semantic versioning</em>
      */
-    final BuildMetadataIdentifiers buildMetadataIds = new BuildMetadataIdentifiers();
+    final BuildMetadataIdentifiers buildMetadataIds = new BuildMetadataIdentifiers()
 
-    /**
-     * Helper method to allow the keyword-based configuration (the DSL) of the pre-release identifiers according to
-     * semantic versioning.
-     *
-     * @param cl
-     */
-    void preReleaseIds(@DelegatesTo(PreReleaseIdentifiers) final Closure cl) {
-        cl.delegate = preReleaseIds;
-        cl.call();
+    GitflowPluginExtension(final File projectDir) {
+        setRepositoryRoot projectDir.path
     }
 
     /**
-     * Helper method to allow the keyword-based configuration (the DSL) of the build metadata identifiers according
-     * to semantic versioning.
+     * Helper method to allow keyword-based configuration of the <code>repositoryRoot</code> property
+     * @param repositoryRoot
+     */
+    @SuppressWarnings('ConfusingMethodName')
+    void repositoryRoot(final String repositoryRoot) {
+        setRepositoryRoot repositoryRoot
+    }
+
+    /**
+     * Helper method to allow the <em>keyword-based configuration (the DSL)</em> of the <em>pre-release
+     * identifiers</em> (<code>preReleaseIds</code>) according to <em>semantic versioning</em>.
      *
      * @param cl
      */
+    @SuppressWarnings('ConfusingMethodName')
+    void preReleaseIds(@DelegatesTo(PreReleaseIdentifiers) final Closure cl) {
+        cl.delegate = preReleaseIds
+        cl.call()
+    }
+
+    /**
+     * Helper method to allow the <em>keyword-based configuration (the DSL)</em> of the <em>build metadata identifiers
+     * </em> (<code>buildMetadataIds</code>) according to <em>semantic versioning</em>.
+     *
+     * @param cl
+     */
+    @SuppressWarnings([ 'ConfusingMethodName', 'BuilderMethodWithSideEffects', 'FactoryMethodName' ])
     void buildMetadataIds(@DelegatesTo(BuildMetadataIdentifiers) final Closure cl) {
         cl.delegate = buildMetadataIds
         cl.call()

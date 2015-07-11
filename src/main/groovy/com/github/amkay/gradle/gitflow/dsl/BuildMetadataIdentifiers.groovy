@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Max Kaeufer
+ * Copyright 2015 Max Käufer
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,14 @@
 package com.github.amkay.gradle.gitflow.dsl
 
 /**
- * The holder for metadata identifiers according to semantic versioning.
+ * The holder for <em>build metadata identifiers</em> according to <em>semantic versioning</em>.
  *
- * @author Max Kaeufer
+ * @author Max Käufer
  */
 class BuildMetadataIdentifiers {
 
     /**
-     * The static text that is used before the actual SHA of the current commit
+     * The static text that is used before the actual <em>SHA</em> of the current commit
      */
     String sha = 'sha'
 
@@ -33,19 +33,21 @@ class BuildMetadataIdentifiers {
     String dirty = 'dirty'
 
     /**
-     * Helper method to allow keyword-based configuration of the <code>sha</code> property
+     * Helper method to allow <em>keyword-based configuration</em> of the <code>sha</code> property
      * @param sha
      */
+    @SuppressWarnings('ConfusingMethodName')
     void sha(final String sha) {
-        setSha(sha)
+        setSha sha
     }
 
     /**
-     * Helper method to allow keyword-based configuration of the <code>dirty</code> property
+     * Helper method to allow <em>keyword-based configuration</em> of the <code>dirty</code> property
      * @param dirty
      */
+    @SuppressWarnings('ConfusingMethodName')
     void dirty(final String dirty) {
-        setDirty(dirty)
+        setDirty dirty
     }
 
 }

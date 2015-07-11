@@ -1,0 +1,27 @@
+def readmePath     = "${project.projectDir}/README.asciidoc"
+
+
+task bumpVersionInReadme {
+    description 'Bumps the version in the README.asciidoc file.'
+
+    doLast {
+        def newReadme = new File("${readmePath}.new")
+
+        newReadme.withWriter('utf-8') { writer ->
+            new File(readmePath).eachLine { line ->
+                if (line.startsWith(':version:')) {
+                    line = ":version: ${version.normalVersion}"
+                }
+
+                writer.writeLine line
+            }
+        }
+
+        newReadme.renameTo readmePath
+    }
+}
+
+
+if (project.hasProperty('bumpVersion')) {
+    bumpVersion.dependsOn bumpVersionInReadme
+}

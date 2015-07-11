@@ -1,0 +1,3 @@
+task bumpVersion {
+    description 'Bumps the version in various files.'
+}

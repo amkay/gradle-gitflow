@@ -21,17 +21,14 @@ import com.github.amkay.gradle.gitflow.version.VersionWithType
 import com.github.amkay.gradle.gitflow.version.VersionWithTypeBuilder
 import org.ajoberstar.grgit.Grgit
 
-import static com.github.amkay.gradle.gitflow.version.VersionType.DEVELOP
+import static com.github.amkay.gradle.gitflow.version.VersionType.DETACHED_HEAD
 
 /**
- * The strategy to use when Gitflow's <strong>develop</strong> branch is the current branch.
+ * The strategy to use when the current head is a <strong>detached head</strong>.
  *
  * @author Max Käufer
  */
-class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
-
-    private static final String CONFIG_BRANCH_DEVELOP  = 'develop'
-    private static final String DEFAULT_BRANCH_DEVELOP = 'develop'
+class DetachedHeadStrategy extends AbstractStrategy implements Strategy {
 
     /**
      * See {@link AbstractStrategy#doInfer(Grgit, GitflowPluginExtension)}.
@@ -44,11 +41,11 @@ class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
         def nearestVersion = new NearestVersionLocator().locate grgit
 
         new VersionWithTypeBuilder(nearestVersion)
-          .branch(ext.preReleaseIds.develop)
+          .branch(ext.preReleaseIds.detachedHead)
           .distanceFromRelease()
           .sha(grgit, ext)
           .dirty(grgit, ext)
-          .type(DEVELOP)
+          .type(DETACHED_HEAD)
           .build()
     }
 
@@ -59,11 +56,8 @@ class BranchDevelopStrategy extends AbstractStrategy implements Strategy {
      */
     @Override
     boolean canInfer(final Grgit grgit) {
-        grgit.branch.current.name == getDevelopBranchName(grgit)
-    }
-
-    private static String getDevelopBranchName(final Grgit grgit) {
-        getBranchName(grgit, CONFIG_BRANCH_DEVELOP) ?: DEFAULT_BRANCH_DEVELOP
+        // grgit.branch.current should be used, but that does never return null (not even when on detached head)
+        true
     }
 
 }

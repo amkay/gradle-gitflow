@@ -1,0 +1,238 @@
+= gradle-gitflow
+Max Käufer;
+:version: 0.2.0
+:doc-version: 0.2.0
+:doc-path: https://amkay.github.io/gradle-gitflow/release/{doc-version}/doc
+:download-version: 0.2.0
+:download-path: https://bintray.com/amkay/gradle-plugins/com.github.amkay%3Agradle-gitflow/{download-version}
+:doctype: book
+:sectanchors:
+:sectlinks:
+:source-highlighter: highlightjs
+:icons: font
+
+
+image:https://img.shields.io/badge/download-{download-version}-blue.svg["Download", link="{download-path}"]
+image:https://img.shields.io/badge/docs-{doc-version}-blue.svg["Documentation", link="{doc-path}/groovydoc"]
+image:http://stillmaintained.com/amkay/gradle-gitflow.svg["Project Status", link="https://stillmaintained.com/amkay/gradle-gitflow"]
+image:https://img.shields.io/github/license/amkay/gradle-gitflow.svg["License", link="https://github.com/amkay/gradle-gitflow/blob/master/LICENSE.md"]
+image:https://travis-ci.org/amkay/gradle-gitflow.svg?branch=develop["Build Status", link="https://travis-ci.org/amkay/gradle-gitflow"]
+image:https://www.versioneye.com/user/projects/559c3d97616634001b000e87/badge.svg?style=flat["Dependency Status", link="https://www.versioneye.com/user/projects/559c3d97616634001b000e87"]
+image:https://img.shields.io/badge/semver-2.0.0-blue.svg["Semantic Versioning", link="http://semver.org/spec/v2.0.0.html"]
+image:https://img.shields.io/badge/git-flow-blue.svg["Gitflow", link="http://nvie.com/posts/a-successful-git-branching-model/"]
+
+An opinionated plugin that provides http://semver.org/[Semantic Versioning] for https://gradle.org/[Gradle] projects that use http://nvie.com/posts/a-successful-git-branching-model/[Gitflow].
+
+This plugin is heavily inspired by the https://github.com/ajoberstar/gradle-git[gradle-git] plugin.
+
+IMPORTANT: It *intentionally* provides no https://gradle.org/[Gradle] tasks and interacts with http://git-scm.com/[Git] just for inferring the version of the project.
+
+This inferred version is set as the project version of the https://gradle.org/[Gradle] project to which it is applied.
+
+
+
+[[versioning]]
+== Versioning
+
+[[version-rules]]
+=== Version rules
+
+The rules applied when inferring the version are that simple:
+
+* If the current commit is tagged this tag is used as a version -- regardless of the current branch
+** this would usually be the _normal version_ (`major.minor.patch`)
+* Otherwise the version contains
+** the _normal version_ (`major.minor.patch`) extracted from the next reachable tag in the history
+*** if the current commit is on a <<branch-identifier-mapping, pre-release>> branch, the _normal version_ is extracted from the name of this branch
+** a _pre-release identifier_ indicating the current branch
+** a _pre-release identifier_ indicating the number of commits since the last tag
+** a _build metadata identifier_ indicating the SHA of the current commit
+** a _build metadata identifier_ indicating if the repository is dirty
+
+
+[[version-structure]]
+=== Version structure
+
+The inferred versions consist of the following components:
+
+----
+1.2.3-dev.65+sha.9066228.dirty
+| | |  |  |   |     |      |
+| | |  |  |   |     |      indicates if the repository is dirty
+| | |  |  |   |     |
+| | |  |  |   |     abbreviated SHA of the current commit
+| | |  |  |   |
+| | |  |  |   prefix of the SHA
+| | |  |  |
+| | |  |  # of commits since the last tag
+| | |  |
+| | |  denotes the current branch
+| | |
+| | patch version
+| |
+| minor version
+|
+major version
+----
+
+
+[[branch-identifier-mapping]]
+=== Mapping between Gitflow branches and pre-release identifiers
+
+The following table shows the mapping between http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] branches and the corresponding _pre-release identifiers_ that indicate these branches.
+
+NOTE: If you use a <<gitflow-plugins, Gitflow plugin for Git>>, _gradle-gitflow_ uses the branch names and prefixes of your http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] configuration section in `.git/config`.
+If you do not use such a plugin, you will either have to stick to the default names in the table below or add http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] configuration sections to `.git/config` as described in <<gitflow-plugins>>.
+
+|===
+| Gitflow branch | Default name in Gitflow plugins | Pre-release identifier | Notes
+
+| production release
+| `master`
+| (empty string)
+|
+
+| development
+| `develop`
+| `dev`
+|
+
+| feature
+| `feature/foo`
+| `feature.foo`
+|
+
+| next release / pre-release
+| `release/1.2.3`
+| `pre`
+| The _normal version_ (`major.minor.patch`) is extracted from the branch name
+
+| hotfix
+| `hotfix/foo`
+| `fix.foo`
+|
+
+| support
+| `support/foo`
+| `support.foo`
+|
+|===
+
+NOTE: In case the current head is a _detached head_ the _pre-release identifier_ is `detached`.
+
+
+
+[[usage]]
+== Usage
+
+Include the following in the project on which you want to apply the plugin:
+
+[source,groovy,subs="attributes"]
+----
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'com.github.amkay:gradle-gitflow:{version}'
+  }
+}
+
+apply plugin: 'com.github.amkay.gitflow'
+----
+
+NOTE: The latest build of the current development version can always be obtained from https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop[here].
+
+
+[[configuration]]
+=== Configuration
+
+The plugin registers an extension object named `gitflow` that is the entry point to the configuration.
+It also provides a DSL for keyword-based configuration, but configuration via properties is also possible.
+The following example shows all configuration options:
+
+[source,groovy]
+----
+gitflow {
+  // Use a different Git repository
+  repositoryRoot 'foo/bar' // defaults to project.projectDir
+
+  // Pre-release identifiers based on Gitflow branches
+  preReleaseIds {
+    release 'foo'      // defaults to ''
+    develop 'foo'      // defaults to 'dev'
+    preRelease 'foo'   // defaults to 'pre'
+    detachedHead 'foo' // defaults to 'detached'
+
+    // The following ones are used as prefixes
+    feature 'foo' // defaults to 'feature'
+    hotfix 'foo'  // defaults to 'fix'
+    support 'foo' // defaults to 'support'
+  }
+
+  // Build metadata identifiers that are used as static text
+  buildMetadataIds {
+    sha 'foo'   // Defaults to 'sha'
+    dirty 'foo' // Defaults to 'dirty'
+  }
+}
+----
+
+
+[[gitflow-plugins]]
+=== Gitflow plugins for Git
+
+This plugin supports the following http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] plugins for http://git-scm.com/[Git]:
+
+* https://github.com/nvie/gitflow[git-flow]
+* https://github.com/petervanderdoes/gitflow[git-flow (AVH Edition)]
+
+If you do not use one of the mentioned plugins *and* differ from the default names mentioned in <<branch-identifier-mapping>>, you will have to manually set the branch names and prefixes of the http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] branches and prefixes in `.git/config` like these plugins would do.
+This is the only way for _gradle-gitflow_ to pick up this configuration.
+
+The following example shows the default configuration of the above plugins:
+
+----
+[gitflow "branch"]
+	master  = master
+	develop = develop
+[gitflow "prefix"]
+	feature    = feature/
+	release    = release/
+	hotfix     = hotfix/
+	support    = support/
+	versiontag =
+----
+
+WARNING: Keep in mind that most *CI* servers simply clone your repository after being called by a commit hook when you push your code.
+Therefore you will have to take care in your CI configuration that `.git/config` contains the http://nvie.com/posts/a-successful-git-branching-model/[Gitflow] configuration sections that _gradle-gitflow_ needs if you do not use the default names mentioned in <<branch-identifier-mapping>>.
+
+
+[[additional-functionality]]
+=== Additional functionality of the version object
+
+The following additional functionality is provided by the version object that this plugin provides.
+You can have a look at the {doc-path}/groovydoc[Groovydoc] documentation for further information.
+
+
+[[version-type]]
+==== Version type
+
+The type of the inferred version is derived from the current branch and corresponds to the branches mentioned in <<branch-identifier-mapping>>.
+This can be used in your buildscripts for distinguishing between development and production builds, e.g. for deploying to staging and production as seen in the following example.
+
+[source,groovy]
+----
+import static com.github.amkay.gradle.gitflow.version.VersionType.*
+
+task deploy << {
+  if (version.type == DEVELOP) {
+    // Deploy to staging...
+  } else if (version.type == RELEASE) {
+    // Deploy to production...
+  }
+}
+----
+
+TIP: For additional version types see the `enum` {doc-path}/groovydoc/com/github/amkay/gradle/gitflow/version/VersionType.html[VersionType] in the {doc-path}/groovydoc[Groovydoc] documentation.

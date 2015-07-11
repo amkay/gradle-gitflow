@@ -1,6 +1,6 @@
 import static com.github.amkay.gradle.gitflow.version.VersionType.*
 
-def releaseDestination = "release/$version"
+def releaseDestination = "release/${version.normalVersion}"
 def developDestination = 'develop'
 def destination
 

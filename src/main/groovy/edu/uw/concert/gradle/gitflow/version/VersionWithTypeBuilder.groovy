@@ -152,7 +152,7 @@ class VersionWithTypeBuilder {
         append buildMetadata, dirty
 
         if (type != VersionType.RELEASE ) {
-            buildMetadata.append(SNAPSHOT_SUFFIX)
+            preRelease.append(SNAPSHOT_SUFFIX)
         }
 
         def version = new Version.Builder(normal)

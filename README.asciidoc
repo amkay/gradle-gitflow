@@ -4,7 +4,7 @@ Max Käufer;
 :doc-version: dev
 :doc-path: https://maximede.github.io/gradle-gitflow/develop/doc
 :download-version: dev
-:download-path: https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop
+:download-path: https://github.com/maximede/gradle-gitflow/tree/gh-pages/develop
 :doctype: book
 :sectanchors:
 :sectlinks:

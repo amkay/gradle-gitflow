@@ -1,4 +1,4 @@
-import com.github.amkay.gradle.gitflow.GitflowPlugin
+import edu.uw.concert.gradle.gitflow.GitflowPlugin
 
 def vJavaLang = '1.7'
 def gradleDir = "${rootProject.rootDir}/gradle"
@@ -55,10 +55,10 @@ idea {
 
 apply plugin: GitflowPlugin
 
-ext.githubUser = 'amkay'
+ext.githubUser = 'maximede'
 
-group "com.github.$githubUser"
-description 'An opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow.'
+group "edu.uw.concert"
+description 'A little less opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow. (All credits to https://github.com/amkay/gradle-gitflow)'
 
 apply from: "$gradleDir/groovydoc-defaults.gradle"
 

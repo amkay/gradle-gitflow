@@ -1,4 +1,4 @@
-import static com.github.amkay.gradle.gitflow.version.VersionType.*
+import static edu.uw.concert.gradle.gitflow.version.VersionType.*
 
 def readmePath        = "${project.projectDir}/README.asciidoc"
 def releaseDocVersion = version.normalVersion

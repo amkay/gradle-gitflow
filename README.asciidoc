@@ -2,7 +2,7 @@
 Max Käufer;
 :version: 0.2.0
 :doc-version: dev
-:doc-path: https://amkay.github.io/gradle-gitflow/develop/doc
+:doc-path: https://maximede.github.io/gradle-gitflow/develop/doc
 :download-version: dev
 :download-path: https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop
 :doctype: book
@@ -56,15 +56,15 @@ The rules applied when inferring the version are that simple:
 The inferred versions consist of the following components:
 
 ----
-1.2.3-dev.65+sha.9066228.dirty
-| | |  |  |   |     |      |
-| | |  |  |   |     |      indicates if the repository is dirty
-| | |  |  |   |     |
-| | |  |  |   |     abbreviated SHA of the current commit
-| | |  |  |   |
-| | |  |  |   prefix of the SHA
+1.2.3-dev+dirty-SNAPSHOT
+| | |  |  |     |
+| | |  |  |     |
+| | |  |  |     |
+| | |  |  |     |
+| | |  |  |     |
+| | |  |  |     added if you are not on a RELEASE branch
 | | |  |  |
-| | |  |  # of commits since the last tag
+| | |  |  indicates if the repository is dirty
 | | |  |
 | | |  denotes the current branch
 | | |
@@ -135,14 +135,14 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.github.amkay:gradle-gitflow:{version}'
+    classpath 'edu.uw.concert:gradle-gitflow:{version}'
   }
 }
 
-apply plugin: 'com.github.amkay.gitflow'
+apply plugin: 'edu.uw.concert.gitflow'
 ----
 
-NOTE: The latest build of the current development version can always be obtained from https://github.com/amkay/gradle-gitflow/tree/gh-pages/develop[here].
+NOTE: The latest build of the current development version can always be obtained from https://github.com/maximede/gradle-gitflow/tree/gh-pages/develop[here].
 
 
 [[configuration]]
@@ -224,7 +224,7 @@ This can be used in your buildscripts for distinguishing between development and
 
 [source,groovy]
 ----
-import static com.github.amkay.gradle.gitflow.version.VersionType.*
+import static edu.uw.concert.gradle.gitflow.version.VersionType.*
 
 task deploy << {
   if (version.type == DEVELOP) {
@@ -235,4 +235,4 @@ task deploy << {
 }
 ----
 
-TIP: For additional version types see the `enum` {doc-path}/groovydoc/com/github/amkay/gradle/gitflow/version/VersionType.html[VersionType] in the {doc-path}/groovydoc[Groovydoc] documentation.
+TIP: For additional version types see the `enum` {doc-path}/groovydoc/edu/uw/concert/gradle/gitflow/version/VersionType.html[VersionType] in the {doc-path}/groovydoc[Groovydoc] documentation.

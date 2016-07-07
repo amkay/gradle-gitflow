@@ -1,10 +1,10 @@
 = gradle-gitflow
 Max Käufer;
-:version: 0.2.0
-:doc-version: dev
-:doc-path: https://maximede.github.io/gradle-gitflow/develop/doc
-:download-version: dev
-:download-path: https://github.com/maximede/gradle-gitflow/tree/gh-pages/develop
+:version: 0.3.0
+:doc-version: 0.3.0
+:doc-path: https://maximede.github.io/gradle-gitflow/release/{doc-version}/doc
+:download-version: 0.3.0
+:download-path: https://bintray.com/maximede/gradle-plugins/edu.uw.concert%3Agradle-gitflow/{download-version}
 :doctype: book
 :sectanchors:
 :sectlinks:

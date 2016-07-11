@@ -15,6 +15,7 @@
  */
 package edu.uw.concert.gradle.gitflow.version
 
+import com.github.zafarkhaja.semver.UnexpectedCharacterException
 import com.github.zafarkhaja.semver.Version
 import org.ajoberstar.grgit.Commit
 import org.ajoberstar.grgit.Grgit
@@ -98,7 +99,12 @@ class NearestVersionLocator {
         Commit head = grgit.head()
 
         List versionTags = grgit.tag.list().inject([ ]) { list, tag ->
-            Version version = Version.valueOf(tag.name[ 0 ] == versionPrefix ? tag.name[ 1..-1 ] : tag.name)
+            Version version
+            try {
+                version = Version.valueOf(tag.name[0] == versionPrefix ? tag.name[1..-1] : tag.name)
+            } catch (UnexpectedCharacterException e) {
+                LOGGER.debug "Tag ${tag.name} (${tag.commit.abbreviatedId}) not valid"
+            }
             LOGGER.debug "Tag ${tag.name} (${tag.commit.abbreviatedId}) parsed as ${version} version."
 
             if (version) {

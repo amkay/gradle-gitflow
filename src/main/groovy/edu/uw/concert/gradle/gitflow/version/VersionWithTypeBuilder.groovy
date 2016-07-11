@@ -160,7 +160,11 @@ class VersionWithTypeBuilder {
           .setBuildMetadata(buildMetadata.toString())
           .build()
 
-        new VersionWithType(version, type, !dirty? false : true)
+        def isDirty = false
+        if (dirty) {
+            isDirty = true
+        }
+        new VersionWithType(version, type, isDirty)
     }
 
     private void append(final StringBuilder sb, final String s) {

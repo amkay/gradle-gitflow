@@ -7,8 +7,17 @@ jdk:
     - openjdk7
     - openjdk8
 before_install: git checkout $(git branch --contains $(git rev-parse HEAD)|tail -n1|tr -d ' ')
+jobs:
+  include:
+
 script: ./gradlew check --continue
-after_success: ./gradlew publish
+
+jobs: 
+  include: 
+    - stage: Deploy
+      jdk: openjdk8
+      script: ./gradlew publish
+      
 branches:
     only:
         - master

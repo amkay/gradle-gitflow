@@ -1,10 +1,5 @@
-
-dist: precise
-
 language: groovy
 jdk:
-    - oraclejdk7
-    - openjdk7
     - openjdk8
 before_install: git checkout $(git branch --contains $(git rev-parse HEAD)|tail -n1|tr -d ' ')
 jobs:
@@ -15,9 +10,8 @@ script: ./gradlew check --continue
 jobs: 
   include: 
     - stage: Deploy
-      jdk: openjdk8
       script: ./gradlew publish
-      
+
 branches:
     only:
         - master

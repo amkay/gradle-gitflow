@@ -6,11 +6,7 @@ jobs:
   include:
 
 script: ./gradlew check --continue
-
-jobs: 
-  include: 
-    - stage: Deploy
-      script: ./gradlew publish
+after_success: ./gradlew publish
 
 branches:
     only:

@@ -1,3 +1,6 @@
+
+dist: precise
+
 language: groovy
 jdk:
     - oraclejdk7

@@ -55,7 +55,7 @@ idea {
 
 apply plugin: GitflowPlugin
 
-ext.githubUser = 'maximede'
+ext.githubUser = 'uw-it-edm'
 
 group "edu.uw.concert"
 description 'A little less opinionated plugin that provides Semantic Versioning for Gradle projects that use Gitflow. (All credits to https://github.com/amkay/gradle-gitflow)'

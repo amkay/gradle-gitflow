@@ -3,8 +3,8 @@ import static edu.uw.concert.gradle.gitflow.version.VersionType.*
 def readmePath        = "${project.projectDir}/README.asciidoc"
 def releaseDownloadVersion = version.normalVersion
 def developDownloadVersion = 'dev'
-def releaseDownloadPath    = "https://bintray.com/${bintray.user}/${bintray.pkg.repo}/${group}%3A${project.name}/{download-version}"
-def developDownloadPath    = "https://github.com/${githubUser}/${project.name}/tree/gh-pages/develop"
+def releaseDownloadPath    = "https://bintray.com/uw-it-edm/${bintray.pkg.repo}/${group}%3A${project.name}/{download-version}"
+def developDownloadPath    = "https://github.com/uw-it-edm/${project.name}/tree/gh-pages/develop"
 def downloadVersion
 def downloadPath
 

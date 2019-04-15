@@ -1,5 +1,5 @@
 bintray.pkg {
-    websiteUrl = "https://github.com/${project.githubUser}/${project.name}"
+    websiteUrl = "https://github.com/uw-it-edm/${project.name}"
     issueTrackerUrl = "$websiteUrl/issues"
     vcsUrl = "${websiteUrl}.git"
 }

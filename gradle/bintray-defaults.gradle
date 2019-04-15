@@ -17,6 +17,7 @@ bintray {
     pkg {
         name = "${group}:${project.name}"
         desc = "$description"
+        userOrg = 'uw-it-edm'
 
         publicDownloadNumbers = true
 

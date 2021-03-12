@@ -77,7 +77,6 @@ bintray.pkg {
     labels = ['gradle', 'plugin', 'git', 'gitflow', 'semver']
 }
 
-apply plugin: 'codenarc'
 apply from: "$gradleDir/checks-defaults.gradle"
 
 apply plugin: 'org.ajoberstar.github-pages'

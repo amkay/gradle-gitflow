@@ -34,6 +34,7 @@ publishing {
 
                 artifact sourcesJar
                 artifact javadocJar
+                version '0.3.1'
             }
 
             if(plugins['groovy']) {
